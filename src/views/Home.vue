@@ -10,6 +10,7 @@ export default {
   components: {
     Toolbar,
   },
+  name: 'Home',
   data() {
     return {
             

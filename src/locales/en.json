@@ -1,0 +1,23 @@
+{
+  "TOOLBAR": {
+    "NAVIGATION": {
+      "MAIN_PAGE": "Main",
+      "PROJECT": "Projects",
+      "SKILLS": "Skills",
+      "ABOUT": "About",
+      "CONTACT": "Contact"
+    },
+    "LANG": {
+      "SHORT_LANGS": {
+        "ENG": "EN",
+        "POL": "PL",
+        "UKR": "UA"
+      },
+      "LONG_LANGS": {
+        "ENG": "English",
+        "POL": "Polski",
+        "UKR": "Українська"
+      }
+    }
+  }
+}

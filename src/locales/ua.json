@@ -1,0 +1,23 @@
+{
+  "TOOLBAR": {
+    "NAVIGATION": {
+      "MAIN_PAGE": "Головна сторінка",
+      "PROJECT": "Проекти",
+      "SKILLS": "Навички",
+      "ABOUT": "Про мене",
+      "CONTACT": "Контакт"
+    },
+    "LANG": {
+      "SHORT_LANGS": {
+        "ENG": "EN",
+        "POL": "PL",
+        "UKR": "UA"
+      },
+      "LONG_LANGS": {
+        "ENG": "English",
+        "POL": "Polski",
+        "UKR": "Українська"
+      }
+    }
+  }
+}

@@ -8,11 +8,12 @@
         />
         <v-spacer />
         <div class="buttons">
-          <v-btn>Strona główna</v-btn>
-          <v-btn>Projekty</v-btn>
-          <v-btn>Skills</v-btn>
-          <v-btn>O mnie</v-btn>
-          <v-btn>Kontakt</v-btn>
+          <v-btn 
+            v-for="(item, i) in navigationList" 
+            :key="i"
+          >
+           {{ item }}
+          </v-btn>
         </div>
         <v-spacer />
         <div class="options d-flex">
@@ -51,28 +52,39 @@
 
 <script>
 export default {
+  name: 'Toolbar',
   data() {
     return {
-      isLight: false,
-      langs: ['Polski', 'English', 'Українська'],
-      currentLang: 'PL',
+      currentLang: 'EN',
       open: false,
+      navigationList: [
+        this.$t('TOOLBAR.NAVIGATION.MAIN_PAGE'),
+        this.$t('TOOLBAR.NAVIGATION.PROJECT'),
+        this.$t('TOOLBAR.NAVIGATION.SKILLS'),
+        this.$t('TOOLBAR.NAVIGATION.ABOUT'),
+        this.$t('TOOLBAR.NAVIGATION.CONTACT'),
+      ],
+      langs: [
+        this.$t('TOOLBAR.LANG.LONG_LANGS.ENG'),
+        this.$t('TOOLBAR.LANG.LONG_LANGS.POL'),
+        this.$t('TOOLBAR.LANG.LONG_LANGS.UKR'),
+      ],
     };
   },
   methods: {
     changeLang(lang) {
       switch(lang) {
-      case 'Polski':
-        this.currentLang = 'PL';
-        break;
       case 'English':
-        this.currentLang = 'EN';
+        this.currentLang = this.$t('TOOLBAR.LANG.SHORT_LANGS.ENG');
+        break;
+      case 'Polski':
+        this.currentLang = this.$t('TOOLBAR.LANG.SHORT_LANGS.POL');
         break;
       case 'Українська':
-        this.currentLang = 'UA';
+        this.currentLang = this.$t('TOOLBAR.LANG.SHORT_LANGS.UKR');
         break;
       default:
-        this.currentLang = 'PL';
+        this.currentLang = this.$t('TOOLBAR.LANG.SHORT_LANGS.ENG');
       }
     },
   },
