@@ -1,26 +1,26 @@
 <template>
   <div class="options-lang ml-4 d-flex align-center">
     <v-menu 
-        v-model="open"
-        offset-y
+      v-model="open"
+      offset-y
     >
-        <template v-slot:activator="{ props }">
+      <template v-slot:activator="{ props }">
         <div
-            v-bind="props"
-            class="lang-btn"
+          v-bind="props"
+          class="lang-btn"
         >
-        {{ currentLang }} {{ open ? '▴' : '▾' }}
+          {{ currentLang }} {{ open ? '▴' : '▾' }}
         </div>
-        </template>
-        <v-list class="pa-0 mt-2">
+      </template>
+      <v-list class="pa-0 mt-2">
         <v-list-item
-            v-for="(lang, i) in langs"
-            :key="`l${i}`"
-            @click="changeLang(lang)"
+          v-for="(lang, i) in langs"
+          :key="`l${i}`"
+          @click="changeLang(lang)"
         >
-            {{ lang }}
+          {{ lang }}
         </v-list-item>
-        </v-list>
+      </v-list>
     </v-menu>
   </div>
 </template>
