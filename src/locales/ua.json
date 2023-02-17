@@ -7,17 +7,10 @@
       "ABOUT": "Про мене",
       "CONTACT": "Контакт"
     },
-    "LANG": {
-      "SHORT_LANGS": {
-        "ENG": "EN",
-        "POL": "PL",
-        "UKR": "UA"
-      },
-      "LONG_LANGS": {
-        "ENG": "English",
-        "POL": "Polski",
-        "UKR": "Українська"
-      }
+    "LANGS": {
+      "EN": "English",
+      "PL": "Polski",
+      "UA": "Українська"
     }
   }
 }

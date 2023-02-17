@@ -35,9 +35,9 @@ export default {
     ThemeToggle,
     LangSwitch,
   },
-  data() {
-    return {
-      navigationList: [
+  computed: {
+    navigationList() {
+      return [
         {
           title: this.$t('TOOLBAR.NAVIGATION.MAIN_PAGE'),
           path: '/',
@@ -58,8 +58,8 @@ export default {
           title: this.$t('TOOLBAR.NAVIGATION.CONTACT'),
           path: '/contact',
         },
-      ],
-    };
+      ];
+    },
   },
 };
 </script>
