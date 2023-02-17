@@ -42,6 +42,7 @@ export default {
     changeLang(lang) {
       this.$i18n.locale = lang;
       this.currentLang = lang.toUpperCase();
+      document.querySelector('html').setAttribute('lang', lang);
     },
   },
 };
