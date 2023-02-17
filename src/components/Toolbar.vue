@@ -11,8 +11,9 @@
           <v-btn 
             v-for="(item, i) in navigationList" 
             :key="i"
+            :to="item.path"
           >
-           {{ item }}
+           {{ item.title }}
           </v-btn>
         </div>
         <v-spacer />
@@ -37,11 +38,26 @@ export default {
   data() {
     return {
       navigationList: [
-        this.$t('TOOLBAR.NAVIGATION.MAIN_PAGE'),
-        this.$t('TOOLBAR.NAVIGATION.PROJECT'),
-        this.$t('TOOLBAR.NAVIGATION.SKILLS'),
-        this.$t('TOOLBAR.NAVIGATION.ABOUT'),
-        this.$t('TOOLBAR.NAVIGATION.CONTACT'),
+        {
+          title: this.$t('TOOLBAR.NAVIGATION.MAIN_PAGE'),
+          path: '/',
+        },
+        {
+          title: this.$t('TOOLBAR.NAVIGATION.PROJECT'),
+          path: '/projects',
+        },
+        {
+          title: this.$t('TOOLBAR.NAVIGATION.SKILLS'),
+          path: '/skills',
+        },
+        {
+          title: this.$t('TOOLBAR.NAVIGATION.ABOUT'),
+          path: '/about',
+        },
+        {
+          title: this.$t('TOOLBAR.NAVIGATION.CONTACT'),
+          path: '/contact',
+        },
       ],
     };
   },
