@@ -1,21 +1,20 @@
 <template>
-  <v-app>
+  <v-app theme="dark">
     <v-main>
-      <home />
+      <toolbar />
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Home from './views/Home.vue';
+import Toolbar from './components/Toolbar.vue';
 
 export default {
-  name: 'App',
-
   components: {
-    Home,
+    Toolbar,
   },
-
+  name: 'App',
   data: () => ({
     //
   }),
