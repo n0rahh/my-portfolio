@@ -26,23 +26,46 @@
 </template>
 
 <script>
+import GetLocale from '@/locales/helpers/get-locale';
+import SetLocale from '@/locales/helpers/set-locale';
+
 export default {
   data() {
     return {
-      currentLang: 'EN',
+      currentLang: '',
       open: false,
     };
   },
+  mounted() {
+    this.setCurrentLang();
+  },
   computed: {
     availableLocales() { 
-      return this.$i18n.availableLocales;
+      return GetLocale.supportedLocales;
     },
   },
   methods: {
     changeLang(lang) {
-      this.$i18n.locale = lang;
+      SetLocale.switchLanguage(lang);
+
       this.currentLang = lang.toUpperCase();
-      document.querySelector('html').setAttribute('lang', lang);
+      
+      try {
+        this.$router.replace({ 
+          params: {
+            lang: lang,
+          }, 
+        });
+      } catch(err) {
+        console.log(err);
+        this.$router.push('/');
+      }
+    },
+
+    setCurrentLang() {
+      setTimeout(() => {
+        this.currentLang = localStorage.getItem('locale').toUpperCase();
+      }, 100);
     },
   },
 };
