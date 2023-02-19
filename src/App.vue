@@ -9,14 +9,18 @@
 
 <script>
 import Toolbar from './components/Toolbar.vue';
+import SetLocale from '@/locales/helpers/set-locale';
 
 export default {
   components: {
     Toolbar,
   },
   name: 'App',
-  data: () => ({
-    //
-  }),
+  created() {
+    const currentLocale = localStorage.getItem('locale');
+    if(currentLocale) {
+      SetLocale.htmlDocAndLocalStorageLocale = currentLocale;
+    }
+  },
 };
 </script>
