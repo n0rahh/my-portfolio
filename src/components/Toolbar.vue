@@ -11,7 +11,9 @@
           <v-btn 
             v-for="(item, i) in navigationList" 
             :key="i"
-            :to="item.path"
+            :to="routeParam(item.name)"
+            :active="false"
+            variant="plain"
           >
            {{ item.title }}
           </v-btn>
@@ -28,6 +30,7 @@
 <script>
 import ThemeToggle from './toolbar/ThemeToggle.vue';
 import LangSwitch from './toolbar/LangSwitch.vue';
+import RouteLocale from '@/locales/helpers/route-locale';
 
 export default {
   name: 'Toolbar',
@@ -40,25 +43,32 @@ export default {
       return [
         {
           title: this.$t('TOOLBAR.NAVIGATION.MAIN_PAGE'),
-          path: '/',
+          name: 'Home',
         },
         {
           title: this.$t('TOOLBAR.NAVIGATION.PROJECT'),
-          path: '/projects',
+          name: 'Projects',
         },
         {
           title: this.$t('TOOLBAR.NAVIGATION.SKILLS'),
-          path: '/skills',
+          name: 'Skills',
         },
         {
           title: this.$t('TOOLBAR.NAVIGATION.ABOUT'),
-          path: '/about',
+          name: 'About',
         },
         {
           title: this.$t('TOOLBAR.NAVIGATION.CONTACT'),
-          path: '/contact',
+          name: 'Contact',
         },
       ];
+    },
+  },
+  methods: {
+    routeParam(routeName) {
+      return RouteLocale.i18nRoute({
+        name: routeName,
+      });
     },
   },
 };
