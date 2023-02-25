@@ -1,0 +1,98 @@
+<template>
+  <v-container
+    fluid
+    class="social"
+  >
+    <v-list class="social-wrapper">
+      <v-list-item 
+        v-for="(item, i) in socials"
+        :key="i"
+        class="social-wrapper__item"
+      >
+        <v-btn 
+          variant="plain" 
+          :href="item.link" 
+          target="_blank"
+          class="link"
+        >
+          {{ item.text }} <v-icon class="icon" size="x-large" :icon="item.icon" />
+        </v-btn>
+      </v-list-item>
+    </v-list>
+  </v-container>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      socials: [
+        {
+          text: 'Github',
+          icon: 'mdi-github',
+          link: '#',
+        },
+        {
+          text: 'LinkedIn',
+          icon: 'mdi-linkedin',
+          link: '#',
+        },
+        {
+          text: 'Instagram',
+          icon: 'mdi-instagram',
+          link: '#',
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.social {
+  position: fixed;
+  top: 40%;
+  .social-wrapper {
+    padding: 0;
+    background: transparent;
+    transform: translate(-255px, 0);
+    &__item {
+      margin: 0.5rem 0px;
+      background: #22Ae8A;
+      width: 300px;
+      text-align: right;
+      padding: 7px;
+      border-radius: 0 30px 30px 0;
+      transition: all 1s;
+      .icon {
+        margin-left: 10px;
+        color: #000;
+        background: #fff;
+        padding: 10px;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        font-size: 30px;
+        transform: rotate(-360deg);
+        transition: all 1s;
+      }
+      &:hover {
+        transform: translate(110px, 0);
+        background: #444652;
+        .icon {
+          color: #fff;
+          background: #000;
+          transform: rotate(360deg);
+          transition: all 1s;
+        }
+      }
+      .link {
+        padding-right: 7px;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+</style>
