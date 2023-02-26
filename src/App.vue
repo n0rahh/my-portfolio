@@ -1,8 +1,8 @@
 <template>
   <v-app theme="dark">
+    <toolbar />
+    <social />
     <v-main>
-      <toolbar />
-      <social />
       <router-view />
     </v-main>
   </v-app>
@@ -27,3 +27,8 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import '@/styles/global';
+
+</style>
