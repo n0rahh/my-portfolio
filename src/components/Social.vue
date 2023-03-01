@@ -24,6 +24,7 @@
 
 <script>
 export default {
+  name: 'Social',
   data() {
     return {
       socials: [
@@ -49,16 +50,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/colors.scss';
+
 .social {
   position: fixed;
   top: 40%;
+  z-index: 0;
   .social-wrapper {
     padding: 0;
     background: transparent;
     transform: translate(-255px, 0);
+    max-width: 30%;
     &__item {
       margin: 0.5rem 0px;
-      background: #22Ae8A;
+      background: $primary;
       width: 300px;
       text-align: right;
       padding: 7px;
@@ -66,8 +71,8 @@ export default {
       transition: all 1s;
       .icon {
         margin-left: 10px;
-        color: #000;
-        background: #fff;
+        color: $black;
+        background: $white;
         padding: 10px;
         border-radius: 50%;
         width: 36px;
@@ -78,10 +83,10 @@ export default {
       }
       &:hover {
         transform: translate(110px, 0);
-        background: #444652;
+        background: $tertiary;
         .icon {
-          color: #fff;
-          background: #000;
+          color: $white;
+          background: $black;
           transform: rotate(360deg);
           transition: all 1s;
         }
@@ -89,7 +94,7 @@ export default {
       .link {
         padding-right: 7px;
         &:hover {
-          color: #fff;
+          color: $white;
         }
       }
     }
