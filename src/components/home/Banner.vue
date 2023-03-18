@@ -7,8 +7,8 @@
       >
         <div class="wrapper-static">
           <span class="h0">
-            Hello, 
-            <br>I am
+            {{ $t('HOME_BANNER.HELLO') }}, 
+            <br>{{ $t('HOME_BANNER.IM') }}
           </span>
         </div>
         <div class="wrapper-animation">

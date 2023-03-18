@@ -12,5 +12,9 @@
       "PL": "Polski",
       "UA": "Українська"
     }
+  },
+  "HOME_BANNER": {
+    "HELLO": "Cześć",
+    "IM": "Jestem"
   }
 }
