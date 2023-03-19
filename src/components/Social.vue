@@ -55,12 +55,13 @@ export default {
 .social {
   position: fixed;
   top: 40%;
+  max-width: 30%;
   z-index: 0;
   .social-wrapper {
     padding: 0;
     background: transparent;
     transform: translate(-255px, 0);
-    max-width: 30%;
+    z-index: 1;
     &__item {
       margin: 0.5rem 0px;
       background: $primary;
