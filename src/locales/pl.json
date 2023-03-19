@@ -13,8 +13,15 @@
       "UA": "Українська"
     }
   },
-  "HOME_BANNER": {
-    "HELLO": "Cześć",
-    "IM": "Jestem"
+  "HOME_PAGE": {
+    "HOME_BANNER": {
+      "HELLO": "Cześć",
+      "IM": "Jestem"
+    },
+    "HOME_PROJECTS": {
+      "TITLE": "Projekty",
+      "SUBTITLE": "Poniżej znajdziesz moje roboty wraz z krótkim opisem. Jeżeli chcesz zobaczyć więcej, to klikaj",
+      "PROJECTS_LINK": "tutaj"
+    }
   }
 }

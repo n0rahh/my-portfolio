@@ -13,8 +13,15 @@
       "UA": "Українська"
     }
   },
-  "HOME_BANNER": {
-    "HELLO": "Hello",
-    "IM": "I am"
+  "HOME_PAGE": {
+    "HOME_BANNER": {
+      "HELLO": "Hello",
+      "IM": "I am"
+    },
+    "HOME_PROJECTS": {
+      "TITLE": "Projects",
+      "SUBTITLE": "Below you will find some of my works with a short description. If you want to see more, just click",
+      "PROJECTS_LINK": "here"
+    }
   }
 }

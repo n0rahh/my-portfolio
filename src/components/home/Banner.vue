@@ -7,8 +7,8 @@
       >
         <div class="wrapper-static">
           <span class="h0">
-            {{ $t('HOME_BANNER.HELLO') }}, 
-            <br>{{ $t('HOME_BANNER.IM') }}
+            {{ $t('HOME_PAGE.HOME_BANNER.HELLO') }}, 
+            <br>{{ $t('HOME_PAGE.HOME_BANNER.IM') }}
           </span>
         </div>
         <div class="wrapper-animation">
