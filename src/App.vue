@@ -14,11 +14,11 @@ import Social from './components/Social.vue';
 import SetLocale from '@/locales/helpers/set-locale';
 
 export default {
+  name: 'App',
   components: {
     Toolbar,
     Social,
   },
-  name: 'App',
   created() {
     const currentLocale = localStorage.getItem('locale');
     if(currentLocale) {

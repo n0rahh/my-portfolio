@@ -1,7 +1,13 @@
 <template>
   <div class="options-switch d-flex align-center">
-    <input type="checkbox" id="toggle">
-    <label for="toggle" class="button"></label>
+    <input
+      id="toggle"
+      type="checkbox"
+    >
+    <label
+      for="toggle"
+      class="button"
+    />
   </div>
 </template>
 

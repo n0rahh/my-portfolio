@@ -15,7 +15,12 @@
           target="_blank"
           class="link"
         >
-          {{ item.text }} <v-icon class="icon" size="x-large" :icon="item.icon" />
+          {{ item.text }} 
+          <v-icon
+            class="icon"
+            size="x-large"
+            :icon="item.icon"
+          />
         </v-btn>
       </v-list-item>
     </v-list>

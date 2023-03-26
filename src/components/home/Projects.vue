@@ -30,7 +30,7 @@
             href="#"
             class="projects-item_link"
           >
-            <div class="projects-item_bg"></div>
+            <div class="projects-item_bg" />
             <div class="projects-item_title">
               {{ item.title }}
             </div>

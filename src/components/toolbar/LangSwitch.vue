@@ -4,7 +4,7 @@
       v-model="open"
       offset-y
     >
-      <template v-slot:activator="{ props }">
+      <template #activator="{ props }">
         <div
           v-bind="props"
           class="lang-btn"
@@ -36,13 +36,13 @@ export default {
       open: false,
     };
   },
-  mounted() {
-    this.setCurrentLang();
-  },
   computed: {
     availableLocales() { 
       return GetLocale.supportedLocales;
     },
+  },
+  mounted() {
+    this.setCurrentLang();
   },
   methods: {
     changeLang(lang) {

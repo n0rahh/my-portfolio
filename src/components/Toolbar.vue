@@ -1,29 +1,29 @@
 <template>
   <v-app-bar>
     <v-container class="d-flex">
-        <v-img
-          src="../assets/temp-logo.svg"
-          max-height="30"
-          max-width="60"
-        />
-        <v-spacer />
-        <div class="buttons">
-          <v-btn 
-            v-for="(item, i) in navigationList" 
-            :key="i"
-            :to="routeParam(item.name)"
-            :active="false"
-            variant="plain"
-          >
-           {{ item.title }}
-          </v-btn>
-        </div>
-        <v-spacer />
-        <div class="options d-flex">
-          <theme-toggle />
-          <lang-switch />
-        </div>
-      </v-container>
+      <v-img
+        src="../assets/temp-logo.svg"
+        max-height="30"
+        max-width="60"
+      />
+      <v-spacer />
+      <div class="buttons">
+        <v-btn 
+          v-for="(item, i) in navigationList" 
+          :key="i"
+          :to="routeParam(item.name)"
+          :active="false"
+          variant="plain"
+        >
+          {{ item.title }}
+        </v-btn>
+      </div>
+      <v-spacer />
+      <div class="options d-flex">
+        <theme-toggle />
+        <lang-switch />
+      </div>
+    </v-container>
   </v-app-bar>
 </template>
 

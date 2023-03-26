@@ -1,8 +1,8 @@
 module.exports = {
   root: true,
   extends: [
-    'plugin:vue/vue3-essential',
     'eslint:recommended',
+    'plugin:vue/recommended',
   ],
   env: {
     browser: true,
@@ -28,5 +28,11 @@ module.exports = {
         message: 'Use "components" instead.',
       },
     ],
+    'vue/html-indent': ['error', 2, {
+      'attribute': 1,
+      'closeBracket': 0,
+      'alignAttributesVertically': true,
+      'ignores': [],
+    }],
   },
 };
