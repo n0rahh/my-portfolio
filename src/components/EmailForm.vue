@@ -125,13 +125,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/colors.scss';
+
 .send-button {
   position: relative;
   right: 0;
   height: 60px;
   width: 110px;
-  background-color: #202231;
-  color: #fff;
+  background-color: $deep-blue;
+  color: $white;
   border: none;
   border-radius: 8%;
   transition: all .5s;
@@ -154,7 +156,7 @@ export default {
 .success {
   &:focus {
     width: 30px;
-    background-color: #44c08a;
+    background-color: $success;
     border-radius: 50%;
     .send-button_text {
       opacity: 0;
@@ -169,7 +171,7 @@ export default {
 .error {
   &:focus {
     width: 30px;
-    background-color: #ff0000;
+    background-color: $error;
     border-radius: 50%;
     .send-button_text {
       opacity: 0;
@@ -182,6 +184,6 @@ export default {
 }
 
 .text-error {
-  color: red;
+  color: $error;
 }
 </style>

@@ -76,6 +76,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/colors.scss';
+
 .container {
   height: 100vh;
   z-index: 3;
@@ -91,27 +93,27 @@ export default {
   }
   &:nth-child(2n) {
     .projects-item_bg {
-      background-color: #3ecd5e;
+      background-color: $projects-bg-1;
     }
   }
   &:nth-child(3n) {
     .projects-item_bg {
-      background-color: #e44003;
+      background-color: $projects-bg-2;
     }
   }
   &:nth-child(4n) {
     .projects-item_bg {
-      background-color: #952aff;
+      background-color: $projects-bg-3;
     }
   }
   &:nth-child(5n) {
     .projects-item_bg {
-      background-color: #cd3e94;
+      background-color: $projects-bg-4;
     }
   }
   &:nth-child(6n) {
     .projects-item_bg {
-      background-color: #4c49ea;
+      background-color: $projects-bg-5;
     }
   }
 }
@@ -120,7 +122,6 @@ export default {
   &_link {
     display: block;
     padding: 30px 20px;
-    background-color: #121212;
     overflow: hidden;
     position: relative;
     &:hover {
@@ -136,14 +137,14 @@ export default {
     min-height: 57px;
     margin: 0 0 25px;
     overflow: hidden;
-    color: #fff;
+    color: $white;
     z-index: 2;
     position: relative;
   }
   &_bg {
     height: 128px;
     width: 128px;
-    background-color: #f9b234;
+    background-color: $projects-bg-0;
     z-index: 1;
     position: absolute;
     top: -75px;
@@ -154,5 +155,4 @@ export default {
     transition: all .7s ease;
   }
 }
-
 </style>
