@@ -22,6 +22,28 @@
       "TITLE": "Projekty",
       "SUBTITLE": "Poniżej znajdziesz moje roboty wraz z krótkim opisem. Jeżeli chcesz zobaczyć więcej, to klikaj",
       "PROJECTS_LINK": "tutaj"
+    },
+    "HOME_SKILLS": {
+      "TITLE": "Umiejętności"
+    }
+  },
+  "FORM": {
+    "LABEL": {
+      "NAME": "Imię",
+      "EMAIL": "E-mail",
+      "MESSAGE": "Wiadomość",
+      "FILE": "Dodaj plik",
+      "TERMS_CHECKBOX": "Wyrażam zgodę polityka prywatności"
+    },
+    "PLACEHOLDER": {
+      "NAME": "Jan",
+      "MESSAGE": "Napisz coś ciekawego tutaj ..."
+    },
+    "SEND_BUTTON": "Wyślij",
+    "RULES": {
+      "NAME": "Imię jest wymagane",
+      "EMAIL": "Poprawny adres e-mail jest wymagany",
+      "MESSAGE": "Wiadomośc jest wymagana"
     }
   }
 }

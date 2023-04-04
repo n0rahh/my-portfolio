@@ -3,7 +3,7 @@
     <banner />
     <projects />
     <skills />
-    <email-form />
+    <contact />
   </v-container>
 </template>
 
@@ -11,7 +11,7 @@
 import Banner from '@/components/home/Banner.vue';
 import Projects from '@/components/home/Projects.vue';
 import Skills from '@/components/home/Skills.vue';
-import EmailForm from '@/components/EmailForm.vue';
+import Contact from '@/components/home/Contact.vue';
 
 export default {
   name: 'Home',
@@ -19,7 +19,7 @@ export default {
     Banner,
     Projects,
     Skills,
-    EmailForm,
+    Contact,
   },
   data() {
     return {

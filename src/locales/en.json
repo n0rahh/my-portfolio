@@ -22,6 +22,28 @@
       "TITLE": "Projects",
       "SUBTITLE": "Below you will find some of my works with a short description. If you want to see more, just click",
       "PROJECTS_LINK": "here"
+    },
+    "HOME_SKILLS": {
+      "TITLE": "Skills"
+    }
+  },
+  "FORM": {
+    "LABEL": {
+      "NAME": "Name",
+      "EMAIL": "E-mail",
+      "MESSAGE": "Message",
+      "FILE": "Add file",
+      "TERMS_CHECKBOX": "I agree to site terms"
+    },
+    "PLACEHOLDER": {
+      "NAME": "Joe",
+      "MESSAGE": "Write something interesting here ..."
+    },
+    "SEND_BUTTON": "Send",
+    "RULES": {
+      "NAME": "Name is required",
+      "EMAIL": "Valid email address required",
+      "MESSAGE": "Message is required"
     }
   }
 }
