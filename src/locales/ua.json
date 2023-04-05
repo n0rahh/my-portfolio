@@ -24,7 +24,8 @@
       "PROJECTS_LINK": "тут"
     },
     "HOME_SKILLS": {
-      "TITLE": "Навички"
+      "SKILLS_TITLE": "Навички",
+      "WORK_TITLE": "Досвід"
     }
   },
   "FORM": {

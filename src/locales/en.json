@@ -24,7 +24,8 @@
       "PROJECTS_LINK": "here"
     },
     "HOME_SKILLS": {
-      "TITLE": "Skills"
+      "SKILLS_TITLE": "Skills",
+      "WORK_TITLE": "Work"
     }
   },
   "FORM": {

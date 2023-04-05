@@ -24,7 +24,8 @@
       "PROJECTS_LINK": "tutaj"
     },
     "HOME_SKILLS": {
-      "TITLE": "Umiejętności"
+      "SKILLS_TITLE": "Umiejętności",
+      "WORK_TITLE": "Doświadczenie"
     }
   },
   "FORM": {
