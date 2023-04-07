@@ -66,7 +66,8 @@ export default {
     padding: 0;
     background: transparent;
     transform: translate(-255px, 0);
-    z-index: 1;
+    overflow: visible;
+    z-index: 10;
     &__item {
       margin: 0.5rem 0px;
       background: $primary;
