@@ -18,9 +18,11 @@
 
       <v-col
         cols="5"
-        class="d-flex justify-end"
+        class="d-flex flex-column align-end"
       >
         <span class="h0 my-8">{{ $t('HOME_PAGE.HOME_SKILLS.WORK_TITLE') }}</span>
+
+        <working-history />
       </v-col>
     </v-row>
   </v-container>
@@ -28,11 +30,13 @@
 
 <script>
 import MainSkills from '@/components/skills/MainSkills.vue';
+import WorkingHistory from '@/components/skills/WorkingHistory.vue';
 
 export default {
   name: 'Skills',
   components: {
     MainSkills,
+    WorkingHistory,
   },
   
 };

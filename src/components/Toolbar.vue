@@ -54,12 +54,12 @@ export default {
           name: 'Skills',
         },
         {
-          title: this.$t('TOOLBAR.NAVIGATION.ABOUT'),
-          name: 'About',
-        },
-        {
           title: this.$t('TOOLBAR.NAVIGATION.CONTACT'),
           name: 'Contact',
+        },
+        {
+          title: this.$t('TOOLBAR.NAVIGATION.ABOUT'),
+          name: 'About',
         },
       ];
     },
