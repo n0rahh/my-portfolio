@@ -13,6 +13,7 @@
           color="primary"
         >
           <v-tab
+            color="rgb(41, 255, 201)"
             :value="`option-${index}`"
           >
             {{ work.company }}
@@ -35,9 +36,14 @@
           >
             <div class="d-flex flex-column">
               <span class="h3 w-600">{{ work.position }}</span>
-              <span class="h4 my-2">{{ work.date }}</span>
-              <span class="p1">
-                {{ work.description }}
+              <span class="p1 my-2 date">{{ work.date }}</span>
+  
+              <span
+                v-for="(item, i) in work.description"
+                :key="i"
+                class="p1 mb-3"
+              >
+                • {{ item }}
               </span>
             </div>
           </v-window-item>
@@ -59,22 +65,42 @@ export default {
           company: 'Tutore (2)',
           position: 'Fullstack Web Developer',
           date: 'Junuary 2022 - Present',
-          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad obcaecati exercitationem deserunt quia, ea quasi optio et quae sed aut soluta doloremque voluptate voluptates. Iure eum dignissimos facilis fuga quos.',
+          description: [
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+            'Iure eum dignissimos facilis fuga quos.',
+            'Ad obcaecati exercitationem deserunt quia, ea quasi optio et quae sed aut soluta doloremque voluptate voluptates.',
+          ],
         },
         {
           company: 'Tutore (1)',
           position: 'Technical Support Specialist',
           date: 'October 2021 - December 2021',
-          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad obcaecati exercitationem deserunt quia, ea quasi optio et quae sed aut soluta doloremque voluptate voluptates. Iure eum dignissimos facilis fuga quos.',
+          description: [
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+            'Iure eum dignissimos facilis fuga quos.',
+            'Ad obcaecati exercitationem deserunt quia, ea quasi optio et quae sed aut soluta doloremque voluptate voluptates.',
+          ],
         },
         {
           company: 'Shumee',
           position: 'Sales Manager',
           date: 'March 2021 - September 2021',
-          description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad obcaecati exercitationem deserunt quia, ea quasi optio et quae sed aut soluta doloremque voluptate voluptates. Iure eum dignissimos facilis fuga quos.',
+          description: [
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+            'Iure eum dignissimos facilis fuga quos.',
+            'Ad obcaecati exercitationem deserunt quia, ea quasi optio et quae sed aut soluta doloremque voluptate voluptates.',
+          ],
         },
       ],
     };
   },
 };
 </script>
+
+<style lang="scss" scoped>
+@import '@/styles/colors.scss';
+
+.date {
+  color: $light-grey;
+}
+</style>
