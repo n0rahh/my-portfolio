@@ -1,5 +1,8 @@
 <template>
-  <v-container class="container py-16">
+  <v-container
+    id="skills"
+    class="container py-16"
+  >
     <v-row>
       <v-col
         cols="5"

@@ -1,5 +1,8 @@
 <template>
-  <v-container class="mt-n16 container">
+  <v-container
+    id="banner"
+    class="mt-n16 container"
+  >
     <v-row>
       <v-col 
         cols="10"
