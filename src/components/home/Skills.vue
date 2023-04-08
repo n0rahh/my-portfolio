@@ -8,13 +8,17 @@
         cols="5"
         class="d-flex flex-column align-start"
       >
-        <span class="h0 my-8">{{ $t('HOME_PAGE.HOME_SKILLS.SKILLS_TITLE') }}</span>
+        <span
+          v-bind="aosAttribute('fade-down', 400, 300, 'ease-in-out', 'center')"
+          class="h0 my-8"
+        >{{ $t('HOME_PAGE.HOME_SKILLS.SKILLS_TITLE') }}</span>
 
         <main-skills />
       </v-col>
       <v-col
         cols="2"
         class="d-flex justify-center"
+        v-bind="aosAttribute('flip-left', 500, 1000, 'ease-in-out', 'center')"
       >
         <span class="h0 my-8">&amp;</span>
       </v-col>
@@ -23,7 +27,10 @@
         cols="5"
         class="d-flex flex-column align-end"
       >
-        <span class="h0 my-8">{{ $t('HOME_PAGE.HOME_SKILLS.WORK_TITLE') }}</span>
+        <span
+          v-bind="aosAttribute('fade-down', 400, 300, 'ease-in-out', 'center')"
+          class="h0 my-8"
+        >{{ $t('HOME_PAGE.HOME_SKILLS.WORK_TITLE') }}</span>
 
         <working-history />
       </v-col>
@@ -34,6 +41,7 @@
 <script>
 import MainSkills from '@/components/skills/MainSkills.vue';
 import WorkingHistory from '@/components/skills/WorkingHistory.vue';
+import aosMixin from '@/helpers/animation';
 
 export default {
   name: 'Skills',
@@ -41,6 +49,7 @@ export default {
     MainSkills,
     WorkingHistory,
   },
+  mixins: [aosMixin],
   
 };
 </script>

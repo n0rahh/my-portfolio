@@ -6,11 +6,13 @@
     <v-row>
       <v-col
         cols="6"
+        v-bind="aosAttribute('fade-right', 300, 300, 'ease-in-out', 'center')"
       >
         <span class="h0 my-8">{{ $t('HOME_PAGE.HOME_PROJECTS.TITLE') }}</span>
       </v-col>
       <v-col
         cols="12"
+        v-bind="aosAttribute('fade-left', 300, 600, 'ease-in-out', 'center')"
       >
         <p class="h4">
           {{ $t('HOME_PAGE.HOME_PROJECTS.SUBTITLE') }} <a href="/en/projects">{{ $t('HOME_PAGE.HOME_PROJECTS.PROJECTS_LINK') }}</a>.
@@ -28,6 +30,7 @@
       >
         <div
           class="projects_item"
+          v-bind="aosAttribute('flip-left', 200, 300, 'ease-in-out', 'center')"
         >
           <a 
             href="#"
@@ -48,7 +51,11 @@
 </template>
 
 <script>
+import aosMixin from '@/helpers/animation';
+
 export default {
+  name: 'Projects',
+  mixins: [aosMixin],
   data() {
     return {
       projectsList: [

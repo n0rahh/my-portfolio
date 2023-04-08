@@ -1,5 +1,8 @@
 <template>
-  <v-container fluid>
+  <v-container
+    fluid
+    v-bind="aosAttribute('fade-right', 400, 600, 'ease-in-out', 'center')"
+  >
     <v-row
       v-for="(skill, index) in skills"
       :key="index"
@@ -31,8 +34,11 @@
 </template>
 
 <script>
+import aosMixin from '@/helpers/animation';
+
 export default {
   name: 'MainSkills',
+  mixins: [aosMixin],
   data() {
     return {
       animate: false,
