@@ -4,7 +4,10 @@
     class="pa-0 ma-0"
   >
     <v-row class="d-flex justify-space-between pa-0 ma-0">
-      <v-col cols="3">
+      <v-col
+        cols="3"
+        v-bind="aosAttribute('fade-up', 400, 600, 'ease-in-out', 'center')"
+      >
         <v-tabs
           v-for="(work, index) in works"
           :key="index"
@@ -15,6 +18,7 @@
           <v-tab
             color="rgb(41, 255, 201)"
             :value="`option-${index}`"
+            class="mb-4"
           >
             {{ work.company }}
           </v-tab>
@@ -24,6 +28,7 @@
         offset="1"
         cols="8"
         class="pa-0 ma-0"
+        v-bind="aosAttribute('fade-left', 400, 600, 'ease-in-out', 'center')"
       >
         <v-window
           v-model="tab"
@@ -54,8 +59,11 @@
 </template>
 
 <script>
+import aosMixin from '@/helpers/animation';
+
 export default {
   name: 'WorkingHistory',
+  mixins: [aosMixin],
   data() {
     return {
       tab: 0,

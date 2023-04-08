@@ -2,6 +2,7 @@
   <v-container
     id="banner"
     class="mt-n16 container"
+    v-bind="aosAttribute('fade-right', 300, 800, 'ease-in-out', 'center', 50)"
   >
     <v-row>
       <v-col 
@@ -35,6 +36,14 @@
     </v-row>
   </v-container>
 </template>
+
+<script>
+import aosMixin from '@/helpers/animation';
+
+export default {
+  mixins: [aosMixin],
+};
+</script>
 
 <style lang="scss" scoped>
 @import '@/styles/colors.scss';
