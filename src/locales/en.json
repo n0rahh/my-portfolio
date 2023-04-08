@@ -28,6 +28,10 @@
       "WORK_TITLE": "Work"
     }
   },
+  "HOME_CONTACT": {
+    "TITLE": "Let's stay in touch!",
+    "SUBTITLE": "Yo! If you want to ask me something, or you want to invite me somewhere, or you have a business deal - just text me! If you want to eat some pizza with me, also send me a message!"
+  },
   "FORM": {
     "LABEL": {
       "NAME": "Name",

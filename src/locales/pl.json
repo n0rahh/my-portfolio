@@ -28,6 +28,10 @@
       "WORK_TITLE": "Doświadczenie"
     }
   },
+  "HOME_CONTACT": {
+    "TITLE": "Zostańmy w kontakcie!",
+    "SUBTITLE": "Siema! Jeśli chcesz mnie o coś zapytać, chcesz mnie gdzieś zaprosić, albo masz biznesową propozycję - po prostu napisz do mnie! Jeśli chcesz zjeść ze mną pizzę, również wyślij mi wiadomość!"
+  },
   "FORM": {
     "LABEL": {
       "NAME": "Imię",
