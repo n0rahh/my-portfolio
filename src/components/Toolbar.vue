@@ -1,11 +1,11 @@
 <template>
   <v-app-bar>
     <v-container class="d-flex">
-      <v-img
-        src="../assets/temp-logo.svg"
-        max-height="30"
-        max-width="60"
-      />
+      <div class="logo">
+        <div class="logo_rectangle" />
+        <span class="logo_text h4 w-900 ml-6">VHS</span>
+      </div>
+      
       <v-spacer />
       <div class="buttons">
         <v-btn 
@@ -73,3 +73,63 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import '@/styles/colors.scss';
+
+.logo {
+  position: relative;
+  &_rectangle {
+    position: absolute;
+    height: 21px;
+    width: 35px;
+    top: 50%;
+    left: -20px;
+    background-color: $white;
+    transform: translateY(-50%);
+    &:before {
+      content: ">";
+      display: block;
+      position: absolute;
+      color: $black;
+      top: -50%;
+      left: 10%;
+      font-weight: 900;
+      font-size: 27px;
+    }
+    &:after {
+      content: "_";
+      display: block;
+      position: absolute;
+      color: $black;
+      top: -80%;
+      right: 10%;
+      font-weight: 900;
+      font-size: 27px;
+      animation: fade 2s infinite;
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+
+  20% {
+     opacity: 0;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+     opacity: 1;
+  }
+}
+</style>
