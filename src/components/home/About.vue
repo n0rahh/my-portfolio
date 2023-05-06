@@ -18,7 +18,7 @@
       <v-col
         cols="6"
         class="d-flex justify-center"
-        v-bind="aosAttribute('fade-center', 200, 600, 'ease-in-out', 'center')"
+        v-bind="aosAttribute('fade-left', 200, 600, 'ease-in-out', 'center')"
       >
         <v-img
           :src="require('@/assets/imgs/me-myself.jpg')"

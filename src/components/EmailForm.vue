@@ -131,11 +131,11 @@ export default {
   position: relative;
   right: 0;
   height: 60px;
-  width: 110px;
+  width: 180px;
   background-color: $deep-blue;
   color: $white;
   border: none;
-  border-radius: 8%;
+  border-radius: 8px;
   transition: all .5s;
   &_icon-success {
     opacity: 0;
