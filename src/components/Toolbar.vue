@@ -13,10 +13,10 @@
         <v-btn 
           v-for="(item, i) in navigationList" 
           :key="i"
-          :to="routeParam(item.name)"
-          :active="false"
-          variant="plain"
+          variant="text"
+          color="white"
           class="p2"
+          @click="scrollToSection(item.id)"
         >
           {{ item.title }}
         </v-btn>
@@ -31,7 +31,7 @@
 
 <script>
 import LangSwitch from './toolbar/LangSwitch.vue';
-import RouteLocale from '@/locales/helpers/route-locale';
+// import RouteLocale from '@/locales/helpers/route-locale';
 
 export default {
   name: 'Toolbar',
@@ -44,31 +44,42 @@ export default {
         {
           title: this.$t('TOOLBAR.NAVIGATION.MAIN_PAGE'),
           name: 'Home',
-        },
-        {
-          title: this.$t('TOOLBAR.NAVIGATION.PROJECT'),
-          name: 'Projects',
-        },
-        {
-          title: this.$t('TOOLBAR.NAVIGATION.SKILLS'),
-          name: 'Skills',
-        },
-        {
-          title: this.$t('TOOLBAR.NAVIGATION.CONTACT'),
-          name: 'Contact',
+          id: 'banner',
         },
         {
           title: this.$t('TOOLBAR.NAVIGATION.ABOUT'),
           name: 'About',
+          id: 'about',
+        },
+        {
+          title: this.$t('TOOLBAR.NAVIGATION.PROJECT'),
+          name: 'Projects',
+          id: 'projects',
+        },
+        {
+          title: this.$t('TOOLBAR.NAVIGATION.SKILLS'),
+          name: 'Skills',
+          id: 'skills',
+        },
+        {
+          title: this.$t('TOOLBAR.NAVIGATION.CONTACT'),
+          name: 'Contact',
+          id: 'contact',
         },
       ];
     },
   },
   methods: {
-    routeParam(routeName) {
-      return RouteLocale.i18nRoute({
-        name: routeName,
-      });
+    // routeParam(routeName) {
+    //   return RouteLocale.i18nRoute({
+    //     name: routeName,
+    //   });
+    // },
+    scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if(element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     },
   },
 };
