@@ -10,7 +10,7 @@
       >
         <span
           v-bind="aosAttribute('fade-right', 300, 600, 'ease-in-out', 'center')"
-          class="h0 mb-4"
+          class="h0 mb-4 mt-6"
         >{{ $t('HOME_CONTACT.TITLE') }}</span>
         <span
           v-bind="aosAttribute('fade-left', 300, 600, 'ease-in-out', 'center')"

@@ -8,6 +8,7 @@
     <v-main>
       <router-view />
     </v-main>
+    <Footer />
   </v-app>
 </template>
 
@@ -15,12 +16,14 @@
 import Toolbar from './components/Toolbar.vue';
 import Social from './components/Social.vue';
 import SetLocale from '@/locales/helpers/set-locale';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
   components: {
     Toolbar,
     Social,
+    Footer,
   },
   created() {
     const currentLocale = localStorage.getItem('locale');
