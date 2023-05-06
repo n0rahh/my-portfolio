@@ -1,9 +1,11 @@
 <template>
-  <v-app-bar>
+  <v-app-bar
+    flat
+    class="toolbar"
+  >
     <v-container class="d-flex">
       <div class="logo">
         <div class="logo_rectangle" />
-        <span class="logo_text h4 w-900 ml-6">VHS</span>
       </div>
       
       <v-spacer />
@@ -14,13 +16,13 @@
           :to="routeParam(item.name)"
           :active="false"
           variant="plain"
+          class="p2"
         >
           {{ item.title }}
         </v-btn>
       </div>
       <v-spacer />
       <div class="options d-flex">
-        <theme-toggle />
         <lang-switch />
       </div>
     </v-container>
@@ -28,14 +30,12 @@
 </template>
 
 <script>
-import ThemeToggle from './toolbar/ThemeToggle.vue';
 import LangSwitch from './toolbar/LangSwitch.vue';
 import RouteLocale from '@/locales/helpers/route-locale';
 
 export default {
   name: 'Toolbar',
   components: {
-    ThemeToggle,
     LangSwitch,
   },
   computed: {
@@ -77,24 +77,31 @@ export default {
 <style lang="scss">
 @import '@/styles/colors.scss';
 
+.toolbar {
+  background-color: $primary !important;
+  opacity: 0.9;
+}
+
 .logo {
   position: relative;
   &_rectangle {
     position: absolute;
-    height: 21px;
-    width: 35px;
+    height: 26px;
+    width: 43px;
     top: 50%;
     left: -20px;
     background-color: $white;
     transform: translateY(-50%);
+    border-radius: 3px;
     &:before {
       content: ">";
       display: block;
       position: absolute;
       color: $black;
       top: -50%;
-      left: 10%;
-      font-weight: 900;
+      transform: translateY(10%);
+      left: 15%;
+      font-weight: 700;
       font-size: 27px;
     }
     &:after {
@@ -102,10 +109,10 @@ export default {
       display: block;
       position: absolute;
       color: $black;
-      top: -80%;
+      bottom: -5%;
       right: 10%;
-      font-weight: 900;
-      font-size: 27px;
+      font-weight: 700;
+      font-size: 30px;
       animation: fade 2s infinite;
     }
   }
