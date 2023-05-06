@@ -7,6 +7,7 @@
       <v-col
         class="d-flex flex-column justify-center"
         cols="6"
+        v-bind="aosAttribute('fade-right', 200, 300, 'ease-in-out', 'center')"
       >
         <span class="h2 mb-8">Few words about me</span>
         <p>
@@ -17,6 +18,7 @@
       <v-col
         cols="6"
         class="d-flex justify-center"
+        v-bind="aosAttribute('fade-center', 200, 600, 'ease-in-out', 'center')"
       >
         <v-img
           :src="require('@/assets/imgs/me-myself.jpg')"
@@ -28,6 +30,15 @@
     </v-row>
   </v-container>
 </template>
+
+<script>
+import aosMixin from '@/helpers/animation';
+
+export default {
+  name: 'About',
+  mixins: [aosMixin],  
+};
+</script>
 
 <style lang="scss" scoped>
 .container {
