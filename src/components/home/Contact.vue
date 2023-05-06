@@ -20,9 +20,18 @@
     </v-row>
     <v-row>
       <v-col
-        offset="6"
+        cols="5"
+        class="d-flex justify-center contact-img"
+        v-bind="aosAttribute('fade-right', 300, 600, 'ease-in-out', 'center')"
+      >
+        <v-img
+          :src="require('@/assets/imgs/cat-with-glasses.jpg')"
+          max-width="280"
+        />
+      </v-col>
+      <v-col
         cols="6"
-        v-bind="aosAttribute('fade-up', 300, 600, 'ease-in-out', 'center')"
+        v-bind="aosAttribute('fade-down', 300, 600, 'ease-in-out', 'center')"
       >
         <email-form />
       </v-col>
@@ -42,3 +51,12 @@ export default {
   mixins: [aosMixin],
 };
 </script>
+
+<style lang="scss" scoped>
+.contact-img {
+  mix-blend-mode: exclusion;
+  &:hover {
+    mix-blend-mode: color-dodge;
+  }
+}
+</style>
