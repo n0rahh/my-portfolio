@@ -15,7 +15,7 @@
         v-bind="aosAttribute('fade-left', 300, 600, 'ease-in-out', 'center')"
       >
         <p class="h4">
-          {{ $t('HOME_PAGE.HOME_PROJECTS.SUBTITLE') }} <a href="/en/projects">{{ $t('HOME_PAGE.HOME_PROJECTS.PROJECTS_LINK') }}</a>.
+          {{ $t('HOME_PAGE.HOME_PROJECTS.SUBTITLE') }}.
         </p>
       </v-col>
     </v-row>
@@ -33,7 +33,7 @@
           v-bind="aosAttribute('flip-left', 200, 300, 'ease-in-out', 'center')"
         >
           <a 
-            href="#"
+            :href="`/${currentLocale}/project`"
             class="projects-item_link"
           >
             <div class="projects-item_bg" />
@@ -41,7 +41,7 @@
               {{ item.title }}
             </div>
             <span class="projects-item_description">
-              {{ item.desc }}
+              {{ item.shortDesc }}
             </span>
           </a>
         </div>
@@ -52,6 +52,7 @@
 
 <script>
 import aosMixin from '@/helpers/animation';
+import GetLocale from '@/locales/helpers/get-locale';
 
 export default {
   name: 'Projects',
@@ -61,26 +62,36 @@ export default {
       projectsList: [
         {
           title: 'Project 1',
-          desc: 'Test description 1. One, two, three, four, five!',
+          shortDesc: 'One, two, three, four, five!', 
+          longDesc: 'Test description 1. One, two, three, four, five!',
         },
         {
           title: 'Project 2',
-          desc: 'Test description 2. One, two, three, four, five!',
+          shortDesc: 'One, two, three, four, five!', 
+          longDesc: 'Test description 2. One, two, three, four, five!',
         },
         {
           title: 'Project 3',
-          desc: 'Test description 3. One, two, three, four, five!',
+          shortDesc: 'One, two, three, four, five!', 
+          longDesc: 'Test description 3. One, two, three, four, five!',
         },
         {
           title: 'Project 4',
-          desc: 'Test description 4. One, two, three, four, five!',
+          shortDesc: 'One, two, three, four, five!', 
+          longDesc: 'Test description 4. One, two, three, four, five!',
         },
         {
           title: 'Project 5',
-          desc: 'Test description 5. One, two, three, four, five!',
+          shortDesc: 'One, two, three, four, five!', 
+          longDesc: 'Test description 5. One, two, three, four, five!',
         },
       ],
     };
+  },
+  computed: {
+    currentLocale() {
+      return GetLocale.currentLocale;
+    },
   },
 };
 </script>

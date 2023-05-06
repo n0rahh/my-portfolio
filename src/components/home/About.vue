@@ -7,7 +7,7 @@
       <v-col
         class="d-flex flex-column justify-center"
         cols="6"
-        v-bind="aosAttribute('fade-right', 200, 300, 'ease-in-out', 'center')"
+        v-bind="aosAttribute('fade-right', 150, 300, 'ease-in-out', 'center')"
       >
         <span class="h2 mb-8">Few words about me</span>
         <p>
@@ -18,7 +18,7 @@
       <v-col
         cols="6"
         class="d-flex justify-center"
-        v-bind="aosAttribute('fade-left', 200, 600, 'ease-in-out', 'center')"
+        v-bind="aosAttribute('fade-left', 150, 600, 'ease-in-out', 'center')"
       >
         <v-img
           :src="require('@/assets/imgs/me-myself.jpg')"
@@ -42,7 +42,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  height: 100vh;
+  height: 80vh;
 }
 
 .my-img {
