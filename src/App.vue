@@ -1,5 +1,8 @@
 <template>
-  <v-app theme="dark">
+  <v-app
+    theme="dark"
+    class="app"
+  >
     <toolbar />
     <social />
     <v-main>
@@ -31,4 +34,7 @@ export default {
 <style lang="scss">
 @import '@/styles/global';
 
+.app {
+  background-color: #0a0c24;
+}
 </style>
