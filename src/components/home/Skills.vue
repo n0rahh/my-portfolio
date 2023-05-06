@@ -9,7 +9,7 @@
         class="d-flex flex-column align-start"
       >
         <span
-          v-bind="aosAttribute('fade-down', 400, 300, 'ease-in-out', 'center')"
+          v-bind="aosAttribute('fade-down', 200, 300, 'ease-in-out', 'center')"
           class="h0 my-8"
         >{{ $t('HOME_PAGE.HOME_SKILLS.SKILLS_TITLE') }}</span>
 
@@ -18,7 +18,7 @@
       <v-col
         cols="2"
         class="d-flex justify-center"
-        v-bind="aosAttribute('flip-left', 500, 1000, 'ease-in-out', 'center')"
+        v-bind="aosAttribute('flip-left', 300, 1000, 'ease-in-out', 'center')"
       >
         <span class="h0 my-8">&amp;</span>
       </v-col>
@@ -28,7 +28,7 @@
         class="d-flex flex-column align-end"
       >
         <span
-          v-bind="aosAttribute('fade-down', 400, 300, 'ease-in-out', 'center')"
+          v-bind="aosAttribute('fade-down', 200, 300, 'ease-in-out', 'center')"
           class="h0 my-8"
         >{{ $t('HOME_PAGE.HOME_SKILLS.WORK_TITLE') }}</span>
 

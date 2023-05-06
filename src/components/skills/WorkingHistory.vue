@@ -6,7 +6,7 @@
     <v-row class="d-flex justify-space-between pa-0 ma-0">
       <v-col
         cols="3"
-        v-bind="aosAttribute('fade-up', 400, 600, 'ease-in-out', 'center')"
+        v-bind="aosAttribute('fade-up', 200, 600, 'ease-in-out', 'center')"
       >
         <v-tabs
           v-for="(work, index) in works"
@@ -28,7 +28,7 @@
         offset="1"
         cols="8"
         class="pa-0 ma-0"
-        v-bind="aosAttribute('fade-left', 400, 600, 'ease-in-out', 'center')"
+        v-bind="aosAttribute('fade-left', 200, 600, 'ease-in-out', 'center')"
       >
         <v-window
           v-model="tab"

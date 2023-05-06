@@ -1,7 +1,7 @@
 <template>
   <v-container
     fluid
-    v-bind="aosAttribute('fade-right', 400, 600, 'ease-in-out', 'center')"
+    v-bind="aosAttribute('fade-right', 200, 600, 'ease-in-out', 'center')"
   >
     <v-row
       v-for="(skill, index) in skills"
