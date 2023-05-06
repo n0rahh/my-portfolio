@@ -3,7 +3,10 @@
     flat
     class="toolbar"
   >
-    <v-container class="d-flex">
+    <v-container
+      v-if="routeName !== 'Project'"
+      class="d-flex"
+    >
       <div class="logo">
         <div class="logo_rectangle" />
       </div>
@@ -26,12 +29,28 @@
         <lang-switch />
       </div>
     </v-container>
+    <v-container v-else-if="routeName === 'Project'">
+      <v-btn
+        variant="plain"
+        color="white"
+        class="p2 d-flex align-center"
+        :to="routeParam('Home')"
+        max-width="100"
+      >
+        <v-icon
+          size="x-large"
+          icon="mdi-arrow-left-thick"
+          class="mr-4"
+        />
+        <span>{{ $t('TOOLBAR.NAVIGATION.BACK') }}</span>
+      </v-btn>
+    </v-container>
   </v-app-bar>
 </template>
 
 <script>
 import LangSwitch from './toolbar/LangSwitch.vue';
-// import RouteLocale from '@/locales/helpers/route-locale';
+import RouteLocale from '@/locales/helpers/route-locale';
 
 export default {
   name: 'Toolbar',
@@ -68,13 +87,16 @@ export default {
         },
       ];
     },
+    routeName() {
+      return this.$route.name;
+    },
   },
   methods: {
-    // routeParam(routeName) {
-    //   return RouteLocale.i18nRoute({
-    //     name: routeName,
-    //   });
-    // },
+    routeParam(routeName) {
+      return RouteLocale.i18nRoute({
+        name: routeName,
+      });
+    },
     scrollToSection(sectionId) {
       const element = document.getElementById(sectionId);
       if(element) {
