@@ -68,6 +68,7 @@ export default {
       margin-bottom: 5.31rem;
       display: inline-block;
       padding-left: 0.7rem;
+      border-radius: 8px;
     }
     div {
       &:first-child {
@@ -76,17 +77,17 @@ export default {
     }
     .first {
       span {
-        background-color: $primary;
+        background-color: $banner-title-1;
       }
     }
     .second {
       span {
-        background-color: $secondary;
+        background-color: $banner-title-2;
       }
     }
     .third {
       span {
-        background-color: $tertiary;
+        background-color: $banner-title-3;
       }
     }
   }

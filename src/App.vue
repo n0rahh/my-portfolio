@@ -35,6 +35,6 @@ export default {
 @import '@/styles/global';
 
 .app {
-  background-color: #0a0c24;
+  background-color: $primary;
 }
 </style>
