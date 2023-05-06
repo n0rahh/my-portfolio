@@ -2,10 +2,7 @@ import { createRouter, createWebHistory, RouterView } from 'vue-router';
 import GetLocale from '@/locales/helpers/get-locale';
 
 import Home from '../views/Home.vue';
-import Projects from '../views/Projects.vue';
-import Skills from '../views/Skills.vue';
-import About from '../views/About.vue';
-import Contact from '../views/Contact.vue';
+import Project from '../views/Project.vue';
 import i18n from '@/i18n';
 
 const router = createRouter({
@@ -21,24 +18,9 @@ const router = createRouter({
           component: Home,
         },
         { 
-          path: 'projects',
-          name: 'Projects',
-          component: Projects,
-        },
-        { 
-          path: 'skills',
-          name: 'Skills',
-          component: Skills,
-        },
-        { 
-          path: 'about',
-          name: 'About',
-          component: About,
-        },
-        { 
-          path: 'contact',
-          name: 'Contact',
-          component: Contact,
+          path: 'project',
+          name: 'Project',
+          component: Project,
         },
       ],
     },
