@@ -38,7 +38,8 @@
       "EMAIL": "E-mail",
       "MESSAGE": "Wiadomość",
       "FILE": "Dodaj plik",
-      "TERMS_CHECKBOX": "Wyrażam zgodę polityka prywatności"
+      "TERMS_CHECKBOX": "Wyrażam zgodę na",
+      "TERMS": "politykę strony"
     },
     "PLACEHOLDER": {
       "NAME": "Jan",

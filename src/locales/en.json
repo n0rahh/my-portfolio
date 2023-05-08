@@ -38,7 +38,8 @@
       "EMAIL": "E-mail",
       "MESSAGE": "Message",
       "FILE": "Add file",
-      "TERMS_CHECKBOX": "I agree to site terms"
+      "TERMS_CHECKBOX": "I agree to site terms",
+      "TERMS": "terms"
     },
     "PLACEHOLDER": {
       "NAME": "Joe",

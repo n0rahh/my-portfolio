@@ -38,7 +38,8 @@
       "EMAIL": "E-mail",
       "MESSAGE": "Повідомлення",
       "FILE": "Додай файл",
-      "TERMS_CHECKBOX": "Погоджуюся на політику приватності"
+      "TERMS_CHECKBOX": "Погоджуюся на",
+      "TERMS": "політику сторінки"
     },
     "PLACEHOLDER": {
       "NAME": "Данило",
