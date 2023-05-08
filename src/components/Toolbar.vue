@@ -4,7 +4,7 @@
     class="toolbar"
   >
     <v-container
-      v-if="routeName !== 'Project'"
+      v-if="routeName === 'Home'"
       class="d-flex"
     >
       <div class="logo">
@@ -29,7 +29,7 @@
         <lang-switch />
       </div>
     </v-container>
-    <v-container v-else-if="routeName === 'Project'">
+    <v-container v-else>
       <v-btn
         variant="plain"
         color="white"

@@ -3,6 +3,7 @@ import GetLocale from '@/locales/helpers/get-locale';
 
 import Home from '../views/Home.vue';
 import Project from '../views/Project.vue';
+import Policy from '../views/Policy.vue';
 import i18n from '@/i18n';
 
 const router = createRouter({
@@ -21,6 +22,11 @@ const router = createRouter({
           path: 'project',
           name: 'Project',
           component: Project,
+        },
+        { 
+          path: 'policy',
+          name: 'Policy',
+          component: Policy,
         },
       ],
     },

@@ -37,13 +37,32 @@
         variant="underlined"
         :show-size="1024"
       />
-      <v-checkbox
-        v-model="terms"
-        :class="{
-          'text-error': !isValid && isBtnClicked,
-        }"
-        :label="$t('FORM.LABEL.TERMS_CHECKBOX')"
-      />
+      <v-row class="d-flex align-center">
+        <v-col cols="1">
+          <v-checkbox
+            v-model="terms"
+            hide-details
+            :class="{
+              'text-error': !isValid && isBtnClicked,
+            }"
+          />
+        </v-col>
+        <v-col cols="6">
+          <v-label
+            :class="{
+              'text-error': !isValid && isBtnClicked,
+            }"
+          >
+            {{ $t('FORM.LABEL.TERMS_CHECKBOX') }}
+            <a
+              class="ml-2"
+              :href="`/${currentLocale}/policy`"
+            >
+              {{ $t('FORM.LABEL.TERMS') }}
+            </a>
+          </v-label>
+        </v-col>
+      </v-row>
       <div class="action d-flex justify-end">
         <v-btn
           class="send-button"
@@ -75,6 +94,8 @@
 </template>
 
 <script>
+import GetLocale from '@/locales/helpers/get-locale';
+
 export default {
   name: 'EmailForm',
   data() {
@@ -96,6 +117,11 @@ export default {
         content: (v) => !!v?.trim() || this.$t('FORM.RULES.MESSAGE'),
       }, 
     };
+  },
+  computed: {
+    currentLocale() {
+      return GetLocale.currentLocale;
+    },
   },
   methods: {
     async validateForm() {
