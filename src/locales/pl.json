@@ -51,5 +51,21 @@
       "EMAIL": "Poprawny adres e-mail jest wymagany",
       "MESSAGE": "Wiadomośc jest wymagana"
     }
-  }
+  },
+  "POLICY": {
+    "TITLE": "Polityka prywatności",
+    "DESCRIPTION":  "Niniejsza polityka prywatności określa zasady przetwarzania i ochrony danych osobowych przekazywanych przez użytkowników za pośrednictwem formularza kontaktowego na stronie portfolio [nazwa].",
+    "PKTS": {
+      "TITLE_1": "1. Rodzaje przetwarzanych danych osobowych oraz cel ich przetwarzania",
+      "DESCRIPTION_1": "W ramach formularza kontaktowego przetwarzane są następujące dane osobowe:<br><br>• imię i nazwisko,<br>• adres e-mail,<br>• treść wiadomości,<br>• plik (opcjonalnie).<br><br>Dane te są przetwarzane w celu umożliwienia kontaktu z użytkownikami strony portfolio w odpowiedzi na ich pytania i prośby. W przypadku przesyłania pliku, dane te są przetwarzane w celu umożliwienia przekazania użytkownikom pliku.<br><br>",
+      "TITLE_2": "2. Podstawa prawna przetwarzania danych osobowych",
+      "DESCRIPTION_2": "Podstawą prawną przetwarzania danych osobowych jest art. 6 ust. 1 lit. f RODO, czyli prawnie uzasadniony interes administratora, którym jest udzielanie odpowiedzi na pytania i prośby użytkowników strony portfolio.<br><br>",
+      "TITLE_3": "3. Okres przetwarzania danych osobowych",
+      "DESCRIPTION_3": "Dane osobowe przetwarzane w ramach formularza kontaktowego będą przechowywane przez okres niezbędny do udzielenia odpowiedzi na pytanie lub prośbę użytkownika, a także do ewentualnego późniejszego kontaktu w związku z danym zapytaniem. Po tym czasie dane zostaną usunięte.<br><br>",
+      "TITLE_4": "4. Odbiorcy danych osobowych",
+      "DESCRIPTION_4": "Dane osobowe użytkowników strony portfolio nie są udostępniane żadnym innym podmiotom, z wyjątkiem sytuacji, gdy jest to wymagane przez przepisy prawa.<br><br>",
+      "TITLE_5": "5. Pliki cookie i inne technologie",
+      "DESCRIPTION_5": "Strona portfolio nie wykorzystuje plików cookie ani innych technologii śledzących. Jedynie przechowuje wartość locale w localStorage w celu zapamiętania wybranego przez użytkownika języka strony. Ta informacja jest wykorzystywana wyłącznie do poprawnego wyświetlania strony w wybranym języku i nie jest udostępniana innym podmiotom. Użytkownicy strony mogą w każdej chwili usunąć tę wartość z localStorage poprzez ustawienie języka na domyślny lub wyczyść localStorage całkowicie.<br><br>"
+    }
+  } 
 }

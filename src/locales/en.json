@@ -51,5 +51,21 @@
       "EMAIL": "Valid email address required",
       "MESSAGE": "Message is required"
     }
-  }
+  },
+  "POLICY": {
+    "TITLE": "Privacy policy",
+    "DESCRIPTION":  "This Privacy Policy explains how personal data is collected, used, and protected by the portfolio website [name].",
+    "PKTS": {
+      "TITLE_1": "1. Data Collection",
+      "DESCRIPTION_1": "The website collects only the personal data provided voluntarily by the user through the contact form. This includes the user's name, email address, message, and optional file attachment. The website does not collect any other personal data or information.<br><br>",
+      "TITLE_2": "2. Data Usage",
+      "DESCRIPTION_2": "The collected personal data is used solely for the purpose of responding to the user's inquiry or request. The website does not share, sell, or distribute any personal data to third parties. The website does not use personal data for marketing or advertising purposes.<br><br>",
+      "TITLE_3": "3. Data Retention",
+      "DESCRIPTION_3": "Personal data processed through the contact form will be stored for the period necessary to respond to the user's inquiry or request, as well as for any further contact related to that inquiry. After this time, the data will be deleted.<br><br>",
+      "TITLE_4": "4. Recipients of personal data",
+      "DESCRIPTION_4": "Personal data of users of the portfolio website are not disclosed to any other entities, except where required by law.<br><br>",
+      "TITLE_5": "5. Cookies and Other Technologies",
+      "DESCRIPTION_5": "The portfolio website does not use cookies or other tracking technologies. It only stores the locale value in localStorage to remember the user's selected language. This information is used solely to display the website in the selected language and is not shared with any other parties. Users can delete this value from localStorage at any time by setting the language to default or by clearing the localStorage completely.<br><br>"
+    }
+  } 
 }
