@@ -50,7 +50,6 @@ export default {
     WorkingHistory,
   },
   mixins: [aosMixin],
-  
 };
 </script>
 

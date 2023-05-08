@@ -4,7 +4,7 @@
     v-bind="aosAttribute('fade-right', 200, 600, 'ease-in-out', 'center')"
   >
     <v-row
-      v-for="(skill, index) in skills"
+      v-for="(skill, index) in sortedSkills"
       :key="index"
     >
       <v-col
@@ -46,27 +46,27 @@ export default {
       skills: [
         {
           name: 'Vue.js',
-          percent: '40%',
+          percent: '50%',
+        },
+        {
+          name: 'Vuetify',
+          percent: '80%',
         },
         {
           name: 'Node.js',
-          percent: '20%',
+          percent: '30%',
         },
         {
-          name: 'JavaScript',
+          name: 'JS/TS',
           percent: '40%',
         },
         {
-          name: 'TypeScript',
-          percent: '20%',
-        },
-        {
-          name: 'Express',
-          percent: '60%',
+          name: 'Express.js',
+          percent: '40%',
         },
         {
           name: 'Nest',
-          percent: '20%',
+          percent: '25%',
         },
         {
           name: 'REST API',
@@ -74,20 +74,22 @@ export default {
         },
         {
           name: 'Cypress',
-          percent: '30%',
+          percent: '20%',
         },
         {
           name: 'SCRUM',
-          percent: '50%',
+          percent: '40%',
         },
         {
           name: 'Jira',
-          percent: '40%',
+          percent: '30%',
         },
       ],
+      sortedSkills: [],
     };
   },
   mounted() {
+    this.sort();
     setTimeout(() => {
       this.animate = true;
     }, 100);
@@ -95,6 +97,11 @@ export default {
   methods: {
     progressBarWidth(index) {
       return `--progress: ${index}`;
+    },
+    sort() {
+      this.sortedSkills = this.skills.sort((a, b) => {
+        return parseFloat(b.percent) - parseFloat(a.percent);
+      });
     },
   },
 };
