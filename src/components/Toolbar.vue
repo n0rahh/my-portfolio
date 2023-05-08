@@ -7,9 +7,12 @@
       v-if="routeName === 'Home'"
       class="d-flex"
     >
-      <div class="logo">
+      <a
+        href="/"
+        class="logo"
+      >
         <div class="logo_rectangle" />
-      </div>
+      </a>
       
       <v-spacer />
       <div class="buttons">
@@ -117,6 +120,7 @@ export default {
 
 .logo {
   position: relative;
+  cursor: pointer;
   &_rectangle {
     position: absolute;
     height: 26px;
