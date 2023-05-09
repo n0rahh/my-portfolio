@@ -67,5 +67,36 @@
       "TITLE_5": "5. Pliki cookie i inne technologie",
       "DESCRIPTION_5": "Strona portfolio nie wykorzystuje plików cookie ani innych technologii śledzących. Jedynie przechowuje wartość locale w localStorage w celu zapamiętania wybranego przez użytkownika języka strony. Ta informacja jest wykorzystywana wyłącznie do poprawnego wyświetlania strony w wybranym języku i nie jest udostępniana innym podmiotom. Użytkownicy strony mogą w każdej chwili usunąć tę wartość z localStorage poprzez ustawienie języka na domyślny lub wyczyść localStorage całkowicie.<br><br>"
     }
-  } 
+  },
+  "WORKING_HISTORY": {
+    "SHUMEE": {
+      "DATE": "Marzec 2021 - Wrzesień 2021",
+      "DESCRIPTION": {
+        "1": "Analiza rynków zagranicznych i biznesu",
+        "2": "Wystawianie ofert i sprawdzanie poprawności wystawionych produktów ze strony technicznej i końcowej",
+        "3": "Ustalanie cenników i marż"
+      }
+    },
+    "TUTORE_HELPDESK": {
+      "DATE": "Październik 2021 - Grudzien 2021",
+      "DESCRIPTION": {
+        "1": "Wsparcie telefoniczne dotyczące problemów z instalacją lub pobraniem aplikacji, wejścia na zajęcia itd.",
+        "2": "Oferowanie usług firmy"
+      }
+    },
+    "TUTORE_IT": {
+      "DATE": "Styczeń 2022 - Nadal",
+      "DESCRIPTION": {
+        "1": "Programowanie frontu (Vue, Vuex, Vuetify, JavaScript/TypeScript)",
+        "2": "Programowanie backendu, tworzenie endpointów (Node, NestJS, Knex, Express)",
+        "3": "Tworzenie zapytań w MySQL",
+        "4": "Wdrażanie i obsługa systemów CMS (Strapi, Sanity)",
+        "5": "Wdrażanie i obsługa integracji zewnętrznych (SendGrid, SerwerSMS, Salesmanago, Hubspot, Wordwall)",
+        "6": "Tworzenie i rejestrowanie błędów za pomocą systemu Jira",
+        "7": "Testowanie API za pomocą Postmana",
+        "8": "Przygotowywanie środowiska do testów manualnych",
+        "9": "Pomoc w tworzeniu testów e2e (Cypress)"
+      }
+    }
+  }
 }

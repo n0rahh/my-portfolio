@@ -67,5 +67,36 @@
       "TITLE_5": "5. Cookies and Other Technologies",
       "DESCRIPTION_5": "The portfolio website does not use cookies or other tracking technologies. It only stores the locale value in localStorage to remember the user's selected language. This information is used solely to display the website in the selected language and is not shared with any other parties. Users can delete this value from localStorage at any time by setting the language to default or by clearing the localStorage completely.<br><br>"
     }
-  } 
+  },
+  "WORKING_HISTORY": {
+    "SHUMEE": {
+      "DATE": "March 2021 - September 2021",
+      "DESCRIPTION": {
+        "1": "Analysis of foreign markets and business.",
+        "2": "Listing offers and checking the correctness of the issued products from the technical and final side",
+        "3": "Setting up price lists and margins"
+      }
+    },
+    "TUTORE_HELPDESK": {
+      "DATE": "October 2021 - December 2021",
+      "DESCRIPTION": {
+        "1": "Telephone support for problems installing or downloading applications, entering classes, etc.",
+        "2": "Offering company services"
+      }
+    },
+    "TUTORE_IT": {
+      "DATE": "Junuary 2022 - Present",
+      "DESCRIPTION": {
+        "1": "Front programming (Vue, Vuex, Vuetify, JavaScript/TypeScript)",
+        "2": "Backend programming, creating endpoints (Node, NestJS, Knex, Express)",
+        "3": "Creating queries in MySQL",
+        "4": "Implementation and operation of CMS systems (Strapi, Sanity)",
+        "5": "Implementation and support of external integrations (SendGrid, SerwerSMS, Salesmanago, Hubspot, Wordwall)",
+        "6": "Creating and recording bugs using the Jira system",
+        "7": "API testing with Postman",
+        "8": "Preparing the environment for manual tests",
+        "9": "Help in creating e2e tests (Cypress)"
+      }
+    }
+  }
 }
