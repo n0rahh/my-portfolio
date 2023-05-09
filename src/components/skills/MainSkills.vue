@@ -84,6 +84,10 @@ export default {
           name: 'Jira',
           percent: '30%',
         },
+        {
+          name: 'Postman',
+          percent: '40%',
+        },
       ],
       sortedSkills: [],
     };

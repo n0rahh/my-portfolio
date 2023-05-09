@@ -88,7 +88,7 @@
       "DATE": "Січень 2022 - До тепер",
       "DESCRIPTION": {
         "1": "Програмування frontendu (Vue, Vuex, Vuetify, JavaScript/TypeScript)",
-        "2": "Програмування backendu, tworzenie endpointów (Node, NestJS, Knex, Express)",
+        "2": "Програмування backendu (Node, NestJS, Knex, Express)",
         "3": "Написання запитань до бази даних MySQL",
         "4": "Впровадження та експлуатація системів CMS (Strapi, Sanity)",
         "5": "Впровадження та підтримка зовнішніх інтеграцій (SendGrid, SerwerSMS, Salesmanago, Hubspot, Wordwall)",

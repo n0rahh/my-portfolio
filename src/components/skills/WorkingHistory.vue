@@ -5,7 +5,7 @@
   >
     <v-row class="d-flex justify-space-between pa-0 ma-0">
       <v-col
-        cols="3"
+        cols="4"
         v-bind="aosAttribute('fade-up', 200, 600, 'ease-in-out', 'center')"
       >
         <v-tabs
@@ -25,7 +25,6 @@
         </v-tabs>
       </v-col>
       <v-col
-        offset="1"
         cols="8"
         class="pa-0 ma-0"
         v-bind="aosAttribute('fade-left', 200, 600, 'ease-in-out', 'center')"
@@ -68,39 +67,49 @@ export default {
     return {
       tab: 0,
       active: 0,
-      works: [
+      
+    };
+  },
+  computed: {
+    works() {
+      return [
         {
           company: 'Tutore (2)',
           position: 'Fullstack Web Developer',
-          date: 'Junuary 2022 - Present',
+          date: this.$t('WORKING_HISTORY.TUTORE_IT.DATE'),
           description: [
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            'Iure eum dignissimos facilis fuga quos.',
-            'Ad obcaecati exercitationem deserunt quia, ea quasi optio et quae sed aut soluta doloremque voluptate voluptates.',
+            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.1'),
+            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.2'),
+            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.3'),
+            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.4'),
+            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.5'),
+            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.6'),
+            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.7'),
+            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.8'),
+            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.9'),
           ],
         },
         {
           company: 'Tutore (1)',
           position: 'Technical Support Specialist',
-          date: 'October 2021 - December 2021',
+          date: this.$t('WORKING_HISTORY.TUTORE_HELPDESK.DATE'),
           description: [
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            'Iure eum dignissimos facilis fuga quos.',
-            'Ad obcaecati exercitationem deserunt quia, ea quasi optio et quae sed aut soluta doloremque voluptate voluptates.',
+            this.$t('WORKING_HISTORY.TUTORE_HELPDESK.DESCRIPTION.1'),
+            this.$t('WORKING_HISTORY.TUTORE_HELPDESK.DESCRIPTION.2'),
           ],
         },
         {
           company: 'Shumee',
           position: 'Sales Manager',
-          date: 'March 2021 - September 2021',
+          date: this.$t('WORKING_HISTORY.SHUMEE.DATE'),
           description: [
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-            'Iure eum dignissimos facilis fuga quos.',
-            'Ad obcaecati exercitationem deserunt quia, ea quasi optio et quae sed aut soluta doloremque voluptate voluptates.',
+            this.$t('WORKING_HISTORY.SHUMEE.DESCRIPTION.1'),
+            this.$t('WORKING_HISTORY.SHUMEE.DESCRIPTION.2'),
+            this.$t('WORKING_HISTORY.SHUMEE.DESCRIPTION.3'),
           ],
         },
-      ],
-    };
+      ];
+    },
   },
 };
 </script>

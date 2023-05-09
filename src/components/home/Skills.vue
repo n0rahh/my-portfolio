@@ -52,9 +52,3 @@ export default {
   mixins: [aosMixin],
 };
 </script>
-
-<style lang="scss" scoped>
-.container {
-  height: 100vh;
-}
-</style>
