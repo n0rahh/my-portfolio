@@ -12,7 +12,7 @@
       </v-col>
       <v-col
         cols="12"
-        v-bind="aosAttribute('fade-left', 300, 600, 'ease-in-out', 'center')"
+        v-bind="aosAttribute(fadeOption, 300, 600, 'ease-in-out', 'center')"
       >
         <p class="h4">
           {{ $t('HOME_PAGE.HOME_PROJECTS.SUBTITLE') }}.
@@ -91,6 +91,9 @@ export default {
   computed: {
     currentLocale() {
       return GetLocale.currentLocale;
+    },
+    fadeOption() {
+      return this.$vuetify.display.lgAndUp ? 'fade-left' : 'fade-down';
     },
   },
 };

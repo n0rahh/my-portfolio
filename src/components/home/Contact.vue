@@ -13,7 +13,7 @@
           class="h0 mb-4 mt-6"
         >{{ $t('HOME_CONTACT.TITLE') }}</span>
         <span
-          v-bind="aosAttribute('fade-left', 300, 600, 'ease-in-out', 'center')"
+          v-bind="aosAttribute(fadeOption, 300, 600, 'ease-in-out', 'center')"
           class="p1"
         >{{ $t('HOME_CONTACT.SUBTITLE') }}</span>
       </v-col>
@@ -49,6 +49,11 @@ export default {
     EmailForm,
   },
   mixins: [aosMixin],
+  computed: {
+    fadeOption() {
+      return this.$vuetify.display.lgAndUp ? 'fade-left' : 'fade-right';
+    },
+  },
 };
 </script>
 

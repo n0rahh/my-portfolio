@@ -18,7 +18,7 @@
       <v-col
         cols="6"
         class="d-flex justify-center"
-        v-bind="aosAttribute('fade-left', 150, 600, 'ease-in-out', 'center')"
+        v-bind="aosAttribute(fadeOption, 150, 600, 'ease-in-out', 'center')"
       >
         <v-img
           :src="require('@/assets/imgs/me-myself.jpg')"
@@ -37,6 +37,11 @@ import aosMixin from '@/helpers/animation';
 export default {
   name: 'About',
   mixins: [aosMixin],  
+  computed: {
+    fadeOption() {
+      return this.$vuetify.display.lgAndUp ? 'fade-left' : 'fade-down';
+    },
+  },
 };
 </script>
 

@@ -27,7 +27,7 @@
       <v-col
         cols="8"
         class="pa-0 ma-0"
-        v-bind="aosAttribute('fade-left', 200, 600, 'ease-in-out', 'center')"
+        v-bind="aosAttribute(fadeOption, 200, 600, 'ease-in-out', 'center')"
       >
         <v-window
           v-model="tab"
@@ -71,6 +71,9 @@ export default {
     };
   },
   computed: {
+    fadeOption() {
+      return this.$vuetify.display.lgAndUp ? 'fade-left' : 'fade-down';
+    },
     works() {
       return [
         {
