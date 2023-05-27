@@ -8,7 +8,10 @@
         cols="6"
         v-bind="aosAttribute('fade-right', 300, 300, 'ease-in-out', 'center')"
       >
-        <span class="h0 my-8">{{ $t('HOME_PAGE.HOME_PROJECTS.TITLE') }}</span>
+        <span
+          class="my-8"
+          :class="title"
+        >{{ $t('HOME_PAGE.HOME_PROJECTS.TITLE') }}</span>
       </v-col>
       <v-col
         cols="12"
@@ -26,7 +29,8 @@
         v-for="(item, i) in projectsList"
         :key="i"
         class="projects"
-        cols="4"
+        lg="4"
+        cols="6"
       >
         <div
           class="projects_item"
@@ -94,6 +98,9 @@ export default {
     },
     fadeOption() {
       return this.$vuetify.display.lgAndUp ? 'fade-left' : 'fade-down';
+    },
+    title() {
+      return this.$vuetify.display.lgAndUp ? 'h0' : 'h-unique';
     },
   },
 };

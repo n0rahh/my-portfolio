@@ -5,7 +5,10 @@
   >
     <v-container
       v-if="routeName === 'Home'"
-      class="d-flex"
+      class="d-flex justify-space-between"
+      :class="{
+        'px-6': $vuetify.display.lgAndDown && $vuetify.display.smAndUp,
+      }"
     >
       <a
         href="/"
@@ -13,8 +16,6 @@
       >
         <div class="logo_rectangle" />
       </a>
-      
-      <v-spacer />
       <div class="buttons">
         <v-btn 
           v-for="(item, i) in navigationList" 
@@ -27,7 +28,6 @@
           {{ item.title }}
         </v-btn>
       </div>
-      <v-spacer />
       <div class="options d-flex">
         <lang-switch />
       </div>
@@ -121,12 +121,12 @@ export default {
 .logo {
   position: relative;
   cursor: pointer;
+  width: 43px;
   &_rectangle {
     position: absolute;
     height: 26px;
     width: 43px;
     top: 50%;
-    left: -20px;
     background-color: $white;
     transform: translateY(-50%);
     border-radius: 3px;

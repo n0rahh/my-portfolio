@@ -6,20 +6,35 @@
   >
     <v-row>
       <v-col 
-        cols="10"
+        lg="10"
+        cols="12"
         class="wrapper"
       >
         <div class="wrapper-static">
-          <span class="h0">
+          <span :class="title">
             {{ $t('HOME_PAGE.HOME_BANNER.HELLO') }}
           </span>
-          <br>
+          <span
+            v-if="$vuetify.display.mdAndDown"
+            :class="title"
+            class="ml-8"
+          >
+            {{ $t('HOME_PAGE.HOME_BANNER.IM') }}
+          </span>
           <div class="d-flex">
-            <span class="h0">
+            <span
+              v-if="$vuetify.display.lgAndUp"
+              :class="title"
+            >
               {{ $t('HOME_PAGE.HOME_BANNER.IM') }}
             </span>
             <span>
-              <div class="wrapper-animation">
+              <div
+                class="wrapper-animation"
+                :class="{
+                  'ml-16': $vuetify.display.lgAndUp, 
+                }"
+              >
                 <div class="first">
                   <span class="h1 l-3 subtitle">
                     Vlad ✌️
@@ -49,6 +64,11 @@ import aosMixin from '@/helpers/animation';
 
 export default {
   mixins: [aosMixin],
+  computed: {
+    title() {
+      return this.$vuetify.display.lgAndUp ? 'h0' : 'h-unique';
+    },
+  },
 };
 </script>
 
@@ -68,7 +88,6 @@ export default {
   &-animation {
     height: 5.31rem;
     overflow: hidden;
-    margin-left: 4rem;
     margin-top: 2rem;
     div>span {
       height: 5.31rem;

@@ -5,7 +5,8 @@
   >
     <v-row>
       <v-col
-        cols="5"
+        lg="5"
+        cols="12"
         class="d-flex flex-column align-start"
       >
         <span
@@ -13,13 +14,14 @@
           class="my-8"
           :class="{
             'h0': locale !== 'pl',
-            'h-unique': locale === 'pl'
+            'h-unique': locale === 'pl' || $vuetify.display.mdAndDown
           }"
         >{{ $t('HOME_PAGE.HOME_SKILLS.SKILLS_TITLE') }}</span>
 
         <main-skills />
       </v-col>
       <v-col
+        v-if="$vuetify.display.lgAndUp"
         cols="2"
         class="d-flex justify-center"
         v-bind="aosAttribute('flip-left', 300, 1000, 'ease-in-out', 'center')"
@@ -34,15 +36,20 @@
       </v-col>
 
       <v-col
-        cols="5"
-        class="d-flex flex-column align-end"
+        lg="5"
+        cols="12"
+        class="d-flex flex-column"
+        :class="{
+          'align-end': $vuetify.display.lgAndUp,
+          'mt-6': $vuetify.display.mdAndDown,
+        }"
       >
         <span
           v-bind="aosAttribute('fade-down', 200, 300, 'ease-in-out', 'center')"
           class="my-8"
           :class="{
             'h0': locale !== 'pl',
-            'h-unique': locale === 'pl'
+            'h-unique': locale === 'pl' || $vuetify.display.mdAndDown
           }"
         >{{ $t('HOME_PAGE.HOME_SKILLS.WORK_TITLE') }}</span>
 

@@ -10,7 +10,8 @@
       >
         <span
           v-bind="aosAttribute('fade-right', 300, 600, 'ease-in-out', 'center')"
-          class="h0 mb-4 mt-6"
+          class="mb-4 mt-6"
+          :class="title"
         >{{ $t('HOME_CONTACT.TITLE') }}</span>
         <span
           v-bind="aosAttribute(fadeOption, 300, 600, 'ease-in-out', 'center')"
@@ -20,6 +21,7 @@
     </v-row>
     <v-row>
       <v-col
+        v-if="$vuetify.display.lgAndUp"
         cols="5"
         class="d-flex justify-center contact-img"
         v-bind="aosAttribute('fade-right', 300, 600, 'ease-in-out', 'center')"
@@ -30,7 +32,8 @@
         />
       </v-col>
       <v-col
-        cols="6"
+        lg="6"
+        cols="12"
         v-bind="aosAttribute('fade-down', 300, 600, 'ease-in-out', 'center')"
       >
         <email-form />
@@ -52,6 +55,9 @@ export default {
   computed: {
     fadeOption() {
       return this.$vuetify.display.lgAndUp ? 'fade-left' : 'fade-right';
+    },
+    title() {
+      return this.$vuetify.display.lgAndUp ? 'h0' : 'h-unique';
     },
   },
 };

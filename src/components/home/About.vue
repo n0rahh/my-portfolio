@@ -2,11 +2,16 @@
   <v-container
     id="about"
     class="container d-flex align-center"
+    :class="{
+      'height-80': $vuetify.display.lgAndUp,
+      'height-60': $vuetify.display.mdAndDown,
+    }"
   >
     <v-row>
       <v-col
         class="d-flex flex-column justify-center"
-        cols="6"
+        lg="6"
+        cols="7"
         v-bind="aosAttribute('fade-right', 150, 300, 'ease-in-out', 'center')"
       >
         <span class="h2 mb-8">Few words about me</span>
@@ -16,7 +21,8 @@
         </p>
       </v-col>
       <v-col
-        cols="6"
+        lg="6"
+        cols="5"
         class="d-flex justify-center"
         v-bind="aosAttribute(fadeOption, 150, 600, 'ease-in-out', 'center')"
       >
@@ -46,8 +52,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.height-80 {
   height: 80vh;
+}
+
+.height-60 {
+  height: 60vh;
 }
 
 .my-img {
