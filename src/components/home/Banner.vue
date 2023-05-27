@@ -11,24 +11,31 @@
       >
         <div class="wrapper-static">
           <span class="h0">
-            {{ $t('HOME_PAGE.HOME_BANNER.HELLO') }}, 
-            <br>{{ $t('HOME_PAGE.HOME_BANNER.IM') }}
+            {{ $t('HOME_PAGE.HOME_BANNER.HELLO') }}
           </span>
-        </div>
-        <div class="wrapper-animation">
-          <div class="first">
-            <span class="h1 l-3 subtitle">
-              Vlad ✌️
+          <br>
+          <div class="d-flex">
+            <span class="h0">
+              {{ $t('HOME_PAGE.HOME_BANNER.IM') }}
             </span>
-          </div>
-          <div class="second">
-            <span class="h1 l-3 subtitle">
-              Fullstack 💽
-            </span>
-          </div>
-          <div class="third">
-            <span class="h1 l-3 subtitle">
-              Web Developer 💻
+            <span>
+              <div class="wrapper-animation">
+                <div class="first">
+                  <span class="h1 l-3 subtitle">
+                    Vlad ✌️
+                  </span>
+                </div>
+                <div class="second">
+                  <span class="h1 l-3 subtitle">
+                    Fullstack 💽
+                  </span>
+                </div>
+                <div class="third">
+                  <span class="h1 l-3 subtitle">
+                    Web Developer 💻
+                  </span>
+                </div>
+              </div>
             </span>
           </div>
         </div>
@@ -61,8 +68,8 @@ export default {
   &-animation {
     height: 5.31rem;
     overflow: hidden;
-    margin-left: -2rem;
-    margin-bottom: 1.5rem;
+    margin-left: 4rem;
+    margin-top: 2rem;
     div>span {
       height: 5.31rem;
       margin-bottom: 5.31rem;
