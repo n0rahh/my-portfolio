@@ -10,7 +10,11 @@
       >
         <span
           v-bind="aosAttribute('fade-down', 200, 300, 'ease-in-out', 'center')"
-          class="h0 my-8"
+          class="my-8"
+          :class="{
+            'h0': locale !== 'pl',
+            'h-unique': locale === 'pl'
+          }"
         >{{ $t('HOME_PAGE.HOME_SKILLS.SKILLS_TITLE') }}</span>
 
         <main-skills />
@@ -20,7 +24,13 @@
         class="d-flex justify-center"
         v-bind="aosAttribute('flip-left', 300, 1000, 'ease-in-out', 'center')"
       >
-        <span class="h0 my-8">&amp;</span>
+        <span
+          class="my-8"
+          :class="{
+            'h0': locale !== 'pl',
+            'h-unique': locale === 'pl'
+          }"
+        >&amp;</span>
       </v-col>
 
       <v-col
@@ -29,7 +39,11 @@
       >
         <span
           v-bind="aosAttribute('fade-down', 200, 300, 'ease-in-out', 'center')"
-          class="h0 my-8"
+          class="my-8"
+          :class="{
+            'h0': locale !== 'pl',
+            'h-unique': locale === 'pl'
+          }"
         >{{ $t('HOME_PAGE.HOME_SKILLS.WORK_TITLE') }}</span>
 
         <working-history />
@@ -42,6 +56,7 @@
 import MainSkills from '@/components/skills/MainSkills.vue';
 import WorkingHistory from '@/components/skills/WorkingHistory.vue';
 import aosMixin from '@/helpers/animation';
+import GetLocale from '@/locales/helpers/get-locale';
 
 export default {
   name: 'Skills',
@@ -50,5 +65,10 @@ export default {
     WorkingHistory,
   },
   mixins: [aosMixin],
+  computed: {
+    locale() {
+      return GetLocale.currentLocale;
+    },
+  },
 };
 </script>
