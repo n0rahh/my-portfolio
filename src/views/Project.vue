@@ -1,15 +1,30 @@
 <template>
   <v-container
     fluid
-    class="container-size"
+    :class="{
+      'container-size': $vuetify.display.xl,
+      'px-16': $vuetify.display.lg,
+      'px-6': $vuetify.display.mdAndDown && !$vuetify.display.xs,
+      'px-4': $vuetify.display.xs
+    }"
   >
     <v-row>
       <v-col
-        cols="5"
+        xl="5"
+        lg="6"
+        sm="7"
+        cols="12"
         class="d-flex flex-column"
         v-bind="aosAttribute('flip-right', 200, 300, 'ease-in-out', 'center')"
       >
-        <span class="h1 w-600">Project title</span>
+        <span
+          :class="{
+            'h1 w-600': $vuetify.display.smAndUp,
+            'h2': $vuetify.display.xs
+          }"
+        >
+          Project title
+        </span>
         <span class="p1 mt-8">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quia facere quam dicta sint corrupti vel enim nisi illo laudantium voluptatem ducimus rem culpa iure, provident accusantium quae harum consequatur?
         </span>
@@ -68,7 +83,7 @@ export default {
 @import '@/styles/colors.scss';
 
 .container-size {
-  height: 100vh;
+  min-height: 100vh;
   padding: 120px 220px;
 }
 

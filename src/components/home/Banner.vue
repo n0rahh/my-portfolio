@@ -15,7 +15,7 @@
             {{ $t('HOME_PAGE.HOME_BANNER.HELLO') }}
           </span>
           <span
-            v-if="$vuetify.display.mdAndDown && !$vuetify.display.xsOnly"
+            v-if="$vuetify.display.mdAndDown && !$vuetify.display.xs"
             :class="title"
             class="ml-8"
           >
@@ -28,7 +28,7 @@
             }"
           >
             <span
-              v-if="$vuetify.display.lgAndUp || $vuetify.display.xsOnly"
+              v-if="$vuetify.display.lgAndUp || $vuetify.display.xs"
               :class="title"
             >
               {{ $t('HOME_PAGE.HOME_BANNER.IM') }}
@@ -45,7 +45,7 @@
                     class="l-3 subtitle"
                     :class="{
                       'h1': $vuetify.display.smAndUp, 
-                      'h2': $vuetify.display.xsOnly, 
+                      'h2': $vuetify.display.xs, 
                     }"
                   >
                     Vlad ✌️
@@ -56,7 +56,7 @@
                     class="l-3 subtitle"
                     :class="{
                       'h1': $vuetify.display.smAndUp, 
-                      'h2': $vuetify.display.xsOnly, 
+                      'h2': $vuetify.display.xs, 
                     }"
                   >
                     Fullstack 💽
@@ -67,7 +67,7 @@
                     class="l-3 subtitle"
                     :class="{
                       'h1': $vuetify.display.smAndUp, 
-                      'h2': $vuetify.display.xsOnly, 
+                      'h2': $vuetify.display.xs, 
                     }"
                   >
                     Web Developer💻

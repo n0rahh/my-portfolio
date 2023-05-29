@@ -18,9 +18,9 @@
           v-for="(work, index) in works"
           :key="index"
           v-model="tab"
-          :direction="$vuetify.display.xsOnly ? 'horizontal' : 'vertical'"
-          :centered="$vuetify.display.xsOnly"
-          :grow="$vuetify.display.xsOnly"
+          :direction="$vuetify.display.mdAndDown ? 'horizontal' : 'vertical'"
+          :centered="$vuetify.display.mdAndDown"
+          :grow="$vuetify.display.mdAndDown"
           color="primary"
         >
           <v-tab

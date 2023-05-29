@@ -1,5 +1,11 @@
 <template>
-  <v-container class="container py-16">
+  <v-container
+    class="container py-16"
+    :class="{
+      'px-6': $vuetify.display.mdAndDown && !$vuetify.display.xs,
+      'px-4': $vuetify.display.xs
+    }"
+  >
     <v-row>
       <v-col cols="12">
         <span class="h2">{{ $t('POLICY.TITLE') }}</span>
