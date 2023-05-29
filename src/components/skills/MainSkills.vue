@@ -2,6 +2,7 @@
   <v-container
     fluid
     v-bind="aosAttribute('fade-right', 200, 600, 'ease-in-out', 'center')"
+    class="px-0"
   >
     <v-row
       v-for="(skill, index) in sortedSkills"
@@ -61,7 +62,7 @@ export default {
           percent: '40%',
         },
         {
-          name: 'Express.js',
+          name: 'Express',
           percent: '40%',
         },
         {

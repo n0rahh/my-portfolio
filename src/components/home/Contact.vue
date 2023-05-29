@@ -57,7 +57,7 @@ export default {
       return this.$vuetify.display.lgAndUp ? 'fade-left' : 'fade-right';
     },
     title() {
-      return this.$vuetify.display.lgAndUp ? 'h0' : 'h-unique';
+      return this.$vuetify.display.lgAndUp ? 'h0' : this.$vuetify.display.mdAndUp ? 'h-unique' : 'h1';
     },
   },
 };

@@ -16,7 +16,10 @@
       >
         <div class="logo_rectangle" />
       </a>
-      <div class="buttons">
+      <div
+        v-if="$vuetify.display.mdAndUp"
+        class="buttons"
+      >
         <v-btn 
           v-for="(item, i) in navigationList" 
           :key="i"

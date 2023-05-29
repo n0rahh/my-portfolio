@@ -15,15 +15,20 @@
             {{ $t('HOME_PAGE.HOME_BANNER.HELLO') }}
           </span>
           <span
-            v-if="$vuetify.display.mdAndDown"
+            v-if="$vuetify.display.mdAndDown && !$vuetify.display.xsOnly"
             :class="title"
             class="ml-8"
           >
             {{ $t('HOME_PAGE.HOME_BANNER.IM') }}
           </span>
-          <div class="d-flex">
+          <div
+            class="d-flex"
+            :class="{
+              'flex-column': $vuetify.display.smAndDown,
+            }"
+          >
             <span
-              v-if="$vuetify.display.lgAndUp"
+              v-if="$vuetify.display.lgAndUp || $vuetify.display.xsOnly"
               :class="title"
             >
               {{ $t('HOME_PAGE.HOME_BANNER.IM') }}
@@ -36,18 +41,36 @@
                 }"
               >
                 <div class="first">
-                  <span class="h1 l-3 subtitle">
+                  <span
+                    class="l-3 subtitle"
+                    :class="{
+                      'h1': $vuetify.display.smAndUp, 
+                      'h2': $vuetify.display.xsOnly, 
+                    }"
+                  >
                     Vlad ✌️
                   </span>
                 </div>
                 <div class="second">
-                  <span class="h1 l-3 subtitle">
+                  <span
+                    class="l-3 subtitle"
+                    :class="{
+                      'h1': $vuetify.display.smAndUp, 
+                      'h2': $vuetify.display.xsOnly, 
+                    }"
+                  >
                     Fullstack 💽
                   </span>
                 </div>
                 <div class="third">
-                  <span class="h1 l-3 subtitle">
-                    Web Developer 💻
+                  <span
+                    class="l-3 subtitle"
+                    :class="{
+                      'h1': $vuetify.display.smAndUp, 
+                      'h2': $vuetify.display.xsOnly, 
+                    }"
+                  >
+                    Web Developer💻
                   </span>
                 </div>
               </div>
@@ -66,7 +89,7 @@ export default {
   mixins: [aosMixin],
   computed: {
     title() {
-      return this.$vuetify.display.lgAndUp ? 'h0' : 'h-unique';
+      return this.$vuetify.display.lgAndUp ? 'h0' : this.$vuetify.display.smAndUp ? 'h-unique' : 'h1';
     },
   },
 };
@@ -86,12 +109,23 @@ export default {
   align-items: flex-end;
   z-index: 1;
   &-animation {
-    height: 5.31rem;
+    @media screen and (min-width: 650px) {
+      height: 5.31rem;
+    }
+    @media screen and (max-width: 649px) {
+      height: 3rem;
+    }
     overflow: hidden;
     margin-top: 2rem;
     div>span {
-      height: 5.31rem;
-      margin-bottom: 5.31rem;
+      @media screen and (min-width: 650px) {
+        height: 5.31rem;
+        margin-bottom: 5.31rem;
+      }
+      @media screen and (max-width: 649px) {
+        height: 3rem;
+        margin-bottom: 3rem;
+      }
       display: inline-block;
       padding-left: 0.7rem;
       border-radius: 8px;
@@ -119,37 +153,72 @@ export default {
   }
 }
 
-@keyframes text-animation {
-  0% {
-    margin-top: 0;
-  }
-  10% {
-    margin-top: 0;
-  }
-  20% {
-    margin-top: -10.62rem;
-  }
-  30% {
-    margin-top: -10.62rem;
-  }
-  40% {
-    margin-top: -21.24rem;
-  }
-  60% {
-     margin-top: -21.24rem;
-  }
-  70% {
-    margin-top: -10.62rem;
-  }
-  80% {
-    margin-top: -10.62rem;
-  }
-  90% {
-    margin-top: 0;
-  }  
-  100% {
-    margin-top: 0;
+@media screen and (min-width: 650px) {
+  @keyframes text-animation {
+    0% {
+      margin-top: 0;
+    }
+    10% {
+      margin-top: 0;
+    }
+    20% {
+      margin-top: -10.62rem;
+    }
+    30% {
+      margin-top: -10.62rem;
+    }
+    40% {
+      margin-top: -21.24rem;
+    }
+    60% {
+      margin-top: -21.24rem;
+    }
+    70% {
+      margin-top: -10.62rem;
+    }
+    80% {
+      margin-top: -10.62rem;
+    }
+    90% {
+      margin-top: 0;
+    }  
+    100% {
+      margin-top: 0;
+    }
   }
 }
-
+@media screen and (max-width: 649px) {
+  @keyframes text-animation {
+    0% {
+      margin-top: 0;
+    }
+    10% {
+      margin-top: 0;
+    }
+    20% {
+      margin-top: -6rem;
+    }
+    30% {
+      margin-top: -6rem;
+    }
+    40% {
+      margin-top: -12rem;
+    }
+    60% {
+      margin-top: -12rem;
+    }
+    70% {
+      margin-top: -6rem;
+    }
+    80% {
+      margin-top: -6rem;
+    }
+    90% {
+      margin-top: 0;
+    }  
+    100% {
+      margin-top: 0;
+    }
+  }
+}
 </style>

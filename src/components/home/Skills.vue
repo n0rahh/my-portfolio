@@ -12,10 +12,7 @@
         <span
           v-bind="aosAttribute('fade-down', 200, 300, 'ease-in-out', 'center')"
           class="my-8"
-          :class="{
-            'h0': locale !== 'pl',
-            'h-unique': locale === 'pl' || $vuetify.display.mdAndDown
-          }"
+          :class="title"
         >{{ $t('HOME_PAGE.HOME_SKILLS.SKILLS_TITLE') }}</span>
 
         <main-skills />
@@ -28,10 +25,7 @@
       >
         <span
           class="my-8"
-          :class="{
-            'h0': locale !== 'pl',
-            'h-unique': locale === 'pl'
-          }"
+          :class="title"
         >&amp;</span>
       </v-col>
 
@@ -47,10 +41,7 @@
         <span
           v-bind="aosAttribute('fade-down', 200, 300, 'ease-in-out', 'center')"
           class="my-8"
-          :class="{
-            'h0': locale !== 'pl',
-            'h-unique': locale === 'pl' || $vuetify.display.mdAndDown
-          }"
+          :class="title"
         >{{ $t('HOME_PAGE.HOME_SKILLS.WORK_TITLE') }}</span>
 
         <working-history />
@@ -75,6 +66,9 @@ export default {
   computed: {
     locale() {
       return GetLocale.currentLocale;
+    },
+    title() {
+      return this.locale === 'pl' || this.$vuetify.display.mdAndDown ? 'h-unique' : 'h0';
     },
   },
 };

@@ -3,16 +3,24 @@
     fluid
     class="pa-0 ma-0"
   >
-    <v-row class="d-flex justify-space-between pa-0 ma-0">
+    <v-row
+      class="d-flex justify-space-between pa-0 ma-0"
+      :class="{
+        'flex-column': $vuetify.display.smAndDown,
+      }"
+    >
       <v-col
-        cols="4"
+        md="4"
+        cols="12"
         v-bind="aosAttribute('fade-up', 200, 600, 'ease-in-out', 'center')"
       >
         <v-tabs
           v-for="(work, index) in works"
           :key="index"
           v-model="tab"
-          direction="vertical"
+          direction="horizontal"
+          centered
+          grow
           color="primary"
         >
           <v-tab
@@ -25,7 +33,8 @@
         </v-tabs>
       </v-col>
       <v-col
-        cols="8"
+        md="8"
+        cols="12"
         class="pa-0 ma-0"
         v-bind="aosAttribute(fadeOption, 200, 600, 'ease-in-out', 'center')"
       >

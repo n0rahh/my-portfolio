@@ -30,7 +30,8 @@
         :key="i"
         class="projects"
         lg="4"
-        cols="6"
+        sm="6"
+        cols="12"
       >
         <div
           class="projects_item"
@@ -110,7 +111,6 @@ export default {
 @import '@/styles/colors.scss';
 
 .container {
-  height: 100vh;
   z-index: 3;
 }
 

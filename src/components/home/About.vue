@@ -4,14 +4,15 @@
     class="container d-flex align-center"
     :class="{
       'height-80': $vuetify.display.lgAndUp,
-      'height-60': $vuetify.display.mdAndDown,
+      'height-60': $vuetify.display.mdAndDown && !$vuetify.display.smAndDown,
     }"
   >
     <v-row>
       <v-col
         class="d-flex flex-column justify-center"
         lg="6"
-        cols="7"
+        sm="7"
+        cols="12"
         v-bind="aosAttribute('fade-right', 150, 300, 'ease-in-out', 'center')"
       >
         <span class="h2 mb-8">Few words about me</span>
@@ -22,7 +23,8 @@
       </v-col>
       <v-col
         lg="6"
-        cols="5"
+        sm="5"
+        cols="12"
         class="d-flex justify-center"
         v-bind="aosAttribute(fadeOption, 150, 600, 'ease-in-out', 'center')"
       >
