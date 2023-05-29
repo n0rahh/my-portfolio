@@ -1,5 +1,8 @@
 <template>
-  <v-container fluid>
+  <v-container
+    fluid
+    class="px-0"
+  >
     <v-form ref="form">
       <v-text-field
         ref="name"
@@ -38,7 +41,10 @@
         :show-size="1024"
       />
       <v-row class="d-flex align-center">
-        <v-col cols="1">
+        <v-col
+          sm="1"
+          cols="2"
+        >
           <v-checkbox
             v-model="terms"
             hide-details
@@ -47,7 +53,12 @@
             }"
           />
         </v-col>
-        <v-col cols="6">
+        <v-col
+          cols="6"
+          :class="{
+            'px-0': $vuetify.display.smAndDown,
+          }"
+        >
           <v-label
             :class="{
               'text-error': !isValid && isBtnClicked,

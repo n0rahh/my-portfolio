@@ -4,7 +4,7 @@
     class="app"
   >
     <toolbar />
-    <social />
+    <social v-if="$vuetify.display.lgAndUp" />
     <v-main>
       <router-view />
     </v-main>
