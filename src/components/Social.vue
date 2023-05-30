@@ -36,17 +36,17 @@ export default {
         {
           text: 'Github',
           icon: 'mdi-github',
-          link: '#',
+          link: 'https://github.com/n0rahh',
         },
         {
           text: 'LinkedIn',
           icon: 'mdi-linkedin',
-          link: '#',
+          link: 'https://www.linkedin.com/in/vlad-herasymovych-3a7171279/',
         },
         {
           text: 'Instagram',
           icon: 'mdi-instagram',
-          link: '#',
+          link: 'https://instagram.com/weezy_f_baby82?igshid=NTc4MTIwNjQ2YQ==',
         },
       ],
     };
