@@ -65,6 +65,9 @@ export default {
       projectInfo: [],
     };
   },
+  mounted() {
+    window.scrollTo(0, 0);
+  },
   created() {
     this.fetchProject();
   },
