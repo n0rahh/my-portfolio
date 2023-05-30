@@ -26,7 +26,7 @@
       class="py-16"
     >
       <v-col
-        v-for="(item, i) in projectsList"
+        v-for="(project, i) in projectsList"
         :key="i"
         class="projects"
         lg="4"
@@ -38,16 +38,29 @@
           v-bind="aosAttribute('flip-left', 200, 300, 'ease-in-out', 'center')"
         >
           <a 
-            :href="`/${currentLocale}/project`"
             class="projects-item_link"
+            @click="openProject(i)"
           >
             <div class="projects-item_bg" />
             <div class="projects-item_title">
-              {{ item.title }}
+              {{ project.title }}
             </div>
-            <span class="projects-item_description">
-              {{ item.shortDesc }}
-            </span>
+            <div class="d-flex justify-space-between">
+              <div
+                v-for="(description, index) in project.shortDescription"
+                :key="index"
+                class="projects-item_description mb-0"
+              >
+                <v-img
+                  max-width="30"
+                  class="technology-icon"
+                  :src="require(`@/assets/icons/technologies/${description.icon}`)"
+                />
+                <span>
+                  {{ description.name }}
+                </span>
+              </div>
+            </div>
           </a>
         </div>
       </v-col>
@@ -58,39 +71,14 @@
 <script>
 import aosMixin from '@/helpers/animation';
 import GetLocale from '@/locales/helpers/get-locale';
+import Projects from '@/helpers/projects';
 
 export default {
   name: 'Projects',
   mixins: [aosMixin],
   data() {
     return {
-      projectsList: [
-        {
-          title: 'Project 1',
-          shortDesc: 'One, two, three, four, five!', 
-          longDesc: 'Test description 1. One, two, three, four, five!',
-        },
-        {
-          title: 'Project 2',
-          shortDesc: 'One, two, three, four, five!', 
-          longDesc: 'Test description 2. One, two, three, four, five!',
-        },
-        {
-          title: 'Project 3',
-          shortDesc: 'One, two, three, four, five!', 
-          longDesc: 'Test description 3. One, two, three, four, five!',
-        },
-        {
-          title: 'Project 4',
-          shortDesc: 'One, two, three, four, five!', 
-          longDesc: 'Test description 4. One, two, three, four, five!',
-        },
-        {
-          title: 'Project 5',
-          shortDesc: 'One, two, three, four, five!', 
-          longDesc: 'Test description 5. One, two, three, four, five!',
-        },
-      ],
+      projectsList: [],
     };
   },
   computed: {
@@ -102,6 +90,14 @@ export default {
     },
     title() {
       return this.$vuetify.display.lgAndUp ? 'h0' : 'h-unique';
+    },
+  },
+  created() {
+    this.projectsList = Projects.allProjects;
+  },
+  methods: {
+    openProject(index) {
+      this.$router.push(`/${this.currentLocale}/project/${index}`);
     },
   },
 };
@@ -155,6 +151,7 @@ export default {
     padding: 30px 20px;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
     &:hover {
       text-decoration: none;
       .projects-item_bg {
@@ -185,5 +182,10 @@ export default {
     -o-transition: all .7s ease;
     transition: all .7s ease;
   }
+}
+
+.technology-icon {
+  left: 50%; 
+  transform: translateX(-50%);
 }
 </style>

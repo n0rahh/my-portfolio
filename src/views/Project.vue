@@ -23,29 +23,30 @@
             'h2': $vuetify.display.xs
           }"
         >
-          Project title
+          {{ projectInfo.title }}
         </span>
         <span class="p1 mt-8">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quia facere quam dicta sint corrupti vel enim nisi illo laudantium voluptatem ducimus rem culpa iure, provident accusantium quae harum consequatur?
+          {{ projectInfo.longDescription }}
         </span>
-        <v-tooltip text="Source code">
+        <v-tooltip :text="sourceCodeText(projectInfo.sourceCodeUrl)">
           <template #activator="{ props }">
             <v-btn
               class="mt-12 source-code"
               v-bind="props"
               rounded
               icon="mdi-file-code"
+              @click="projectInfo.sourceCodeUrl"
             />
           </template>
         </v-tooltip>
-        <span class="h3 mt-12 mb-4">What I used:</span>
+        <span class="h3 mt-12 mb-4">{{ $t('PROJECTS.WHAT_USED') }}:</span>
         <p
-          v-for="(tag, index) in usedTechnologiesList"
+          v-for="(technology, index) in projectInfo.usedTechnologies"
           :key="index"
           class="p1 mt-6"
         >
-          <span class="w-700">{{ tag.name }} - </span>
-          <span>{{ tag.description }}</span>
+          <span class="w-700">{{ technology.name }} - </span>
+          <span>{{ technology.description }}</span>
         </p>
       </v-col>
     </v-row>
@@ -54,27 +55,27 @@
 
 <script>
 import aosMixin from '@/helpers/animation';
+import Projects from '@/helpers/projects';
 
 export default {
   name: 'Project',
   mixins: [aosMixin],
   data() {
     return {
-      usedTechnologiesList: [
-        {
-          name: 'Vue',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        },
-        {
-          name: 'i18n',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        },
-        {
-          name: 'Firebase',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-        },
-      ],
+      projectInfo: [],
     };
+  },
+  created() {
+    this.fetchProject();
+  },
+  methods: {
+    fetchProject() {
+      const projectId = this.$route.params.id;
+      this.projectInfo = Projects.getProject(projectId);
+    },
+    sourceCodeText(url) {
+      return url !== '' ? this.$t('PROJECTS.SOURCE_CODE_AVAILABLE') : this.$t('PROJECTS.SOURCE_CODE_UNAVAILABLE');
+    },
   },
 };
 </script>

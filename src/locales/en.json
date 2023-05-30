@@ -98,5 +98,10 @@
         "9": "Help in creating e2e tests (Cypress)"
       }
     }
+  },
+  "PROJECTS": {
+    "WHAT_USED": "What I used",
+    "SOURCE_CODE_AVAILABLE": "Source code",
+    "SOURCE_CODE_UNAVAILABLE": "Source code not available"
   }
 }

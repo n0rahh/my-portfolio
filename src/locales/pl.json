@@ -98,5 +98,8 @@
         "9": "Pomoc w tworzeniu testów e2e (Cypress)"
       }
     }
+  },
+  "PROJECTS": {
+    "WHAT_USED": "Co wykorzystałem"
   }
 }
