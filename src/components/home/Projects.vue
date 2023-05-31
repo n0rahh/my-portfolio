@@ -42,7 +42,7 @@
             @click="openProject(i)"
           >
             <div class="projects-item_bg" />
-            <div class="projects-item_title">
+            <div class="p1 projects-item_title">
               {{ project.title }}
             </div>
             <div class="d-flex justify-space-between">

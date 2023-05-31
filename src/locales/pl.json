@@ -19,6 +19,10 @@
       "HELLO": "Cześć,",
       "IM": "Jestem"
     },
+    "HOME_ABOUT": {
+      "TITLE": "Kilka słów o mnie",
+      "DESCRIPTION": "Cześć! Nazywam się Vlad i jestem fullstack web developerem. Zajmuję się programowaniem od 1.5 roku i uwielbiam ten zawód. Posiadam wiedzę w obszarze Vue, Vuetify, Nest, Express, Node i inne, ale zawsze jestem gotów nauczyć się nowych technologii. Pasjonuje mnie podróżowanie i odkrywanie nowych miejsc. Oprócz tego, w wolnym czasie chodzę na siłownię, bo lubię aktywność fizyczną. Tworzenie aplikacji internetowych to dla mnie nie tylko praca, ale również sposób na wyrażenie swojej kreatywności i pasji."
+    },
     "HOME_PROJECTS": {
       "TITLE": "Projekty",
       "SUBTITLE": "Poniżej znajdziesz moje roboty wraz z krótkim opisem. Jeżeli chcesz zobaczyć więcej - to klikaj"
