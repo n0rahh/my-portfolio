@@ -35,7 +35,8 @@
               v-bind="props"
               rounded
               icon="mdi-file-code"
-              @click="projectInfo.sourceCodeUrl"
+              :href="projectInfo.sourceCodeUrl"
+              target="_blank"
             />
           </template>
         </v-tooltip>
