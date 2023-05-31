@@ -25,9 +25,9 @@
         >
           {{ projectInfo.title }}
         </span>
-        <span class="p1 mt-8">
+        <p class="p1 l-6 mt-8 white-spaces">
           {{ projectInfo.longDescription }}
-        </span>
+        </p>
         <v-tooltip :text="sourceCodeText(projectInfo.sourceCodeUrl)">
           <template #activator="{ props }">
             <v-btn
@@ -49,6 +49,31 @@
           <span class="w-700">{{ technology.name }} - </span>
           <span>{{ technology.description }}</span>
         </p>
+      </v-col>
+      <v-col
+        xl="6"
+        lg="6"
+        sm="7"
+        cols="12"
+        class="d-flex"
+        v-bind="aosAttribute('flip-left', 200, 300, 'ease-in-out', 'center')"
+      >
+        <v-row>
+          <v-col
+            v-for="(image, index) in projectInfo.images"
+            :key="index"
+            lg="6"
+            cols="12"
+            class="project-img-wrapper"
+          >
+            <v-img
+              :src="require(`@/assets/imgs/projects/${image}`)"
+              :alt="projectInfo.title"
+              class="mt-12 project-img"
+              max-width="450"
+            />
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -89,10 +114,30 @@ export default {
 
 .container-size {
   min-height: 100vh;
-  padding: 120px 220px;
+  padding: 100px 0 80px 180px;
 }
 
 .source-code {
   background-color: $secondary;
+}
+
+.white-spaces {
+  white-space: pre-wrap;
+}
+
+.project-img-wrapper {
+  &:nth-child(2) {
+    margin-top: 50%;
+  }
+}
+
+.project-img {
+  border-radius: 10px;
+  transition: transform 0.5s ease-in-out;
+  &:hover {
+    transform: scale(1.35);
+    z-index: 10;
+    box-shadow: 0 0 10px 5px $tertiary;
+  }
 }
 </style>

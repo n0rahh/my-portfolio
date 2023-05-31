@@ -20,22 +20,27 @@ const Projects = {
           name: 'Sass',
         },
       ],
-      longDescription: 'Nasze apartamenty zostały urządzone schludnie i nowocześnie tak, aby czuli się Państwo komfortowo, a zarazem mogli przygotować smakowity posiłek w pełni wyposażonej kuchni. Wszystkie pokoje posiadają salon z aneksem kuchennym, oraz oddzielną łazienkę. Na całym terenie hotelu jest dostęp do Wi-Fi. Dodatkowo, w budynku znajduję się pralnia.',
+      longDescription: 'Strona internetowa K20 Apartamenty - służy do zapoznania się z ofertą apartamentów, oraz do ich rezerwacji. Jest to projekt komercyjny, który wykonałem samodzielnie od A do Z na zamówienie dla projektu Apartamenty K20.\n\nStrona internetowa jest w pełni responsywna, co oznacza, że wygląda dobrze na każdym urządzeniu. Jest również zoptymalizowana pod kątem użyteczności, ponieważ jest podpięta pod CMS Sanity. Każdy element strony można zmienić w admin panelu Sanity, dzięki czemu strona jest bardzo łatwa w obsłudze i nie wymaga wiedzy technicznej lub obecności developa przy zmianach kontentu. CMS został podpięty z myślą o to, że wygląd, opis i wyposażenie apartamentów może się często zmieniać, więc zmiana lub podmiana kontentu powinna być szybka i łatwa.\n\nStrona internetowa jest również zoptymalizowana pod kątem SEO, ponieważ jest hostowana na Firebase Hosting, który jest szybki i wydajny. Podpięte zostały również meta tagi, które są niezbędne do pozycjonowania strony w wyszukiwarce Google.',
       sourceCodeUrl: '',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'Vue.js jest to biblioteka JavaScript, która służy do tworzenia interfejsów użytkownika. Jest to biblioteka progresywna, co oznacza, że jest bardzo elastyczna i można ją wykorzystywać do tworzenia różnych typów interfejsów. Vue.js jest również bardzo lekki i łatwy do nauczenia się, co czyni go bardzo popularnym wśród programistów i początkujących.',
+          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
         },
         {
           name: 'Vuetify',
-          description: 'Vuetify jest to biblioteka komponentów Material Design dla Vue.js. Zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, że jest to biblioteka, która opiera się na Material Design, aplikacja wygląda bardzo nowocześnie i schludnie.',
+          description: 'jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.',
         },
         {
           name: 'Firebase',
-          description: 'Firebase jest to platforma, która pozwala na tworzenie aplikacji mobilnych i webowych. Firebase oferuje wiele usług, które są bardzo przydatne podczas tworzenia aplikacji. W tym projekcie wykorzystałem Firebase do przechowywania danych, oraz do autoryzacji użytkowników.',
+          description: 'został wykorzystany do hostowania strony internetowej. Został wybrany, ponieważ jest szybki i wydajny. Dzięki temu, że jest to usługa, która jest hostowana w chmurze, nie trzeba się martwić o serwer, co zmniejsza koszty utrzymania aplikacji.',
+        },
+        {
+          name: 'Sanity',
+          description: 'został wykorzystany jako CMS (Content Management System). Został wybrany, ponieważ posiada dobrą kompatybilność z Vue.js i jest łatwy w obsłudze. Także posiada darmowy plan, który jest wystarczający do obsługi strony internetowej.',
         },
       ],
+      images: ['k20apartamenty-home.png','k20apartamenty-gallery.png', 'k20apartamenty-contact.png'],
     },
     2: {
       title: 'Tutore',

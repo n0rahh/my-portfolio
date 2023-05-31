@@ -104,7 +104,7 @@
     }
   },
   "PROJECTS": {
-    "WHAT_USED": "What I used",
+    "WHAT_USED": "Main technologies used",
     "SOURCE_CODE_AVAILABLE": "Source code",
     "SOURCE_CODE_UNAVAILABLE": "Source code not available"
   }
