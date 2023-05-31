@@ -15,10 +15,9 @@
         cols="12"
         v-bind="aosAttribute('fade-right', 150, 300, 'ease-in-out', 'center')"
       >
-        <span class="h2 mb-8">Few words about me</span>
+        <span class="h2 mb-8">{{ $t('HOME_PAGE.HOME_ABOUT.TITLE') }}</span>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus praesentium quisquam cumque, tempore nostrum natus accusamus voluptatibus, dolores neque sequi consequatur quidem ducimus harum eius illum iusto culpa earum assumenda. <br>
-          Ratione molestias qui sapiente a perspiciatis, quae impedit distinctio accusamus, corporis reprehenderit recusandae praesentium asperiores beatae excepturi voluptas veniam iusto esse ullam! Esse asperiores veniam eligendi earum assumenda aspernatur ipsam.
+          {{ $t('HOME_PAGE.HOME_ABOUT.DESCRIPTION') }}
         </p>
       </v-col>
       <v-col
