@@ -20,7 +20,7 @@ const Projects = {
           name: 'Sass',
         },
       ],
-      longDescription: 'Strona internetowa K20 Apartamenty - służy do zapoznania się z ofertą apartamentów, oraz do ich rezerwacji. Jest to projekt komercyjny, który wykonałem samodzielnie od A do Z na zamówienie dla projektu Apartamenty K20.\n\nStrona internetowa jest w pełni responsywna, co oznacza, że wygląda dobrze na każdym urządzeniu. Jest również zoptymalizowana pod kątem użyteczności, ponieważ jest podpięta pod CMS Sanity. Każdy element strony można zmienić w admin panelu Sanity, dzięki czemu strona jest bardzo łatwa w obsłudze i nie wymaga wiedzy technicznej lub obecności developa przy zmianach kontentu. CMS został podpięty z myślą o to, że wygląd, opis i wyposażenie apartamentów może się często zmieniać, więc zmiana lub podmiana kontentu powinna być szybka i łatwa.\n\nStrona internetowa jest również zoptymalizowana pod kątem SEO, ponieważ jest hostowana na Firebase Hosting, który jest szybki i wydajny. Podpięte zostały również meta tagi, które są niezbędne do pozycjonowania strony w wyszukiwarce Google.',
+      longDescription: 'Strona internetowa K20 Apartamenty - służy do zapoznania się z ofertą apartamentów, oraz do ich rezerwacji. Jest to projekt komercyjny, który wykonałem samodzielnie od A do Z na zamówienie dla projektu Apartamenty K20.\n\nStrona internetowa jest w pełni responsywna, co oznacza, że wygląda dobrze na każdym urządzeniu. Jest również zoptymalizowana pod kątem użyteczności, ponieważ jest podpięta pod CMS Sanity. Każdy element strony można zmienić w admin panelu Sanity, dzięki czemu strona jest bardzo łatwa w obsłudze i nie wymaga wiedzy technicznej lub obecności developa przy zmianach kontentu. CMS został podpięty z myślą o to, że wygląd, opis i wyposażenie apartamentów może się często zmieniać, więc zmiana lub podmiana kontentu powinna być szybka i łatwa.\n\nStrona internetowa jest również zoptymalizowana pod kątem SEO, ponieważ jest hostowana na Firebase Hosting, który jest szybki i wydajny. Podpięte zostały również meta tagi, które są niezbędne do pozycjonowania strony w wyszukiwarce Google. Jest to projekt komercyjny, więc kod źródłowy nie jest dostępny publicznie.',
       sourceCodeUrl: '',
       usedTechnologies: [
         {
@@ -62,34 +62,43 @@ const Projects = {
           name: 'NestJS',
         },
       ],
-      longDescription: 'Platforma edukacyjna Tutore. Służy do nauki różnych przedmiotów od rysunku do programowania z Minecraftem. Zawiera wiele funkcjonalności, takich jak: testy, lekcje, słówka, gramatyka, bot edukacyjny itd.',
+      longDescription: 'Platforma edukacyjna Tutore. Zawiera wiele funkcjonalności, takich jak: testy, lekcje, słówka, gramatyka, bot edukacyjny itd.\n\nProjekt ten był wykonywany dla firmy w której pracuje Tutore Poland. Jest to wspólny projekt który był robiony w zespole. Moją główną rolą w tym projekcie na froncie było: tworzenie pojedynczych podstron, poprawa interfejsu użytkownika i dodawanie responsywności do stron stworzonych przez mnie i moich kolegów, podpięcie pojedynczych komponentów pod CMS Strapi, i inne.\n\nNa backendzie moją główną rolą było: tworzenie endpointów pod konkretne wymagania, modyfikacja istniejących endpointów, tworzenie seedów pod migracje bazy, tworzenie nowych modeli, interfejsów, helperów, i inne. Także moją rolą było podpięcie integracji zewnętrznych takich jak Salesmanago (serwis marketingowy), Wordwall (serwis z quizami pod lekcje), Sendgrid (serwis e-mailowy), SerwerSMS (serwis smsowy). Projekt ten stale się rozwija, więc cały czas mogą się pojawiać nowe rzeczy.\n\nPlatforma ta służy do nauki różnych przedmiotów takich jak matematyka, programowanie, języki obce, rysunek, gitara, i wiele innych. Uczeń ma dostępne na platformie materiały, quizy, prace domowe, a także może wchodzić na zajęcia, sprawdzać swoję osiągnięcia i wiele innych czynności. Jest to projekt komercyjny, więc kod źródłowy nie jest dostępny publicznie.',
       sourceCodeUrl: '',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'Vue.js jest to biblioteka JavaScript, która służy do tworzenia interfejsów użytkownika. Jest to biblioteka progresywna, co oznacza, że jest bardzo elastyczna i można ją wykorzystywać do tworzenia różnych typów interfejsów. Vue.js jest również bardzo lekki i łatwy do nauczenia się, co czyni go bardzo popularnym wśród programistów i początkujących.',
+          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
         },
         {
           name: 'Vuetify',
-          description: 'Vuetify jest to biblioteka komponentów Material Design dla Vue.js. Zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, że jest to biblioteka, która opiera się na Material Design, aplikacja wygląda bardzo nowocześnie i schludnie.',
+          description: 'jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.',
+        },
+        {
+          name: 'Firebase',
+          description: 'został wykorzystany do autentykacji użytkowników na platformie (logowanie/rejestracja/zmiana hasła itd)',
         },
         {
           name: 'NuxtJS',
-          description: 'Nuxt.js jest to framework oparty na Vue.js. Jest to framework, który pozwala na tworzenie aplikacji SSR (Server Side Rendering). Dzięki temu, że jest to framework, który opiera się na Vue.js, aplikacja jest bardzo wydajna i szybka.',
+          description: 'jest używany jako drugorzędny framework na frontendzie. Został wybrany na potrzeby SEO, ponieważ jest to framework, który renderuje aplikację po stronie serwera.',
         },
         {
           name: 'NestJS',
-          description: 'NestJS jest to framework oparty na Node.js. Jest to framework, który pozwala na tworzenie aplikacji backendowych. Dzięki temu, że jest to framework, który opiera się na Node.js, aplikacja jest bardzo wydajna i szybka.',
+          description: 'jest używany jako główny framework na backendzie.',
         },
         {
           name: 'Knex',
-          description: 'Knex.js jest to biblioteka, która pozwala na tworzenie zapytań do bazy danych. Dzięki temu, że jest to biblioteka, która opiera się na JavaScript, aplikacja jest bardzo wydajna i szybka.',
+          description: 'biblioteka jest używana jako główna biblioteka do frameworka NestJS.',
         },
         {
           name: 'TypeScript',
-          description: 'TypeScript jest to język programowania, który jest nadzbiorem języka JavaScript. TypeScript pozwala na dodanie typów do zmiennych, funkcji itd. Dzięki temu, że jest to język programowania, który opiera się na JavaScript, aplikacja jest bardzo wydajna i szybka.',
+          description: 'został użyty jako główny język programowania na froncie i na backendzie. Został wybrany, ponieważ jest to język, który jest typowany statycznie, co pozwala na szybsze wykrywanie błędów.',
+        },
+        {
+          name: 'Strapi',
+          description: 'został użyty jako CMS (Content Management System). Został wybrany, ponieważ posiada dobrą kompatybilność z Vue.js, jest funkcjonalny i łatwy w obsłudze.',
         },
       ],
+      images: ['tutore-home.png','tutore-dashboard.png', 'tutore-quizz.png'],
     },
     3: {
       title: 'Tutore Partners',
@@ -111,22 +120,23 @@ const Projects = {
           name: 'CSS',
         },
       ],
-      longDescription: 'Strona partnerska Tutore Poland. Służy do zapoznania się, wysłania ledów itd.',
+      longDescription: 'Strona partnerska Tutore. Jest to projekt który wykonałem dla firmy Tutore. Strona ta służy do zapoznania się co oferuje Tutore swoim partnerom, i jakie benefity mogą otrzymać potencjalni partnerzy. Na stronie jest prosty formularz, który jest podpięty pod arkusz google. Jest to projekt komercyjny, więc kod źródłowy nie jest dostępny publicznie.',
       sourceCodeUrl: '',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'Vue.js jest to biblioteka JavaScript, która służy do tworzenia interfejsów użytkownika. Jest to biblioteka progresywna, co oznacza, że jest bardzo elastyczna i można ją wykorzystywać do tworzenia różnych typów interfejsów. Vue.js jest również bardzo lekki i łatwy do nauczenia się, co czyni go bardzo popularnym wśród programistów i początkujących.',
+          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
         },
         {
           name: 'Vuetify',
-          description: 'Vuetify jest to biblioteka komponentów Material Design dla Vue.js. Zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, że jest to biblioteka, która opiera się na Material Design, aplikacja wygląda bardzo nowocześnie i schludnie.',
+          description: 'jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.',
         },
         {
           name: 'Firebase',
-          description: 'Firebase jest to platforma, która pozwala na tworzenie aplikacji mobilnych i webowych. Firebase oferuje wiele usług, które są bardzo przydatne podczas tworzenia aplikacji. W tym projekcie wykorzystałem Firebase do przechowywania danych, oraz do autoryzacji użytkowników.',
+          description: 'został wykorzystany do hostowania strony internetowej. Został wybrany, ponieważ jest szybki i wydajny. Dzięki temu, że jest to usługa, która jest hostowana w chmurze, nie trzeba się martwić o serwer, co zmniejsza koszty utrzymania aplikacji.',
         },
       ],
+      images: ['tutore-partners-home.png'],
     },
     4: {
       title: 'CRM',
@@ -136,8 +146,8 @@ const Projects = {
           name: 'Vue',
         },
         {
-          icon: 'vuetify.svg',
-          name: 'Vuetify',
+          icon: 'mysql.svg',
+          name: 'MySQL',
         },
         {
           icon: 'express.svg',
@@ -148,26 +158,31 @@ const Projects = {
           name: 'Firebase',
         },
       ],
-      longDescription: 'Wewnętrzny CRM Tutore Poland. Służy do zarządzania klientami, lekcjami itd. Pozwala zapisywać klientów na lekcję, wysyłać im wiadomości, oraz emaile.',
+      longDescription: 'Wewnętrzny CRM Tutore Poland. Służy do zarządzania klientami, lekcjami itd. Pozwala zapisywać klientów na lekcję, wysyłać im wiadomości sms, oraz emaile. Także umożliwia zarządzanie lekcjami, oraz tworzenie nowych lekcji.\n\nMoją rolą było podtrzymanie projektu, oraz dodanie nowych funkcjonalności zarówno na froncie jak i na backendzie. Projekt jest komercyjny, więc kod źródłowy nie jest dostępny publicznie.',
       sourceCodeUrl: '',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'Vue.js jest to biblioteka JavaScript, która służy do tworzenia interfejsów użytkownika. Jest to biblioteka progresywna, co oznacza, że jest bardzo elastyczna i można ją wykorzystywać do tworzenia różnych typów interfejsów. Vue.js jest również bardzo lekki i łatwy do nauczenia się, co czyni go bardzo popularnym wśród programistów i początkujących.',
+          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
         },
         {
           name: 'Vuetify',
-          description: 'Vuetify jest to biblioteka komponentów Material Design dla Vue.js. Zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, że jest to biblioteka, która opiera się na Material Design, aplikacja wygląda bardzo nowocześnie i schludnie.',
+          description: 'jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.',
         },
         {
           name: 'Firebase',
-          description: 'Firebase jest to platforma, która pozwala na tworzenie aplikacji mobilnych i webowych. Firebase oferuje wiele usług, które są bardzo przydatne podczas tworzenia aplikacji. W tym projekcie wykorzystałem Firebase do przechowywania danych, oraz do autoryzacji użytkowników.',
+          description: 'został wykorzystany do hostowania.',
         },
         {
           name: 'Express',
-          description: 'Express.js jest to framework oparty na Node.js. Jest to framework, który pozwala na tworzenie aplikacji backendowych. Dzięki temu, że jest to framework, który opiera się na Node.js, aplikacja jest bardzo wydajna i szybka.',
+          description: 'jest używany jako główny framework na backendzie.',
+        },
+        {
+          name: 'MySQL',
+          description: 'został użyty jako główny system bazodanowy.',
         },
       ],
+      images: ['crm-home.png', 'crm-parent.png', 'crm-sms.png'],
     },
     5: {
       title: 'Books shop',
@@ -189,26 +204,27 @@ const Projects = {
           name: 'JavaScript',
         },
       ],
-      longDescription: 'Pierwszy projekt, który wykonałem w Vue.js. Jest to aplikacja, która pozwala na dodawanie książek do koszyka. Aplikacja jest bardzo prosta, ale pozwoliła mi na zapoznanie się z podstawowymi konceptami Vue.js, a także z podstawami CSS, JaxaScript. Także projekt posłużył do zapoznaniania się z podstawami RestAPI, ponieważ książki są pobierane z zewnętrznego API metodą fetch().',
+      longDescription: 'Pierwszy projekt, który wykonałem w Vue.js. Jest to aplikacja, która pozwala na dodawanie książek do koszyka. Aplikacja jest bardzo prosta, ale pozwoliła mi na zapoznanie się z podstawowymi konceptami Vue.js, a także z podstawami CSS, JavaScript.Także projekt posłużył do zapoznaniania się z podstawami RestAPI, ponieważ książki są pobierane z zewnętrznego API metodą fetch().\n\nFunkcjonalność pozwala na dodawanie książek do koszyka, oraz usuwanie i zmienianie ilości produktów bezpośrednio w koszyku. Na stronie podsumowania została dodana walidacja do formy, captcha, a także przez API banku został podłączony konwertwer z USD na PLN. Projekt jest dostępny publicznie na githubie.',
       sourceCodeUrl: 'https://github.com/n0rahh/books_project.git',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'Vue.js jest to biblioteka JavaScript, która służy do tworzenia interfejsów użytkownika. Jest to biblioteka progresywna, co oznacza, że jest bardzo elastyczna i można ją wykorzystywać do tworzenia różnych typów interfejsów. Vue.js jest również bardzo lekki i łatwy do nauczenia się, co czyni go bardzo popularnym wśród programistów i początkujących.',
+          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
         },
         {
           name: 'Vuex',
-          description: 'Vuex jest to biblioteka, która służy do zarządzania stanem aplikacji. Jest to bardzo przydatna biblioteka, ponieważ pozwala na przechowywanie danych w jednym miejscu, a także na ich łatwe pobieranie i modyfikowanie.',
+          description: 'służy do zarządzania stanem aplikacji. W storze pobierają się książki z zewnętrznego API, a następnie są wyświetlane na stronie. Także w storze znajduje się koszyk, w którym są przechowywane książki, które użytkownik dodał do koszyka i inne.',
         },
         {
           name: 'CSS',
-          description: 'CSS jest to język służący do stylowania stron internetowych. Jest to bardzo przydatny język, ponieważ pozwala na nadanie wyglądu stronie internetowej. W tym projekcie wykorzystałem podstawowe koncepty CSS, takie jak selektory, flexbox, grid, itd.',
+          description: 'został użyty jako główny język stylowania. W tym projekcie wykorzystałem podstawowe koncepty CSS, takie jak selektory, flexbox, itd.',
         },
         {
           name: 'JavaScript',
-          description: 'JavaScript jest to język programowania, który jest wykorzystywany do tworzenia interaktywnych stron internetowych. W tym projekcie wykorzystałem podstawowe koncepty JavaScript, takie jak funkcje, pętle, obiekty, itd.',
+          description: 'został użyty jako główny język programowania logiki na froncie.',
         },
       ],
+      images: ['books-home.png', 'books-cart.png', 'books-summary.png'],
     },
     6: {
       title: 'My portfolio',
@@ -230,26 +246,31 @@ const Projects = {
           name: 'Firebase',
         },
       ],
-      longDescription: 'Portfolio, które widzisz przed sobą. Jest to aplikacja, która pozwala na zapoznanie się z moimi projektami. ',
+      longDescription: 'Portfolio, które widzisz przed sobą. Daną stronę stronę stworzyłem w celu zaprezentowania moich umiejętności, oraz projektów. W tym projeckie miałem za zadanie sprawdzić technologie i18n, która umożliwia tłumaczenia stron internetowych. Strona jest dostępna w trzech językach: angielskim, polskim, ukrainskim. \n\nProjekt jest dostępny publicznie na githubie. ',
       sourceCodeUrl: 'https://github.com/n0rahh/my-portfolio.git',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'Vue.js jest to biblioteka JavaScript, która służy do tworzenia interfejsów użytkownika. Jest to biblioteka progresywna, co oznacza, że jest bardzo elastyczna i można ją wykorzystywać do tworzenia różnych typów interfejsów. Vue.js jest również bardzo lekki i łatwy do nauczenia się, co czyni go bardzo popularnym wśród programistów i początkujących.',
+          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
         },
         {
           name: 'Vuetify',
-          description: 'Vuetify jest to biblioteka komponentów Material Design dla Vue.js. Zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, że jest to biblioteka, która opiera się na Material Design, aplikacja wygląda bardzo nowocześnie i schludnie.',
+          description: 'jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.',
         },
         {
           name: 'i18n',
-          description: 'i18n jest to biblioteka, która pozwala na tłumaczenie aplikacji. Jest to bardzo przydatna biblioteka, ponieważ pozwala na łatwe tłumaczenie aplikacji na różne języki.',
+          description: 'został użyty do tłumaczenia strony na trzy języki: angielski, polski, ukraiński.',
         },
         {
           name: 'Firebase',
-          description: 'Firebase jest to platforma, która pozwala na tworzenie aplikacji mobilnych i webowych. Firebase oferuje wiele usług, które są bardzo przydatne podczas tworzenia aplikacji. W tym projekcie wykorzystałem Firebase do przechowywania danych, oraz do autoryzacji użytkowników.',
+          description: 'został wykorzystany do hostowania strony internetowej. Został wybrany, ponieważ jest szybki i wydajny. Dzięki temu, że jest to usługa, która jest hostowana w chmurze, nie trzeba się martwić o serwer, co zmniejsza koszty utrzymania aplikacji.',
+        },
+        {
+          name: 'AOS',
+          description: 'została użyta do animowania elementów na stronie.',
         },
       ],
+      images: ['portfolio.png'],
     },
   },
 
