@@ -40,7 +40,7 @@ const Projects = {
           description: 'został wykorzystany jako CMS (Content Management System). Został wybrany, ponieważ posiada dobrą kompatybilność z Vue.js i jest łatwy w obsłudze. Także posiada darmowy plan, który jest wystarczający do obsługi strony internetowej.',
         },
       ],
-      images: ['k20apartamenty-home.png','k20apartamenty-gallery.png', 'k20apartamenty-contact.png'],
+      images: ['k20apartamenty-home.jpg','k20apartamenty-gallery.jpg', 'k20apartamenty-contact.jpg'],
     },
     2: {
       title: 'Tutore',
@@ -98,7 +98,7 @@ const Projects = {
           description: 'został użyty jako CMS (Content Management System). Został wybrany, ponieważ posiada dobrą kompatybilność z Vue.js, jest funkcjonalny i łatwy w obsłudze.',
         },
       ],
-      images: ['tutore-home.png','tutore-dashboard.png', 'tutore-quizz.png'],
+      images: ['tutore-home.jpg','tutore-dashboard.jpg', 'tutore-quizz.jpg'],
     },
     3: {
       title: 'Tutore Partners',
@@ -136,7 +136,7 @@ const Projects = {
           description: 'został wykorzystany do hostowania strony internetowej. Został wybrany, ponieważ jest szybki i wydajny. Dzięki temu, że jest to usługa, która jest hostowana w chmurze, nie trzeba się martwić o serwer, co zmniejsza koszty utrzymania aplikacji.',
         },
       ],
-      images: ['tutore-partners-home.png'],
+      images: ['tutore-partners-home.jpg'],
     },
     4: {
       title: 'CRM',
@@ -182,7 +182,7 @@ const Projects = {
           description: 'został użyty jako główny system bazodanowy.',
         },
       ],
-      images: ['crm-home.png', 'crm-parent.png', 'crm-sms.png'],
+      images: ['crm-home.jpg', 'crm-parent.jpg', 'crm-sms.jpg'],
     },
     5: {
       title: 'Books shop',
@@ -224,7 +224,7 @@ const Projects = {
           description: 'został użyty jako główny język programowania logiki na froncie.',
         },
       ],
-      images: ['books-home.png', 'books-cart.png', 'books-summary.png'],
+      images: ['books-home.jpg', 'books-cart.jpg', 'books-summary.jpg'],
     },
     6: {
       title: 'My portfolio',
@@ -270,7 +270,7 @@ const Projects = {
           description: 'została użyta do animowania elementów na stronie.',
         },
       ],
-      images: ['portfolio.png'],
+      images: ['portfolio.jpg'],
     },
   },
 
