@@ -106,6 +106,43 @@
   "PROJECTS": {
     "WHAT_USED": "Main technologies used",
     "SOURCE_CODE_AVAILABLE": "Source code",
-    "SOURCE_CODE_UNAVAILABLE": "Source code not available"
+    "SOURCE_CODE_UNAVAILABLE": "Source code not available",
+    "TECHNOLOGIES_DESCRIPTION": {
+      "VUE": "was used as the main frontend framework for creating reactivity and user interface.",
+      "VUEX": "is used for managing the application state. In the store, books are fetched from an external API and then displayed on the page. The store also includes a shopping cart where books added by the user are stored, among other things.",
+      "VUETIFY": " is a Material Design component library for Vue.js. It was chosen because it provides a wide range of pre-built components that can be used in the application. This makes the development process faster and easier.",
+      "JAVASCRIPT": "is used as the primary programming language for front-end logic.",
+      "CSS": "was used as the primary styling language. In this project, I utilized basic CSS concepts such as selectors, flexbox, etc.",
+      "SANITY": "was utilized as a CMS (Content Management System). It was chosen because it has good compatibility with Vue.js and is easy to use. Additionally, it offers a free plan that is sufficient for managing a website.",
+      "FIREBASE": "was used for hosting the website. It was chosen because it is fast and efficient. Being a cloud-based service, it eliminates the need to worry about server management, reducing the costs associated with maintaining the application.",
+      "FIREBASE_AUTH": "It was used for user authentication on the platform (login/registration/password reset, etc.).",
+      "NUXT": "is used as a secondary framework on the frontend. It was chosen for SEO purposes because it is a framework that renders the application on the server-side.",
+      "NEST": "is used as the main backend framework.",
+      "STRAPI": "is used as a CMS (Content Management System). It was chosen because it has good compatibility with Vue.js, is functional, and easy to use.", 
+      "KNEX": "the library is used as the main library for the NestJS framework.",
+      "EXPRESS": "is used as the main backend framework.",
+      "MYSQL": "is used as the primary database system language.",
+      "TYPESCRIPT": "is used as the primary programming language both on the frontend and the backend. It was chosen because it is a statically typed language, which allows for faster error detection.",
+      "I18N": "was used for translating the website into three languages: English, Polish, and Ukrainian.",
+      "AOS": "the library was used to animate elements on the webpage."
+    },
+    "K20_APARTMENTS": {
+      "DESCRIPTION": "Website K20 Apartments - serves to familiarize oneself with the offer of apartments and make reservations. It is a commercial project that I have completed entirely from A to Z upon request for the K20 Apartments project.\n\nThe website is fully responsive, meaning it looks good on every device. It is also optimized for usability as it is integrated with CMS Sanity. Every element of the website can be changed in the Sanity admin panel, making it very user-friendly and not requiring technical knowledge or the presence of a developer for content changes. The CMS was implemented with the idea that the appearance, description, and equipment of the apartments may change frequently, so changing or updating the content should be quick and easy.\n\nThe website is also optimized for SEO as it is hosted on Firebase Hosting, which is fast and efficient. Meta tags have also been implemented, which are essential for positioning the website in the Google search engine. Since this is a commercial project, the source code is not publicly available."
+    },
+    "TUTORE": {
+      "DESCRIPTION": "Tutore Educational Platform. It encompasses a variety of functionalities such as tests, lessons, vocabulary, grammar, an educational bot, and more.\n\nThis project was developed for the company Tutore Poland, where I work. It is a collaborative project that was undertaken by a team. My main role in this project on the frontend was: creating individual subpages, improving the user interface, and adding responsiveness to the pages created by me and my colleagues. I also integrated individual components with the Strapi CMS, among other tasks.\n\nOn the backend, my primary responsibilities included: creating endpoints based on specific requirements, modifying existing endpoints, creating seed data for database migrations, developing new models, interfaces, helpers, and more. Additionally, I was responsible for integrating external services such as Salesmanago (marketing service), Wordwall (quiz service for lessons), Sendgrid (email service), and SerwerSMS (SMS service). Since this project is constantly evolving, new features may be introduced regularly.\n\nThe platform serves as a learning tool for various subjects such as mathematics, programming, foreign languages, drawing, guitar, and many more. Students have access to materials, quizzes, homework assignments, and can participate in classes, track their achievements, and perform various other activities. Since this is a commercial project, the source code is not publicly available."
+    },
+    "TUTORE_PARTNERS": {
+      "DESCRIPTION": "Tutore Partner Website. This is a project that I developed for Tutore company. This website serves to provide information to Tutore's partners about what Tutore offers and the benefits that potential partners can receive. The website includes a simple form that is connected to a Google Sheet. Since this is a commercial project, the source code is not publicly available."
+    },
+    "CRM_TUTORE": {
+      "DESCRIPTION": "Tutore Poland Internal CRM. It is used for managing clients, lessons, and more. It allows for client enrollment in lessons, sending SMS messages and emails to them, as well as managing lessons and creating new ones.\n\nMy role involved maintaining the project and adding new functionalities on both the frontend and backend. Since this is a commercial project, the source code is not publicly available."
+    },
+    "BOOKS_SHOP": {
+      "DESCRIPTION": "The First Project I developed in Vue.js. It is an application that allows adding books to a shopping cart. The application is very simple but allowed me to familiarize myself with the basic concepts of Vue.js, as well as the fundamentals of CSS and JavaScript. The project also served as an introduction to REST API basics since the books are fetched from an external API using the fetch() method.\n\nThe functionality allows adding books to the shopping cart, as well as removing and updating the quantity of products directly in the cart. On the summary page, form validation, a captcha, and a currency converter from USD to PLN were added through the bank's API integration. The project is publicly available on GitHub."
+    },
+    "MY_PORTFOLIO": {
+      "DESCRIPTION": "The Portfolio you see before you. I created this website to showcase my skills and projects. In this project, my goal was to explore the i18n technology, which enables website translations. The website is available in three languages: English, Polish, and Ukrainian.\n\nhe project is publicly available on GitHub."
+    }
   }
 }

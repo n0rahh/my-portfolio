@@ -1,3 +1,5 @@
+import i18n from '@/i18n';
+
 const Projects = {
   projects: {
     1: {
@@ -20,24 +22,24 @@ const Projects = {
           name: 'Sass',
         },
       ],
-      longDescription: 'Strona internetowa K20 Apartamenty - służy do zapoznania się z ofertą apartamentów, oraz do ich rezerwacji. Jest to projekt komercyjny, który wykonałem samodzielnie od A do Z na zamówienie dla projektu Apartamenty K20.\n\nStrona internetowa jest w pełni responsywna, co oznacza, że wygląda dobrze na każdym urządzeniu. Jest również zoptymalizowana pod kątem użyteczności, ponieważ jest podpięta pod CMS Sanity. Każdy element strony można zmienić w admin panelu Sanity, dzięki czemu strona jest bardzo łatwa w obsłudze i nie wymaga wiedzy technicznej lub obecności developa przy zmianach kontentu. CMS został podpięty z myślą o to, że wygląd, opis i wyposażenie apartamentów może się często zmieniać, więc zmiana lub podmiana kontentu powinna być szybka i łatwa.\n\nStrona internetowa jest również zoptymalizowana pod kątem SEO, ponieważ jest hostowana na Firebase Hosting, który jest szybki i wydajny. Podpięte zostały również meta tagi, które są niezbędne do pozycjonowania strony w wyszukiwarce Google. Jest to projekt komercyjny, więc kod źródłowy nie jest dostępny publicznie.',
+      longDescription: i18n.global.t('PROJECTS.K20_APARTMENTS.DESCRIPTION'),
       sourceCodeUrl: '',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
         },
         {
           name: 'Vuetify',
-          description: 'jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY'),
         },
         {
           name: 'Firebase',
-          description: 'został wykorzystany do hostowania strony internetowej. Został wybrany, ponieważ jest szybki i wydajny. Dzięki temu, że jest to usługa, która jest hostowana w chmurze, nie trzeba się martwić o serwer, co zmniejsza koszty utrzymania aplikacji.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE'),
         },
         {
           name: 'Sanity',
-          description: 'został wykorzystany jako CMS (Content Management System). Został wybrany, ponieważ posiada dobrą kompatybilność z Vue.js i jest łatwy w obsłudze. Także posiada darmowy plan, który jest wystarczający do obsługi strony internetowej.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.SANITY'),
         },
       ],
       images: ['k20apartamenty-home.jpg','k20apartamenty-gallery.jpg', 'k20apartamenty-contact.jpg'],
@@ -62,40 +64,40 @@ const Projects = {
           name: 'NestJS',
         },
       ],
-      longDescription: 'Platforma edukacyjna Tutore. Zawiera wiele funkcjonalności, takich jak: testy, lekcje, słówka, gramatyka, bot edukacyjny itd.\n\nProjekt ten był wykonywany dla firmy w której pracuje Tutore Poland. Jest to wspólny projekt który był robiony w zespole. Moją główną rolą w tym projekcie na froncie było: tworzenie pojedynczych podstron, poprawa interfejsu użytkownika i dodawanie responsywności do stron stworzonych przez mnie i moich kolegów, podpięcie pojedynczych komponentów pod CMS Strapi, i inne.\n\nNa backendzie moją główną rolą było: tworzenie endpointów pod konkretne wymagania, modyfikacja istniejących endpointów, tworzenie seedów pod migracje bazy, tworzenie nowych modeli, interfejsów, helperów, i inne. Także moją rolą było podpięcie integracji zewnętrznych takich jak Salesmanago (serwis marketingowy), Wordwall (serwis z quizami pod lekcje), Sendgrid (serwis e-mailowy), SerwerSMS (serwis smsowy). Projekt ten stale się rozwija, więc cały czas mogą się pojawiać nowe rzeczy.\n\nPlatforma ta służy do nauki różnych przedmiotów takich jak matematyka, programowanie, języki obce, rysunek, gitara, i wiele innych. Uczeń ma dostępne na platformie materiały, quizy, prace domowe, a także może wchodzić na zajęcia, sprawdzać swoję osiągnięcia i wiele innych czynności. Jest to projekt komercyjny, więc kod źródłowy nie jest dostępny publicznie.',
+      longDescription: i18n.global.t('PROJECTS.TUTORE.DESCRIPTION'),
       sourceCodeUrl: '',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
         },
         {
           name: 'Vuetify',
-          description: 'jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY'),
         },
         {
           name: 'Firebase',
-          description: 'został wykorzystany do autentykacji użytkowników na platformie (logowanie/rejestracja/zmiana hasła itd)',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE_AUTH'),
         },
         {
           name: 'NuxtJS',
-          description: 'jest używany jako drugorzędny framework na frontendzie. Został wybrany na potrzeby SEO, ponieważ jest to framework, który renderuje aplikację po stronie serwera.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.NUXT'),
         },
         {
           name: 'NestJS',
-          description: 'jest używany jako główny framework na backendzie.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.NEST'),
         },
         {
           name: 'Knex',
-          description: 'biblioteka jest używana jako główna biblioteka do frameworka NestJS.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.KNEX'),
         },
         {
           name: 'TypeScript',
-          description: 'został użyty jako główny język programowania na froncie i na backendzie. Został wybrany, ponieważ jest to język, który jest typowany statycznie, co pozwala na szybsze wykrywanie błędów.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.TYPESCRIPT'),
         },
         {
           name: 'Strapi',
-          description: 'został użyty jako CMS (Content Management System). Został wybrany, ponieważ posiada dobrą kompatybilność z Vue.js, jest funkcjonalny i łatwy w obsłudze.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.STRAPI'),
         },
       ],
       images: ['tutore-home.jpg','tutore-dashboard.jpg', 'tutore-quizz.jpg'],
@@ -120,20 +122,20 @@ const Projects = {
           name: 'CSS',
         },
       ],
-      longDescription: 'Strona partnerska Tutore. Jest to projekt który wykonałem dla firmy Tutore. Strona ta służy do zapoznania się co oferuje Tutore swoim partnerom, i jakie benefity mogą otrzymać potencjalni partnerzy. Na stronie jest prosty formularz, który jest podpięty pod arkusz google. Jest to projekt komercyjny, więc kod źródłowy nie jest dostępny publicznie.',
+      longDescription: i18n.global.t('PROJECTS.TUTORE_PARTNERS.DESCRIPTION'),
       sourceCodeUrl: '',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
         },
         {
           name: 'Vuetify',
-          description: 'jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY'),
         },
         {
           name: 'Firebase',
-          description: 'został wykorzystany do hostowania strony internetowej. Został wybrany, ponieważ jest szybki i wydajny. Dzięki temu, że jest to usługa, która jest hostowana w chmurze, nie trzeba się martwić o serwer, co zmniejsza koszty utrzymania aplikacji.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE'),
         },
       ],
       images: ['tutore-partners-home.jpg'],
@@ -158,28 +160,28 @@ const Projects = {
           name: 'Firebase',
         },
       ],
-      longDescription: 'Wewnętrzny CRM Tutore Poland. Służy do zarządzania klientami, lekcjami itd. Pozwala zapisywać klientów na lekcję, wysyłać im wiadomości sms, oraz emaile. Także umożliwia zarządzanie lekcjami, oraz tworzenie nowych lekcji.\n\nMoją rolą było podtrzymanie projektu, oraz dodanie nowych funkcjonalności zarówno na froncie jak i na backendzie. Projekt jest komercyjny, więc kod źródłowy nie jest dostępny publicznie.',
+      longDescription: i18n.global.t('PROJECTS.CRM_TUTORE.DESCRIPTION'),
       sourceCodeUrl: '',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
         },
         {
           name: 'Vuetify',
-          description: 'jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY'),
         },
         {
           name: 'Firebase',
-          description: 'został wykorzystany do hostowania.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE'),
         },
         {
           name: 'Express',
-          description: 'jest używany jako główny framework na backendzie.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.EXPRESS'),
         },
         {
           name: 'MySQL',
-          description: 'został użyty jako główny system bazodanowy.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.MYSQL'),
         },
       ],
       images: ['crm-home.jpg', 'crm-parent.jpg', 'crm-sms.jpg'],
@@ -204,24 +206,24 @@ const Projects = {
           name: 'JavaScript',
         },
       ],
-      longDescription: 'Pierwszy projekt, który wykonałem w Vue.js. Jest to aplikacja, która pozwala na dodawanie książek do koszyka. Aplikacja jest bardzo prosta, ale pozwoliła mi na zapoznanie się z podstawowymi konceptami Vue.js, a także z podstawami CSS, JavaScript.Także projekt posłużył do zapoznaniania się z podstawami RestAPI, ponieważ książki są pobierane z zewnętrznego API metodą fetch().\n\nFunkcjonalność pozwala na dodawanie książek do koszyka, oraz usuwanie i zmienianie ilości produktów bezpośrednio w koszyku. Na stronie podsumowania została dodana walidacja do formy, captcha, a także przez API banku został podłączony konwertwer z USD na PLN. Projekt jest dostępny publicznie na githubie.',
+      longDescription: i18n.global.t('PROJECTS.BOOKS_SHOP.DESCRIPTION'),
       sourceCodeUrl: 'https://github.com/n0rahh/books_project.git',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
         },
         {
           name: 'Vuex',
-          description: 'służy do zarządzania stanem aplikacji. W storze pobierają się książki z zewnętrznego API, a następnie są wyświetlane na stronie. Także w storze znajduje się koszyk, w którym są przechowywane książki, które użytkownik dodał do koszyka i inne.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUEX'),
         },
         {
           name: 'CSS',
-          description: 'został użyty jako główny język stylowania. W tym projekcie wykorzystałem podstawowe koncepty CSS, takie jak selektory, flexbox, itd.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.CSS'),
         },
         {
           name: 'JavaScript',
-          description: 'został użyty jako główny język programowania logiki na froncie.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.JAVASCRIPT'),
         },
       ],
       images: ['books-home.jpg', 'books-cart.jpg', 'books-summary.jpg'],
@@ -246,28 +248,28 @@ const Projects = {
           name: 'Firebase',
         },
       ],
-      longDescription: 'Portfolio, które widzisz przed sobą. Daną stronę stronę stworzyłem w celu zaprezentowania moich umiejętności, oraz projektów. W tym projeckie miałem za zadanie sprawdzić technologie i18n, która umożliwia tłumaczenia stron internetowych. Strona jest dostępna w trzech językach: angielskim, polskim, ukrainskim. \n\nProjekt jest dostępny publicznie na githubie. ',
+      longDescription: i18n.global.t('PROJECTS.MY_PORTFOLIO.DESCRIPTION'),
       sourceCodeUrl: 'https://github.com/n0rahh/my-portfolio.git',
       usedTechnologies: [
         {
           name: 'Vue',
-          description: 'został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
         },
         {
           name: 'Vuetify',
-          description: 'jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY'),
         },
         {
           name: 'i18n',
-          description: 'został użyty do tłumaczenia strony na trzy języki: angielski, polski, ukraiński.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.I18N'),
         },
         {
           name: 'Firebase',
-          description: 'został wykorzystany do hostowania strony internetowej. Został wybrany, ponieważ jest szybki i wydajny. Dzięki temu, że jest to usługa, która jest hostowana w chmurze, nie trzeba się martwić o serwer, co zmniejsza koszty utrzymania aplikacji.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE'),
         },
         {
           name: 'AOS',
-          description: 'została użyta do animowania elementów na stronie.',
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.AOS'),
         },
       ],
       images: ['portfolio.jpg'],

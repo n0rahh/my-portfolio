@@ -104,6 +104,45 @@
     }
   },
   "PROJECTS": {
-    "WHAT_USED": "Główne technologie użyte w projekcie"
+    "WHAT_USED": "Główne technologie użyte w projekcie",
+    "SOURCE_CODE_AVAILABLE": "Kod źródłowy dostępny",
+    "SOURCE_CODE_UNAVAILABLE": "Kod źródłowy niedostępny",
+    "TECHNOLOGIES_DESCRIPTION": {
+      "VUE": "został użyty jako główny frontend framework do tworzenia reaktywności i interfejsu użytkownika.",
+      "VUEX": "służy do zarządzania stanem aplikacji. W storze pobierają się książki z zewnętrznego API, a następnie są wyświetlane na stronie. Także w storze znajduje się koszyk, w którym są przechowywane książki, które użytkownik dodał do koszyka i inne.",
+      "VUETIFY": "jest to biblioteka komponentów Material Design dla Vue.js. Została wybrana, ponieważ zawiera wiele gotowych komponentów, które można wykorzystać w aplikacji. Dzięki temu, napisanie aplikacji było szybsze i łatwiejsze.",
+      "JAVASCRIPT": "został użyty jako główny język programowania logiki na froncie.",
+      "CSS": "został użyty jako główny język stylowania. W tym projekcie wykorzystałem podstawowe koncepty CSS, takie jak selektory, flexbox, itd.",
+      "SANITY": "został wykorzystany jako CMS (Content Management System). Został wybrany, ponieważ posiada dobrą kompatybilność z Vue.js i jest łatwy w obsłudze. Także posiada darmowy plan, który jest wystarczający do obsługi strony internetowej.",
+      "FIREBASE": "został wykorzystany do hostowania strony internetowej. Został wybrany, ponieważ jest szybki i wydajny. Dzięki temu, że jest to usługa, która jest hostowana w chmurze, nie trzeba się martwić o serwer, co zmniejsza koszty utrzymania aplikacji.",
+      "FIREBASE_AUTH": "został wykorzystany do autentykacji użytkowników na platformie (logowanie/rejestracja/zmiana hasła itd)",
+      "NUXT": "jest używany jako drugorzędny framework na frontendzie. Został wybrany na potrzeby SEO, ponieważ jest to framework, który renderuje aplikację po stronie serwera.",
+      "NEST": "jest używany jako główny framework na backendzie.",
+      "STRAPI": "został użyty jako CMS (Content Management System). Został wybrany, ponieważ posiada dobrą kompatybilność z Vue.js, jest funkcjonalny i łatwy w obsłudze.", 
+      "KNEX": "biblioteka jest używana jako główna biblioteka do frameworka NestJS.",
+      "EXPRESS": "jest używany jako główny framework na backendzie.",
+      "MYSQL": "został użyty jako główny system bazodanowy.",
+      "TYPESCRIPT": "został użyty jako główny język programowania na froncie i na backendzie. Został wybrany, ponieważ jest to język, który jest typowany statycznie, co pozwala na szybsze wykrywanie błędów.",
+      "I18N": "został użyty do tłumaczenia strony na trzy języki: angielski, polski, ukraiński.",
+      "AOS": "biblioteka została użyta do animowania elementów na stronie."
+    },
+    "K20_APARTMENTS": {
+      "DESCRIPTION": "Strona internetowa K20 Apartamenty - służy do zapoznania się z ofertą apartamentów, oraz do ich rezerwacji. Jest to projekt komercyjny, który wykonałem samodzielnie od A do Z na zamówienie dla projektu Apartamenty K20.\n\nStrona internetowa jest w pełni responsywna, co oznacza, że wygląda dobrze na każdym urządzeniu. Jest również zoptymalizowana pod kątem użyteczności, ponieważ jest podpięta pod CMS Sanity. Każdy element strony można zmienić w admin panelu Sanity, dzięki czemu strona jest bardzo łatwa w obsłudze i nie wymaga wiedzy technicznej lub obecności developa przy zmianach kontentu. CMS został podpięty z myślą o to, że wygląd, opis i wyposażenie apartamentów może się często zmieniać, więc zmiana lub podmiana kontentu powinna być szybka i łatwa.\n\nStrona internetowa jest również zoptymalizowana pod kątem SEO, ponieważ jest hostowana na Firebase Hosting, który jest szybki i wydajny. Podpięte zostały również meta tagi, które są niezbędne do pozycjonowania strony w wyszukiwarce Google. Jest to projekt komercyjny, więc kod źródłowy nie jest dostępny publicznie."
+    },
+    "TUTORE": {
+      "DESCRIPTION": "Platforma edukacyjna Tutore. Zawiera wiele funkcjonalności, takich jak: testy, lekcje, słówka, gramatyka, bot edukacyjny itd.\n\nProjekt ten był wykonywany dla firmy w której pracuje Tutore Poland. Jest to wspólny projekt który był robiony w zespole. Moją główną rolą w tym projekcie na froncie było: tworzenie pojedynczych podstron, poprawa interfejsu użytkownika i dodawanie responsywności do stron stworzonych przez mnie i moich kolegów, podpięcie pojedynczych komponentów pod CMS Strapi, i inne.\n\nNa backendzie moją główną rolą było: tworzenie endpointów pod konkretne wymagania, modyfikacja istniejących endpointów, tworzenie seedów pod migracje bazy, tworzenie nowych modeli, interfejsów, helperów, i inne. Także moją rolą było podpięcie integracji zewnętrznych takich jak Salesmanago (serwis marketingowy), Wordwall (serwis z quizami pod lekcje), Sendgrid (serwis e-mailowy), SerwerSMS (serwis smsowy). Projekt ten stale się rozwija, więc cały czas mogą się pojawiać nowe rzeczy.\n\nPlatforma ta służy do nauki różnych przedmiotów takich jak matematyka, programowanie, języki obce, rysunek, gitara, i wiele innych. Uczeń ma dostępne na platformie materiały, quizy, prace domowe, a także może wchodzić na zajęcia, sprawdzać swoję osiągnięcia i wiele innych czynności. Jest to projekt komercyjny, więc kod źródłowy nie jest dostępny publicznie."
+    },
+    "TUTORE_PARTNERS": {
+      "DESCRIPTION": "Strona partnerska Tutore. Jest to projekt który wykonałem dla firmy Tutore. Strona ta służy do zapoznania się co oferuje Tutore swoim partnerom, i jakie benefity mogą otrzymać potencjalni partnerzy. Na stronie jest prosty formularz, który jest podpięty pod arkusz google. Jest to projekt komercyjny, więc kod źródłowy nie jest dostępny publicznie."
+    },
+    "CRM_TUTORE": {
+      "DESCRIPTION": "Wewnętrzny CRM Tutore Poland. Służy do zarządzania klientami, lekcjami itd. Pozwala zapisywać klientów na lekcję, wysyłać im wiadomości sms, oraz emaile. Także umożliwia zarządzanie lekcjami, oraz tworzenie nowych lekcji.\n\nMoją rolą było podtrzymanie projektu, oraz dodanie nowych funkcjonalności zarówno na froncie jak i na backendzie. Projekt jest komercyjny, więc kod źródłowy nie jest dostępny publicznie."
+    },
+    "BOOKS_SHOP": {
+      "DESCRIPTION": "Pierwszy projekt, który wykonałem w Vue.js. Jest to aplikacja, która pozwala na dodawanie książek do koszyka. Aplikacja jest bardzo prosta, ale pozwoliła mi na zapoznanie się z podstawowymi konceptami Vue.js, a także z podstawami CSS, JavaScript.Także projekt posłużył do zapoznaniania się z podstawami RestAPI, ponieważ książki są pobierane z zewnętrznego API metodą fetch().\n\nFunkcjonalność pozwala na dodawanie książek do koszyka, oraz usuwanie i zmienianie ilości produktów bezpośrednio w koszyku. Na stronie podsumowania została dodana walidacja do formy, captcha, a także przez API banku został podłączony konwertwer z USD na PLN. Projekt jest dostępny publicznie na githubie."
+    },
+    "MY_PORTFOLIO": {
+      "DESCRIPTION": "Portfolio, które widzisz przed sobą. Daną stronę stronę stworzyłem w celu zaprezentowania moich umiejętności, oraz projektów. W tym projeckie miałem za zadanie sprawdzić technologie i18n, która umożliwia tłumaczenia stron internetowych. Strona jest dostępna w trzech językach: angielskim, polskim, ukrainskim. \n\nProjekt jest dostępny publicznie na githubie."
+    }
   }
 }
