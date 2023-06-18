@@ -146,7 +146,7 @@ export default {
       await this.validateForm();
 
       if (this.isValid) {
-        console.log('SUCCESS');
+        console.log('SENT');
         this.terms = false;
         this.$refs.form.reset();
         this.isBtnClicked = false;
