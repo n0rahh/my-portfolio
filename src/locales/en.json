@@ -45,6 +45,11 @@
       "TERMS_CHECKBOX": "I agree to site ",
       "TERMS": "terms"
     },
+    "NOTIFY": {
+      "SUCCESS": "Message sent successfully!",
+      "ERROR": "Something went wrong. Please try again later.",
+      "FILE_SIZE": "File size is too big. Max 5MB."
+    },
     "PLACEHOLDER": {
       "NAME": "Joe",
       "MESSAGE": "Write something interesting here ..."

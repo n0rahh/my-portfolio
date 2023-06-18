@@ -45,6 +45,11 @@
       "TERMS_CHECKBOX": "Wyrażam zgodę na",
       "TERMS": "politykę strony"
     },
+    "NOTIFY": {
+      "SUCCESS": "Wiadomość została wysłana. Dziękuję!",
+      "ERROR": "Coś poszło nie tak. Spróbuj ponownie później.",
+      "FILE_SIZE": "Plik jest za duży. Maksymalny rozmiar pliku to 5MB."
+    },
     "PLACEHOLDER": {
       "NAME": "Jan",
       "MESSAGE": "Napisz coś ciekawego tutaj ..."
