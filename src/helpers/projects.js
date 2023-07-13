@@ -265,7 +265,7 @@ const Projects = {
         },
         {
           name: 'Firebase',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE'),
+          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE_2'),
         },
         {
           name: 'AOS',
