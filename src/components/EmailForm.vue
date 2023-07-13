@@ -116,7 +116,6 @@
 
 <script>
 import GetLocale from '@/locales/helpers/get-locale';
-import axios from 'axios';
 
 export default {
   name: 'EmailForm',
@@ -199,7 +198,7 @@ export default {
       await this.validateForm();
 
       if (this.isValid) {
-        await axios.post('http://localhost:5000/my-portfolio-6167f/us-central1/sendEmail', {
+        await this.$http.post('/sendEmail', {
           name: this.name,
           email: this.email,
           message: this.content,
