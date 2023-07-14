@@ -173,8 +173,6 @@ export default {
       this.errorMessages.name = [];
       this.errorMessages.email = [];
       this.errorMessages.content = [];
-      this.file = null;
-      this.fileBase64 = null;
       this.isValid = false;
       this.isBtnClicked = true;
       this.showNotify(this.$t('FORM.NOTIFY.ERROR', false));
