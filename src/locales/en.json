@@ -41,9 +41,14 @@
       "NAME": "Name",
       "EMAIL": "E-mail",
       "MESSAGE": "Message",
-      "FILE": "Add file",
+      "FILE": "Add file pdf",
       "TERMS_CHECKBOX": "I agree to site ",
       "TERMS": "terms"
+    },
+    "NOTIFY": {
+      "SUCCESS": "Message sent successfully!",
+      "ERROR": "Something went wrong. Please try again later.",
+      "FILE_SIZE": "File size is too big. Max 5MB."
     },
     "PLACEHOLDER": {
       "NAME": "Joe",
@@ -115,6 +120,7 @@
       "CSS": "was used as the primary styling language. In this project, I utilized basic CSS concepts such as selectors, flexbox, etc.",
       "SANITY": "was utilized as a CMS (Content Management System). It was chosen because it has good compatibility with Vue.js and is easy to use. Additionally, it offers a free plan that is sufficient for managing a website.",
       "FIREBASE": "was used for hosting the website. It was chosen because it is fast and efficient. Being a cloud-based service, it eliminates the need to worry about server management, reducing the costs associated with maintaining the application.",
+      "FIREBASE_2": "it was used to host and maintain the backend of the website using Firebase Functions. An endpoint was added to Firebase Functions, which connects the form on the website to the SendGrid service, enabling message sending through the form. Firebase Functions was chosen because it is fast and efficient. Being a cloud-hosted service, it eliminates the need to worry about servers, reducing application maintenance costs.",
       "FIREBASE_AUTH": "It was used for user authentication on the platform (login/registration/password reset, etc.).",
       "NUXT": "is used as a secondary framework on the frontend. It was chosen for SEO purposes because it is a framework that renders the application on the server-side.",
       "NEST": "is used as the main backend framework.",

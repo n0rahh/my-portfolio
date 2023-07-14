@@ -36,9 +36,13 @@
         variant="outlined"
       />
       <v-file-input
+        ref="fileInput"
         :label="$t('FORM.LABEL.FILE')"
         variant="underlined"
         :show-size="1024"
+        type="file"
+        accept="application/pdf"
+        @change="handleFileChange"
       />
       <v-row class="d-flex align-center">
         <v-col
@@ -101,6 +105,12 @@
         </v-btn>
       </div>
     </v-form>
+    <v-snackbar
+      v-model="notify"
+      :color="isSuccess ? 'green' : 'red'"
+    >
+      {{ notifyMessage }}
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -114,6 +124,10 @@ export default {
       name: '',
       email: '',
       content: '',
+      notify: false,
+      isSuccess: false,
+      file: null,
+      fileBase64: null,
       terms: false,
       isValid: false,
       isBtnClicked: false,
@@ -127,6 +141,7 @@ export default {
         email: (v) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v) || this.$t('FORM.RULES.EMAIL'),
         content: (v) => !!v?.trim() || this.$t('FORM.RULES.MESSAGE'),
       }, 
+      notifyMessage: null,
     };
   },
   computed: {
@@ -141,20 +156,70 @@ export default {
       this.errorMessages.content = await this.$refs.content.validate();
       this.isValid = !this.errorMessages.name.length && !this.errorMessages.email.length && !this.errorMessages.content.length && this.terms;
     },
-    async sendForm() {
+    handleFileChange(event) {
+      const file = this.$refs.fileInput.files[0];
+      this.file = event.target.files[0];
+      
+      this.readFileContent(file);
+    },
+    readFileContent(file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.fileBase64 = reader.result.split(',')[1];
+      };
+      reader.readAsDataURL(file);
+    },
+    resetErrorMessages() {
+      this.errorMessages.name = [];
+      this.errorMessages.email = [];
+      this.errorMessages.content = [];
+      this.isValid = false;
       this.isBtnClicked = true;
+      this.showNotify(this.$t('FORM.NOTIFY.ERROR', false));
+    },
+    showNotify(message, type) {
+      this.isSuccess = type;
+      this.notify = true;
+      this.notifyMessage = message;
+    },
+    async sendForm() {
+      this.isValid = false;
+
+      if(this.file?.size > 1024 * 1024 * 5) {
+        this.showNotify(this.$t('FORM.NOTIFY.FILE_SIZE'), false);
+        this.file = null;
+        this.fileBase64 = null;
+        return;
+      }
+      this.isBtnClicked = true;
+
       await this.validateForm();
 
       if (this.isValid) {
-        console.log('SENT');
-        this.terms = false;
-        this.$refs.form.reset();
-        this.isBtnClicked = false;
+        await this.$http.post('/sendEmail', {
+          name: this.name,
+          email: this.email,
+          message: this.content,
+          attachment: this.fileBase64,
+          attachmentType: this.file?.type,
+          attachmentSize: this.file?.size,
+        }).then((response) => {
+          if(response.data === 'ERROR') {
+            this.resetErrorMessages();
+            return;
+          }
+          this.showNotify(this.$t('FORM.NOTIFY.SUCCESS'), true);
+          this.terms = false;
+          this.file = null;
+          this.$refs.form.reset();
+          this.isBtnClicked = false;
+        }).catch(() => {
+          this.resetErrorMessages();
+          this.isBtnClicked = false;
+        });
       } else {
-        console.log('ERROR');
-        this.errorMessages.name = [];
-        this.errorMessages.email = [];
-        this.errorMessages.content = [];
+        this.terms = false;
+        this.resetErrorMessages();
       }
     },
   },

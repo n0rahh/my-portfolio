@@ -41,9 +41,14 @@
       "NAME": "Imię",
       "EMAIL": "E-mail",
       "MESSAGE": "Wiadomość",
-      "FILE": "Dodaj plik",
+      "FILE": "Dodaj plik pdf",
       "TERMS_CHECKBOX": "Wyrażam zgodę na",
       "TERMS": "politykę strony"
+    },
+    "NOTIFY": {
+      "SUCCESS": "Wiadomość została wysłana. Dziękuję!",
+      "ERROR": "Coś poszło nie tak. Spróbuj ponownie później.",
+      "FILE_SIZE": "Plik jest za duży. Maksymalny rozmiar pliku to 5MB."
     },
     "PLACEHOLDER": {
       "NAME": "Jan",
@@ -115,6 +120,7 @@
       "CSS": "został użyty jako główny język stylowania. W tym projekcie wykorzystałem podstawowe koncepty CSS, takie jak selektory, flexbox, itd.",
       "SANITY": "został wykorzystany jako CMS (Content Management System). Został wybrany, ponieważ posiada dobrą kompatybilność z Vue.js i jest łatwy w obsłudze. Także posiada darmowy plan, który jest wystarczający do obsługi strony internetowej.",
       "FIREBASE": "został wykorzystany do hostowania strony internetowej. Został wybrany, ponieważ jest szybki i wydajny. Dzięki temu, że jest to usługa, która jest hostowana w chmurze, nie trzeba się martwić o serwer, co zmniejsza koszty utrzymania aplikacji.",
+      "FIREBASE_2": "został wykorzystany do hostowania i utrzymania backendu strony dzięki usłudzę Firebase Functions. Do Firebase Functions został dodany endpoint, który łączy formularz znajdujący się na stronie z serwisem SendGrid, co umożliwia wysyłanie wiadomości przez formę. Został wybrany, ponieważ jest szybki i wydajny. Dzięki temu, że jest to usługa, która jest hostowana w chmurze, nie trzeba się martwić o serwer, co zmniejsza koszty utrzymania aplikacji.",
       "FIREBASE_AUTH": "został wykorzystany do autentykacji użytkowników na platformie (logowanie/rejestracja/zmiana hasła itd)",
       "NUXT": "jest używany jako drugorzędny framework na frontendzie. Został wybrany na potrzeby SEO, ponieważ jest to framework, który renderuje aplikację po stronie serwera.",
       "NEST": "jest używany jako główny framework na backendzie.",
