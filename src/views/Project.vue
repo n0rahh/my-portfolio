@@ -82,6 +82,8 @@
 <script>
 import aosMixin from '@/helpers/animation';
 import Projects from '@/helpers/projects';
+import i18n from '@/i18n';
+import { ref, watch } from 'vue';
 
 export default {
   name: 'Project',
@@ -100,7 +102,24 @@ export default {
   methods: {
     fetchProject() {
       const projectId = this.$route.params.id;
-      this.projectInfo = Projects.getProject(projectId);
+      const project = Projects.getProject(projectId);
+
+      const updateDescriptions = () => {
+        project.longDescription = i18n.global.t(`PROJECTS.${project.longDescriptionValue}.DESCRIPTION`);
+        project.usedTechnologies.forEach((tech) => {
+          tech.description = i18n.global.t(`PROJECTS.TECHNOLOGIES_DESCRIPTION.${tech.value}`);
+        });
+      };
+
+      project.longDescription = ref('');
+      project.usedTechnologies.forEach((tech) => {
+        tech.description = ref('');
+      });
+
+      updateDescriptions();
+      watch(() => i18n.global.locale, updateDescriptions);
+
+      this.projectInfo = project;
     },
     sourceCodeText(url) {
       return url !== '' ? this.$t('PROJECTS.SOURCE_CODE_AVAILABLE') : this.$t('PROJECTS.SOURCE_CODE_UNAVAILABLE');
