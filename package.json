@@ -11,11 +11,9 @@
   },
   "dependencies": {
     "@mdi/font": "5.9.55",
-    "@sendgrid/mail": "^7.7.0",
     "aos": "^2.3.4",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
-    "dotenv": "^16.3.1",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "firebase": "^9.22.2",
