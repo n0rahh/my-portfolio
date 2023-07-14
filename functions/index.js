@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const cors = require('cors');
 
-const sendgrid = require('../src/helpers/sendgrid');
+const sendgrid = require('./sendgrid');
 
 const allowedOrigins = [
   'https://my-portfolio-6167f.web.app',
