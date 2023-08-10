@@ -4,6 +4,23 @@
     v-bind="aosAttribute('fade-right', 200, 600, 'ease-in-out', 'center')"
     class="px-0"
   >
+    <v-row class="mb-8">
+      <v-tabs
+        v-for="type in skillTypes"
+        :key="type.value"
+        v-model="tab"
+        color="primary"
+        hide-slider
+      >
+        <v-tab
+          color="rgb(41, 255, 201)"
+          :value="type.value"
+          class="mb-4 p2"
+        >
+          {{ type.title }}
+        </v-tab>
+      </v-tabs>
+    </v-row>
     <v-row
       v-for="(skill, index) in sortedSkills"
       :key="index"
@@ -44,57 +61,133 @@ export default {
     return {
       animate: false,
       progress: 0,
+      tab: 'backend',
+      skillTypes: [
+        {
+          title: 'Frontend',
+          value: 'frontend',
+        },
+        {
+          title: 'Backend',
+          value: 'backend',
+        },
+        {
+          title: 'Programming',
+          value: 'programming',
+        },
+        {
+          title: 'Other',
+          value: 'other',
+        },
+      ],
       skills: [
         {
           name: 'Vue.js',
           percent: '50%',
+          type: 'frontend',
         },
         {
           name: 'Vuetify',
           percent: '80%',
+          type: 'frontend',
         },
         {
           name: 'Node.js',
           percent: '30%',
+          type: 'programming',
         },
         {
-          name: 'JS/TS',
+          name: 'JavaScript',
           percent: '40%',
+          type: 'programming',
+        },
+        {
+          name: 'TypeScript',
+          percent: '30%',
+          type: 'programming',
         },
         {
           name: 'Express',
           percent: '40%',
+          type: 'backend',
         },
         {
-          name: 'Nest',
+          name: 'Nest/Knex',
           percent: '25%',
+          type: 'backend',
         },
         {
           name: 'REST API',
           percent: '50%',
+          type: 'backend',
         },
         {
           name: 'Cypress',
           percent: '20%',
+          type: 'other',
         },
         {
           name: 'SCRUM',
           percent: '40%',
+          type: 'other',
         },
         {
           name: 'Jira',
-          percent: '30%',
+          percent: '40%',
+          type: 'other',
         },
         {
           name: 'Postman',
           percent: '40%',
+          type: 'other',
+        },
+        {
+          name: 'Git/Github',
+          percent: '60%',
+          type: 'other',
+        },
+        {
+          name: 'Firebase',
+          percent: '50%',
+          type: 'other',
+        },
+        {
+          name: 'SQL',
+          percent: '60%',
+          type: 'backend',
+        },
+        {
+          name: 'HTML5',
+          percent: '60%',
+          type: 'frontend',
+        },
+        {
+          name: 'CSS3/Sass',
+          percent: '40%',
+          type: 'frontend',
+        },
+        {
+          name: 'React',
+          percent: '30%',
+          type: 'frontend',
+        },
+        {
+          name: 'Next',
+          percent: '20%',
+          type: 'frontend',
         },
       ],
       sortedSkills: [],
     };
   },
+  watch: {
+    tab() {
+      this.sort(this.tab);
+    },
+  },
   mounted() {
-    this.sort();
+    this.tab = 'frontend';
+    this.sort(this.tab);
     setTimeout(() => {
       this.animate = true;
     }, 100);
@@ -103,8 +196,11 @@ export default {
     progressBarWidth(index) {
       return `--progress: ${index}`;
     },
-    sort() {
-      this.sortedSkills = this.skills.sort((a, b) => {
+    sort(type) {
+      const typedSkills = this.skills.filter((skill) => {
+        return skill.type === type;
+      });
+      this.sortedSkills = typedSkills.sort((a, b) => {
         return parseFloat(b.percent) - parseFloat(a.percent);
       });
     },

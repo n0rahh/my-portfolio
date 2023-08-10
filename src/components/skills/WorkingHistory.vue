@@ -75,8 +75,6 @@ export default {
   data() {
     return {
       tab: 0,
-      active: 0,
-      
     };
   },
   computed: {

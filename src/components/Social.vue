@@ -41,7 +41,7 @@ export default {
         {
           text: 'LinkedIn',
           icon: 'mdi-linkedin',
-          link: 'https://www.linkedin.com/in/vlad-herasymovych-3a7171279/',
+          link: 'https://www.linkedin.com/in/vlad-herasymovych/',
         },
         {
           text: 'Instagram',
