@@ -82,7 +82,7 @@ export default {
       ],
       skills: [
         {
-          name: 'Vue.js',
+          name: 'Vue/Vuex',
           percent: '50%',
           type: 'frontend',
         },
@@ -92,7 +92,7 @@ export default {
           type: 'frontend',
         },
         {
-          name: 'Node.js',
+          name: 'Node',
           percent: '30%',
           type: 'programming',
         },
@@ -167,7 +167,7 @@ export default {
           type: 'frontend',
         },
         {
-          name: 'React',
+          name: 'React/Redux',
           percent: '30%',
           type: 'frontend',
         },

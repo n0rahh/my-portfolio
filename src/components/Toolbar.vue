@@ -30,6 +30,14 @@
         >
           {{ item.title }}
         </v-btn>
+        <v-btn
+          variant="text"
+          color="white"
+          class="p2"
+          @click="openCV"
+        >
+          CV
+        </v-btn>
       </div>
       <div class="options d-flex">
         <lang-switch />
@@ -108,6 +116,9 @@ export default {
       if(element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
+    },
+    openCV() {
+      window.open('cv.pdf', '_blank');
     },
   },
 };
