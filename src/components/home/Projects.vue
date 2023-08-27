@@ -1,7 +1,7 @@
 <template>
   <v-container
     id="projects"
-    class="py-16 container"
+    class="pt-16 container"
   >
     <v-row>
       <v-col
@@ -23,7 +23,7 @@
       </v-col>
     </v-row>
     <v-row
-      class="py-16"
+      class="pt-16"
     >
       <v-col
         v-for="(project, i) in projectsList"
