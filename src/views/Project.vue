@@ -55,25 +55,24 @@
         lg="6"
         sm="7"
         cols="12"
-        class="d-flex"
+        class="d-flex ml-6 mt-16"
         v-bind="aosAttribute('flip-left', 200, 300, 'ease-in-out', 'center')"
       >
-        <v-row>
-          <v-col
+        <div class="image-grid mt-16">
+          <div
             v-for="(image, index) in projectInfo.images"
             :key="index"
-            lg="6"
-            cols="12"
-            class="project-img-wrapper"
+            class="img-wrapper"
           >
             <v-img
               :src="require(`@/assets/imgs/projects/${image}`)"
               :alt="projectInfo.title"
-              class="mt-12 project-img"
-              max-width="450"
+              width="400"
+              :cover="true"
             />
-          </v-col>
-        </v-row>
+            <div class="img-overlay" />
+          </div>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -144,19 +143,43 @@ export default {
   white-space: pre-wrap;
 }
 
-.project-img-wrapper {
-  &:nth-child(2) {
-    margin-top: 50%;
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 4px;
+  max-height: 400px;
+}
+
+.v-img {
+  border-radius: 12px;
+}
+
+.img-wrapper {
+  max-height: 400px;
+  position: relative;
+  transition: all 0.6s ease;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    z-index: 10;
+    .img-overlay {
+      opacity: 0;
+    }
+    .v-img {
+      border-radius: 0;
+    }
   }
 }
 
-.project-img {
-  border-radius: 10px;
-  transition: transform 0.5s ease-in-out;
-  &:hover {
-    transform: scale(1.35);
-    z-index: 10;
-    box-shadow: 0 0 10px 5px $tertiary;
-  }
+.img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  transition: opacity 0.6s ease;
 }
 </style>
