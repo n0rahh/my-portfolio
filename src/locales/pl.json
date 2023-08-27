@@ -149,6 +149,10 @@
     },
     "MY_PORTFOLIO": {
       "DESCRIPTION": "Portfolio, które widzisz przed sobą. Daną stronę stronę stworzyłem w celu zaprezentowania moich umiejętności, oraz projektów. W tym projeckie miałem za zadanie sprawdzić technologie i18n, która umożliwia tłumaczenia stron internetowych. Strona jest dostępna w trzech językach: angielskim, polskim, ukrainskim. \n\nProjekt jest dostępny publicznie na githubie."
+    },
+    "DIALOG": {
+      "PREV_BTN": "Poprzednie zdjęcie",
+      "NEXT_BTN": "Następne zdjęcie"
     }
   }
 }

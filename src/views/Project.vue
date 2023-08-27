@@ -8,11 +8,10 @@
       'px-4': $vuetify.display.xs
     }"
   >
-    <v-row>
+    <v-row class="pa-0 ma-0">
       <v-col
         xl="5"
         lg="6"
-        sm="7"
         cols="12"
         class="d-flex flex-column"
         v-bind="aosAttribute('flip-right', 200, 300, 'ease-in-out', 'center')"
@@ -58,20 +57,70 @@
         class="d-flex ml-6 mt-16"
         v-bind="aosAttribute('flip-left', 200, 300, 'ease-in-out', 'center')"
       >
-        <div class="image-grid mt-16">
-          <div
-            v-for="(image, index) in projectInfo.images"
-            :key="index"
-            class="img-wrapper"
+        <div
+          class="image-grid"
+          :class="{
+            'mt-16 grid-height': $vuetify.display.xl,
+          }"
+        >
+          <v-dialog
+            v-model="imageModal"
+            max-width="80%"
           >
-            <v-img
-              :src="require(`@/assets/imgs/projects/${image}`)"
-              :alt="projectInfo.title"
-              width="400"
-              :cover="true"
-            />
-            <div class="img-overlay" />
-          </div>
+            <template #activator>
+              <div
+                v-for="(image, index) in projectInfo.images"
+                :key="index"
+                class="img-wrapper"
+                @click="openImageModal(index)"
+              >
+                <v-img
+                  :src="require(`@/assets/imgs/projects/${image}`)"
+                  :alt="projectInfo.title"
+                  :width="imgWidth"
+                  :cover="true"
+                />
+                <div class="img-overlay" />
+              </div>
+            </template>
+            <v-card>
+              <v-img
+                :src="require(`@/assets/imgs/projects/${projectInfo.images[currentImageIndex]}`)"
+                :alt="projectInfo.title"
+                width="100%"
+                height="100%"
+                @click="closeImageModal"
+              />
+            </v-card>
+            <div class="mt-2 navigation d-flex justify-space-around">
+              <v-btn
+                variant="plain"
+                color="white"
+                class="p2 w-600 d-flex align-center"
+                @click="prevImage"
+              >
+                <v-icon
+                  size="x-large"
+                  icon="mdi-arrow-left-thick"
+                  class="mr-4"
+                />
+                <span v-if="!$vuetify.display.xs">{{ $t('PROJECTS.DIALOG.PREV_BTN') }}</span>
+              </v-btn>
+              <v-btn
+                variant="plain"
+                color="white"
+                class="p2 w-600 d-flex align-center"
+                @click="nextImage"
+              >
+                <span v-if="!$vuetify.display.xs">{{ $t('PROJECTS.DIALOG.NEXT_BTN') }}</span>
+                <v-icon
+                  size="x-large"
+                  icon="mdi-arrow-right-thick"
+                  class="ml-4"
+                />
+              </v-btn>
+            </div>
+          </v-dialog>
         </div>
       </v-col>
     </v-row>
@@ -90,7 +139,14 @@ export default {
   data() {
     return {
       projectInfo: [],
+      imageModal: false,
+      currentImageIndex: 0,
     };
+  },
+  computed: {
+    imgWidth() {
+      return this.$vuetify.display.lgAndUp ? 400 : 300;
+    },
   },
   mounted() {
     window.scrollTo(0, 0);
@@ -123,6 +179,22 @@ export default {
     sourceCodeText(url) {
       return url !== '' ? this.$t('PROJECTS.SOURCE_CODE_AVAILABLE') : this.$t('PROJECTS.SOURCE_CODE_UNAVAILABLE');
     },
+    openImageModal(index) {
+      this.currentImageIndex = index;
+      this.imageModal = true;
+    },
+
+    closeImageModal() {
+      this.imageModal = false;
+    },
+
+    nextImage() {
+      this.currentImageIndex = (this.currentImageIndex + 1) % this.projectInfo.images.length;
+    },
+
+    prevImage() {
+      this.currentImageIndex = (this.currentImageIndex - 1 + this.projectInfo.images.length) % this.projectInfo.images.length;
+    },
   },
 };
 </script>
@@ -148,7 +220,15 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 4px;
-  max-height: 400px;
+
+  @media screen and (max-width: 649px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+}
+
+.grid-height {
+  height: 400px;
 }
 
 .v-img {
@@ -182,4 +262,29 @@ export default {
   opacity: 1;
   transition: opacity 0.6s ease;
 }
+
+.v-dialog--active .v-dialog__content {
+  overflow: hidden;
+}
+
+.v-dialog--active .v-dialog__content .v-card {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: none;
+}
+
+.v-dialog--active .v-dialog__content .v-card .v-img {
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.navigation {
+  background-color: #212121;
+  border-radius: 8px;
+  z-index: 10;
+}
+
 </style>

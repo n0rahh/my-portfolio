@@ -149,6 +149,10 @@
     },
     "MY_PORTFOLIO": {
       "DESCRIPTION": "The Portfolio you see before you. I created this website to showcase my skills and projects. In this project, my goal was to explore the i18n technology, which enables website translations. The website is available in three languages: English, Polish, and Ukrainian.\n\nhe project is publicly available on GitHub."
+    },
+    "DIALOG": {
+      "PREV_BTN": "Previous image",
+      "NEXT_BTN": "Next image"
     }
   }
 }
