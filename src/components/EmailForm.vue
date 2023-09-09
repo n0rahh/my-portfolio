@@ -4,6 +4,10 @@
     class="px-0"
   >
     <v-form ref="form">
+      <div
+        v-if="isSending"
+        class="loading-overlay"
+      />
       <v-text-field
         ref="name"
         v-model="name"
@@ -78,7 +82,7 @@
           </v-label>
         </v-col>
       </v-row>
-      <div class="action d-flex justify-end">
+      <div class="action d-flex justify-end align-center">
         <v-btn
           class="send-button"
           :class="{
@@ -90,7 +94,12 @@
           <span
             class="send-button_text p1"
           >
-            {{ $t('FORM.SEND_BUTTON') }}
+            <v-progress-circular
+              v-if="isSending"
+              indeterminate
+              model-value="20"
+            />
+            <span v-else>{{ $t('FORM.SEND_BUTTON') }}</span>
           </span>
           <v-icon
             class="send-button_icon-success"
@@ -142,6 +151,7 @@ export default {
         content: (v) => !!v?.trim() || this.$t('FORM.RULES.MESSAGE'),
       }, 
       notifyMessage: null,
+      isSending: false,
     };
   },
   computed: {
@@ -196,6 +206,7 @@ export default {
       await this.validateForm();
 
       if (this.isValid) {
+        this.isSending = true;
         await this.$http.post('/sendEmail', {
           name: this.name,
           email: this.email,
@@ -221,6 +232,7 @@ export default {
         this.terms = false;
         this.resetErrorMessages();
       }
+      this.isSending = false;
     },
   },
 };
@@ -287,5 +299,18 @@ export default {
 
 .text-error {
   color: $error;
+}
+
+.loading-overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  z-index: 10;
 }
 </style>
