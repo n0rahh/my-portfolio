@@ -148,7 +148,7 @@
       "DESCRIPTION": "The First Project I developed in Vue.js. It is an application that allows adding books to a shopping cart. The application is very simple but allowed me to familiarize myself with the basic concepts of Vue.js, as well as the fundamentals of CSS and JavaScript. The project also served as an introduction to REST API basics since the books are fetched from an external API using the fetch() method.\n\nThe functionality allows adding books to the shopping cart, as well as removing and updating the quantity of products directly in the cart. On the summary page, form validation, a captcha, and a currency converter from USD to PLN were added through the bank's API integration. The project is publicly available on GitHub."
     },
     "MY_PORTFOLIO": {
-      "DESCRIPTION": "The Portfolio you see before you. I created this website to showcase my skills and projects. In this project, my goal was to explore the i18n technology, which enables website translations. The website is available in three languages: English, Polish, and Ukrainian.\n\nhe project is publicly available on GitHub."
+      "DESCRIPTION": "The Portfolio you see before you. I created this website to showcase my skills and projects. In this project, my goal was to explore the i18n technology, which enables website translations. The website is available in three languages: English, Polish, and Ukrainian.\n\nThe project is publicly available on GitHub."
     },
     "DIALOG": {
       "PREV_BTN": "Previous image",

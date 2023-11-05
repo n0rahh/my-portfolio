@@ -54,8 +54,12 @@
         lg="6"
         sm="7"
         cols="12"
-        class="d-flex ml-6 mt-16"
-        v-bind="aosAttribute('flip-left', 200, 300, 'ease-in-out', 'center')"
+        class="d-flex mt-16"
+        :class="{
+          'ml-6': $vuetify.display.mdAndUp,
+          'ml-3': $vuetify.display.smAndDown
+        }"
+        v-bind="!$vuetify.display.xs ? aosAttribute('flip-left', 200, 300, 'ease-in-out', 'center') : ''"
       >
         <div
           class="image-grid"
@@ -64,6 +68,7 @@
           }"
         >
           <v-dialog
+            :key="dialogKey"
             v-model="imageModal"
             max-width="80%"
           >
@@ -87,8 +92,6 @@
               <v-img
                 :src="require(`@/assets/imgs/projects/${projectInfo.images[currentImageIndex]}`)"
                 :alt="projectInfo.title"
-                width="100%"
-                height="100%"
                 @click="closeImageModal"
               />
             </v-card>
@@ -141,6 +144,7 @@ export default {
       projectInfo: [],
       imageModal: false,
       currentImageIndex: 0,
+      dialogKey: 0,
     };
   },
   computed: {
@@ -189,10 +193,12 @@ export default {
     },
 
     nextImage() {
+      this.dialogKey += 1;
       this.currentImageIndex = (this.currentImageIndex + 1) % this.projectInfo.images.length;
     },
 
     prevImage() {
+      this.dialogKey -= 1;
       this.currentImageIndex = (this.currentImageIndex - 1 + this.projectInfo.images.length) % this.projectInfo.images.length;
     },
   },
