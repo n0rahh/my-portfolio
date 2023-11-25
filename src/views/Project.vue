@@ -210,7 +210,7 @@ export default {
 
 .container-size {
   min-height: 100vh;
-  padding: 100px 0 80px 180px;
+  padding: 40px 0 80px 180px;
 }
 
 .source-code {
@@ -225,7 +225,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-gap: 4px;
+  grid-gap: 8px;
 
   @media screen and (max-width: 649px) {
     grid-template-columns: repeat(1, 1fr);

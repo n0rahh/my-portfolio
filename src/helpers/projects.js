@@ -115,7 +115,7 @@ const Projects = {
           value: 'STRAPI',
         },
       ],
-      images: ['tutore-home.jpg','tutore-dashboard.jpg', 'tutore-quizz.jpg'],
+      images: ['tutore-map.jpg', 'tutore-form.jpg', 'tutore-dashboard.jpg', 'tutore-quizz.jpg'],
     },
     3: {
       title: 'Tutore Partners',
@@ -209,7 +209,7 @@ const Projects = {
           value: 'MYSQL',
         },
       ],
-      images: ['crm-home.jpg', 'crm-parent.jpg', 'crm-sms.jpg'],
+      images: ['crm-calendar.jpg', 'crm-enroll.jpg', 'crm-onboarding.jpg', 'crm-business-card.jpg', 'crm-criteria.jpg', 'crm-sms.jpg'],
     },
     5: {
       title: 'Books shop',
