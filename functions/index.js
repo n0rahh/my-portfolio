@@ -5,6 +5,7 @@ const sendgrid = require('./sendgrid');
 
 const allowedOrigins = [
   'https://my-portfolio-6167f.web.app',
+  'https://vladeq.me',
   'http://localhost:8080',
 ];
 
