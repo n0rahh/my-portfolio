@@ -64,7 +64,7 @@ export default {
 
     setCurrentLang() {
       setTimeout(() => {
-        this.currentLang = localStorage.getItem('locale').toUpperCase();
+        this.currentLang = localStorage.getItem('locale')?.toUpperCase() || GetLocale.currentLocale.toUpperCase();
       }, 100);
     },
   },
