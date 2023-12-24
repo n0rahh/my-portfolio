@@ -26,13 +26,15 @@
       :key="index"
     >
       <v-col
+        v-if="$vuetify.display.smAndUp"
         cols="4"
         class="d-flex align-center"
       >
         <span class="h4">{{ skill.name }}</span>
       </v-col>
       <v-col
-        cols="8"
+        cols="12"
+        sm="8"
         class="d-flex align-center"
       >
         <div class="progress-wrapper">
@@ -46,6 +48,13 @@
             {{ skill.percent }}
           </div>
         </div>
+      </v-col>
+      <v-col
+        v-if="$vuetify.display.xs"
+        cols="12"
+        class="mt-n6"
+      >
+        <span class="h4">{{ skill.name }}</span>
       </v-col>
     </v-row>
   </v-container>
@@ -83,12 +92,12 @@ export default {
       skills: [
         {
           name: 'Vue/Vuex',
-          percent: '50%',
+          percent: '70%',
           type: 'frontend',
         },
         {
           name: 'Vuetify',
-          percent: '80%',
+          percent: '90%',
           type: 'frontend',
         },
         {
@@ -98,7 +107,7 @@ export default {
         },
         {
           name: 'JavaScript',
-          percent: '40%',
+          percent: '50%',
           type: 'programming',
         },
         {
@@ -133,7 +142,7 @@ export default {
         },
         {
           name: 'Jira',
-          percent: '40%',
+          percent: '60%',
           type: 'other',
         },
         {
@@ -143,16 +152,16 @@ export default {
         },
         {
           name: 'Git/Github',
-          percent: '60%',
+          percent: '70%',
           type: 'other',
         },
         {
           name: 'Firebase',
-          percent: '50%',
+          percent: '60%',
           type: 'other',
         },
         {
-          name: 'SQL',
+          name: 'MySQL',
           percent: '60%',
           type: 'backend',
         },
@@ -168,7 +177,7 @@ export default {
         },
         {
           name: 'React/Redux',
-          percent: '30%',
+          percent: '20%',
           type: 'frontend',
         },
         {

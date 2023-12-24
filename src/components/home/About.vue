@@ -11,18 +11,17 @@
       <v-col
         class="d-flex flex-column justify-center"
         lg="6"
-        sm="7"
         cols="12"
         v-bind="aosAttribute('fade-right', 150, 300, 'ease-in-out', 'center')"
       >
-        <span class="h2 mb-8">{{ $t('HOME_PAGE.HOME_ABOUT.TITLE') }}</span>
-        <p>
+        <span class="h-unique-2 w-600 mb-8">{{ $t('HOME_PAGE.HOME_ABOUT.TITLE') }}</span>
+        <p class="description">
           {{ $t('HOME_PAGE.HOME_ABOUT.DESCRIPTION') }}
         </p>
       </v-col>
       <v-col
+        v-if="$vuetify.display.lgAndUp || $vuetify.display.xs"
         lg="6"
-        sm="5"
         cols="12"
         class="d-flex justify-center"
         v-bind="aosAttribute(fadeOption, 150, 600, 'ease-in-out', 'center')"
@@ -68,5 +67,9 @@ export default {
     filter: contrast(160%) blur(2px);
     transform: scale(0.9);
   }
+}
+
+.description {
+  white-space: pre-line;
 }
 </style>
