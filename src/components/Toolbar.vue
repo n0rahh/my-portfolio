@@ -118,7 +118,7 @@ export default {
       }
     },
     openCV() {
-      window.open('Vlad_Herasymovych_CV.pdf', '_blank');
+      window.open('Vlad Herasymovych CV.pdf', '_blank');
     },
   },
 };
