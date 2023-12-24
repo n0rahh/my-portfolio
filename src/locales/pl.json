@@ -21,15 +21,15 @@
     },
     "HOME_ABOUT": {
       "TITLE": "Kilka słów o mnie",
-      "DESCRIPTION": "Cześć! Nazywam się Vlad i jestem fullstack web developerem. Zajmuję się programowaniem od 1.5 roku i uwielbiam ten zawód. Posiadam wiedzę w obszarze Vue, Vuetify, Nest, Express, Node i inne, ale zawsze jestem gotów nauczyć się nowych technologii. Pasjonuje mnie podróżowanie i odkrywanie nowych miejsc. Oprócz tego, w wolnym czasie chodzę na siłownię, bo lubię aktywność fizyczną. Tworzenie aplikacji internetowych to dla mnie nie tylko praca, ale również sposób na wyrażenie swojej kreatywności i pasji."
+      "DESCRIPTION": "Cześć, nazywam się Vlad! \n\n Jestem Fullstack Web Developerem, posługującym się Vue.js na frontendzie, Express.js oraz Nest.js/Knex na backendzie, rozwijającym także umiejętności w samodzielnej nauce frameworka React. Znajomość języków programowania JavaScript/TypeScript. \n\n Zaangażowany w rozwój platformy edukacyjnej oraz wewnętrznej platformy dla pracowników w firmie Tutore. Wdrożyłem nowy system onboardingowy dla nauczycieli, zoptymalizowałem ścieżkę rezerwacji indywidualnych zajęć poprzez CallCenter oraz zautomatyzowałem różne wewnętrzne procesy, odciążając dział IT od wielu międzydziałowych zadań. Miałem również prywatny komercyjny projekt, gdzie samodzielnie stworzyłem stronę internetową dla firmy oferującej wynajem apartamentów. Jestem zespołowym graczem, płynnie posługującym się językiem angielskim, polskim, ukraińskim i rosyjskim, co ułatwia efektywną komunikację. \n\n Posiadam tytuł inżyniera z programowania i nadal angażuję się w ciągłe uczenie się poprzez kursy online oraz śledzenie trendów w branży."
     },
     "HOME_PROJECTS": {
       "TITLE": "Projekty",
       "SUBTITLE": "Poniżej znajdziesz moje roboty wraz z krótkim opisem. Jeżeli chcesz zobaczyć więcej - to klikaj"
     },
     "HOME_SKILLS": {
-      "SKILLS_TITLE": "Umiejętności",
-      "WORK_TITLE": "Doświadczenie"
+      "SKILLS_TITLE": "Skill",
+      "WORK_TITLE": "Empiria"
     }
   },
   "HOME_CONTACT": {
@@ -43,7 +43,7 @@
       "MESSAGE": "Wiadomość",
       "FILE": "Dodaj plik pdf",
       "TERMS_CHECKBOX": "Wyrażam zgodę na",
-      "TERMS": "politykę strony"
+      "TERMS": "politykę"
     },
     "NOTIFY": {
       "SUCCESS": "Wiadomość została wysłana. Dziękuję!",

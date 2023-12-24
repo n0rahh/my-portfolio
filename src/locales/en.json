@@ -21,7 +21,7 @@
     },
     "HOME_ABOUT": {
       "TITLE": "A few words about me",
-      "DESCRIPTION": "Hi there! My name is Vlad and I work as a fullstack web developer. I have 1.5 years of experience in this field and I absolutely love it. I have knowledge in Vue, Vuetify, Nest, Express, and Node etc., and I'm always eager to learn new technologies. I also enjoy traveling and exploring new places. In my free time, I hit the gym because I love staying active. Building web applications is not just a job for me - it's a way to express my creativity and passion."
+      "DESCRIPTION": "Hi there, my name is Vlad! \n\n I'm a Fullstack Web Developer proficient in Vue.js on the frontend, Express.js and Nest.js/Knex on the backend, and expanding expertise in self-learning React framework. Skilled in JavaScript/TypeScript programming languages. \n\n Engaged in developing an educational platform and an internal employee platform for a Tutore company. Executed the implementation of a new onboarding system for teachers, streamlined the pathway for individual class bookings via the call center, and automated various internal processes, relieving IT departments from multiple cross-departmental tasks. I also had a private commercial project where I independently created a website for a company offering apartment rentals. Collaborative team player fluent in English, Polish, Ukrainian and Russian, facilitating effective communication. \n\n Holds a Bachelor's degree in Programming and remains committed to continuous learning through online courses and staying updated with industry trends."
     },
     "HOME_PROJECTS": {
       "TITLE": "Projects",
