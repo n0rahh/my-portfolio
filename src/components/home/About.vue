@@ -62,11 +62,6 @@ export default {
 
 .my-img {
   border-radius: 8px;
-  transition: all .5s;
-  &:hover {
-    filter: contrast(160%) blur(2px);
-    transform: scale(0.9);
-  }
 }
 
 .description {
