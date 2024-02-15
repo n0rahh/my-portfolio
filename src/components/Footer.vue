@@ -9,7 +9,7 @@
         cols="12"
         class="py-0 mt-6 d-flex justify-center"
       >
-        <span class="p3">© Copyright 2023. Designed &amp; Built by Vlad Herasymovych</span>
+        <span class="p3">© Copyright 2024. Designed &amp; Built by Vlad Herasymovych</span>
       </v-col>
     </v-row>
   </v-footer>
