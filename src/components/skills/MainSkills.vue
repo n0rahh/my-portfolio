@@ -92,7 +92,7 @@ export default {
       skills: [
         {
           name: 'Vue/Vuex',
-          percent: '70%',
+          percent: '80%',
           type: 'frontend',
         },
         {
@@ -102,32 +102,32 @@ export default {
         },
         {
           name: 'Node',
-          percent: '30%',
+          percent: '60%',
           type: 'programming',
         },
         {
           name: 'JavaScript',
-          percent: '50%',
+          percent: '70%',
           type: 'programming',
         },
         {
           name: 'TypeScript',
-          percent: '30%',
+          percent: '50%',
           type: 'programming',
         },
         {
           name: 'Express',
-          percent: '40%',
+          percent: '70%',
           type: 'backend',
         },
         {
           name: 'Nest/Knex',
-          percent: '25%',
+          percent: '50%',
           type: 'backend',
         },
         {
           name: 'REST API',
-          percent: '50%',
+          percent: '60%',
           type: 'backend',
         },
         {
@@ -157,32 +157,32 @@ export default {
         },
         {
           name: 'Firebase',
-          percent: '60%',
+          percent: '70%',
           type: 'other',
         },
         {
           name: 'MySQL',
-          percent: '60%',
+          percent: '70%',
           type: 'backend',
         },
         {
           name: 'HTML5',
-          percent: '60%',
+          percent: '80%',
           type: 'frontend',
         },
         {
           name: 'CSS3/Sass',
-          percent: '40%',
+          percent: '80%',
           type: 'frontend',
         },
         {
           name: 'React/Redux',
-          percent: '20%',
+          percent: '50%',
           type: 'frontend',
         },
         {
           name: 'Next',
-          percent: '20%',
+          percent: '50%',
           type: 'frontend',
         },
       ],
