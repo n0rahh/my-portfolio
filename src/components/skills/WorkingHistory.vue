@@ -84,6 +84,16 @@ export default {
     works() {
       return [
         {
+          company: 'Agora Tutoring',
+          position: 'Software Developer',
+          date: this.$t('WORKING_HISTORY.AGORA_TUTORING.DATE'),
+          description: [
+            this.$t('WORKING_HISTORY.AGORA_TUTORING.DESCRIPTION.1'),
+            this.$t('WORKING_HISTORY.AGORA_TUTORING.DESCRIPTION.2'),
+            
+          ],
+        },
+        {
           company: 'Tutore (2)',
           position: 'Fullstack Web Developer',
           date: this.$t('WORKING_HISTORY.TUTORE_IT.DATE'),

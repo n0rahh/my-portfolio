@@ -106,6 +106,13 @@
         "8": "Preparing the environment for manual tests",
         "9": "Help in creating e2e tests (Cypress)"
       }
+    },
+    "AGORA_TUTORING": {
+      "DATE": "June 2024 - Present",
+      "DESCRIPTION": {
+        "1": "Integrated social media signup methods into the existing signup process (React, GraphQL, MongoDB)",
+        "2": "Designed and implemented a payment portal system (Stripe)"
+      }
     }
   },
   "PROJECTS": {

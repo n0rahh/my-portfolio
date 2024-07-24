@@ -14,7 +14,9 @@
         cols="12"
         v-bind="aosAttribute('fade-right', 150, 300, 'ease-in-out', 'center')"
       >
-        <span class="h-unique-2 w-600 mb-8">{{ $t('HOME_PAGE.HOME_ABOUT.TITLE') }}</span>
+        <span class="h-unique-2 w-600 mb-8">{{
+          $t('HOME_PAGE.HOME_ABOUT.TITLE')
+        }}</span>
         <p class="description">
           {{ $t('HOME_PAGE.HOME_ABOUT.DESCRIPTION') }}
         </p>
@@ -42,7 +44,7 @@ import aosMixin from '@/helpers/animation';
 
 export default {
   name: 'About',
-  mixins: [aosMixin],  
+  mixins: [aosMixin],
   computed: {
     fadeOption() {
       return this.$vuetify.display.lgAndUp ? 'fade-left' : 'fade-down';

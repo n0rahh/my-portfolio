@@ -106,6 +106,13 @@
         "8": "Przygotowywanie środowiska do testów manualnych",
         "9": "Pomoc w tworzeniu testów e2e (Cypress)"
       }
+    },
+    "AGORA_TUTORING": {
+      "DATE": "Czerwiec 2024 - Nadal",
+      "DESCRIPTION": {
+        "1": "Zintegrowanie metody rejestracji za pomocą social media z istniejącym procesem rejestracji (React, GraphQL, MongoDB)",
+        "2": "Zaprojektowano i wdrożono system portalu płatniczego (Stripe)"
+      }
     }
   },
   "PROJECTS": {
