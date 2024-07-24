@@ -43,11 +43,11 @@ export default {
           icon: 'mdi-linkedin',
           link: 'https://www.linkedin.com/in/vlad-herasymovych/',
         },
-        {
-          text: 'Instagram',
-          icon: 'mdi-instagram',
-          link: 'https://instagram.com/weezy_f_baby82?igshid=NTc4MTIwNjQ2YQ==',
-        },
+        // {
+        //   text: 'Instagram',
+        //   icon: 'mdi-instagram',
+        //   link: 'https://instagram.com/weezy_f_baby82?igshid=NTc4MTIwNjQ2YQ==',
+        // },
       ],
     };
   },

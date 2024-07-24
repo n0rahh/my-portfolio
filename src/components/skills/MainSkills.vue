@@ -185,6 +185,21 @@ export default {
           percent: '50%',
           type: 'frontend',
         },
+        {
+          name: 'Tailwind',
+          percent: '50%',
+          type: 'frontend',
+        },
+        {
+          name: 'GraphQL',
+          percent: '30%',
+          type: 'backend',
+        },
+        {
+          name: 'MongoDB',
+          percent: '30%',
+          type: 'backend',
+        },
       ],
       sortedSkills: [],
     };
