@@ -1,6 +1,7 @@
-@import './fonts.scss';
-@import './typography.scss';
-@import './colors.scss';
+@use './fonts.scss' as *;
+@use './typography.scss' as *;
+@use './colors.scss' as *;
+@use './glass-card.scss' as *;
 
 #app {
   font-family: 'Roboto Mono', monospace;
