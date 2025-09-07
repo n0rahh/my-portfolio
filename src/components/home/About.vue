@@ -1,72 +1,59 @@
 <template>
-  <v-container
-    id="about"
-    class="container d-flex align-center"
-    :class="{
-      'height-80': $vuetify.display.lgAndUp,
-      'height-60': $vuetify.display.mdAndDown && !$vuetify.display.smAndDown,
-    }"
-  >
+  <SectionContainer id="about">
     <v-row>
       <v-col
         class="d-flex flex-column justify-center"
-        lg="6"
         cols="12"
-        v-bind="aosAttribute('fade-right', 150, 300, 'ease-in-out', 'center')"
       >
-        <span class="h-unique-2 w-600 mb-8">{{
-          $t('HOME_PAGE.HOME_ABOUT.TITLE')
-        }}</span>
-        <p class="description">
-          {{ $t('HOME_PAGE.HOME_ABOUT.DESCRIPTION') }}
-        </p>
-      </v-col>
-      <v-col
-        v-if="$vuetify.display.lgAndUp || $vuetify.display.xs"
-        lg="6"
-        cols="12"
-        class="d-flex justify-center"
-        v-bind="aosAttribute(fadeOption, 150, 600, 'ease-in-out', 'center')"
-      >
-        <v-img
-          :src="require('@/assets/imgs/me-myself.jpg')"
-          max-width="400"
-          alt="its me"
-          class="my-img"
-        />
+        <GlassCard
+          title="A few words about me"
+          type="main"
+        >
+          <GlassCard
+            type="content"
+            class="px-8"
+          >
+            <div class="d-flex flex-column">
+              <p class="p1">
+                Hi, I’m Vlad 👋
+                <br />
+                <br />
+                I’m a Fullstack Web Developer working mainly with Vue.js, React, and
+                Node.js/Nest.js. I enjoy solving problems and building products that actually help
+                people.
+                <br />
+                <br />
+                I’ve worked on an educational platform at Tutore, where I built onboarding flows,
+                booking systems, and automated processes for teachers and staff. I also created a
+                website for an apartment rental company, and developed an AI-powered quest bot for
+                kids.
+                <br />
+                <br />
+                I like exploring new tools (lately Python), and I believe in continuous learning. I
+                speak English, Polish, Ukrainian, and Russian, which makes teamwork and
+                communication much easier.
+              </p>
+            </div>
+          </GlassCard>
+          <GlassCard
+            v-if="$vuetify.display.lgAndUp"
+            type="content"
+            class="px-8"
+          >
+            <v-img
+              :src="skills"
+              alt="Skills"
+              width="300"
+            />
+          </GlassCard>
+        </GlassCard>
       </v-col>
     </v-row>
-  </v-container>
+  </SectionContainer>
 </template>
 
-<script>
-import aosMixin from '@/helpers/animation';
-
-export default {
-  name: 'About',
-  mixins: [aosMixin],
-  computed: {
-    fadeOption() {
-      return this.$vuetify.display.lgAndUp ? 'fade-left' : 'fade-down';
-    },
-  },
-};
+<script setup>
+  import SectionContainer from '@/components/UI/SectionContainer.vue';
+  import GlassCard from '@/components/UI/GlassCard.vue';
+  import skills from '@/assets/imgs/skills.png';
 </script>
-
-<style lang="scss" scoped>
-.height-80 {
-  height: 80vh;
-}
-
-.height-60 {
-  height: 60vh;
-}
-
-.my-img {
-  border-radius: 8px;
-}
-
-.description {
-  white-space: pre-line;
-}
-</style>
