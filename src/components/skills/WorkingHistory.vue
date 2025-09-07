@@ -3,61 +3,97 @@
     fluid
     class="pa-0 ma-0"
   >
-    <v-row
-      class="d-flex justify-space-between pa-0 ma-0"
-      :class="{
-        'flex-column': $vuetify.display.smAndDown,
-      }"
-    >
+    <v-row>
       <v-col
-        md="4"
-        cols="12"
-        v-bind="aosAttribute('fade-up', 200, 600, 'ease-in-out', 'center')"
+        md="1"
+        cols="1"
+        class="ml-n4 mr-4"
       >
-        <v-tabs
-          v-for="(work, index) in works"
-          :key="index"
-          v-model="tab"
-          :direction="$vuetify.display.mdAndDown ? 'horizontal' : 'vertical'"
-          :centered="$vuetify.display.mdAndDown"
-          :grow="$vuetify.display.mdAndDown"
-          color="primary"
-        >
-          <v-tab
-            color="rgb(41, 255, 201)"
-            :value="`option-${index}`"
-            class="mb-4"
+        <div class="vertical-tab-navigation">
+          <v-btn
+            icon
+            flat
+            class="nav-arrow"
+            @click="prevTab"
           >
-            {{ work.company }}
-          </v-tab>
-        </v-tabs>
+            <v-icon>mdi-chevron-up</v-icon>
+          </v-btn>
+
+          <div class="dot-navigation">
+            <div
+              v-for="(_, index) in works"
+              :key="index"
+              :class="['nav-dot', { active: tab === `option-${index}` }]"
+            />
+          </div>
+
+          <v-btn
+            icon
+            flat
+            class="nav-arrow"
+            @click="nextTab"
+          >
+            <v-icon>mdi-chevron-down</v-icon>
+          </v-btn>
+        </div>
       </v-col>
+
       <v-col
-        md="8"
+        md="11"
         cols="12"
-        class="pa-0 ma-0"
-        v-bind="aosAttribute(fadeOption, 200, 600, 'ease-in-out', 'center')"
       >
         <v-window
           v-model="tab"
           class="pa-0 ma-0"
+          direction="vertical"
         >
           <v-window-item
             v-for="(work, index) in works"
             :key="index"
             :value="`option-${index}`"
+            :class="[
+              'work-card',
+              {
+                'active-card': tab === `option-${works.indexOf(work)}`,
+              },
+            ]"
           >
             <div class="d-flex flex-column">
-              <span class="h3 w-600">{{ work.position }}</span>
-              <span class="p1 my-2 date">{{ work.date }}</span>
-  
-              <span
-                v-for="(item, i) in work.description"
-                :key="i"
-                class="p1 mb-3"
-              >
-                • {{ item }}
+              <span class="h4 w-600">{{ work.company }}</span>
+              <div class="p2 d-flex align-center justify-space-between">
+                <span class="c-secondary">{{ work.position }}</span>
+
+                <span class="c-secondary">{{ work.date }}</span>
+              </div>
+
+              <span class="p2 mt-4">
+                {{ work.description }}
               </span>
+              <v-expand-transition>
+                <div
+                  v-if="work.showBullets"
+                  class="mt-4 d-flex flex-column"
+                >
+                  <span
+                    v-for="(bullet, i) in work.bullets"
+                    :key="i"
+                    class="p2 mt-4 bullet-point"
+                  >
+                    {{ bullet }}
+                  </span>
+                </div>
+              </v-expand-transition>
+              <div class="d-flex justify-end">
+                <v-btn
+                  variant="text"
+                  color="#48eed6"
+                  size="small"
+                  class="details-button"
+                  @click="toggleDetails(work)"
+                >
+                  {{ work.showBullets ? 'Hide Details' : 'Show Details' }}
+                </v-btn>
+              </div>
             </div>
           </v-window-item>
         </v-window>
@@ -66,78 +102,221 @@
   </v-container>
 </template>
 
-<script>
-import aosMixin from '@/helpers/animation';
+<script setup>
+  import { ref } from 'vue';
 
-export default {
-  name: 'WorkingHistory',
-  mixins: [aosMixin],
-  data() {
-    return {
-      tab: 0,
-    };
-  },
-  computed: {
-    fadeOption() {
-      return this.$vuetify.display.lgAndUp ? 'fade-left' : 'fade-down';
+  const tab = ref('option-0');
+
+  const works = ref([
+    {
+      company: 'Tutore Poland',
+      position: 'Fullstack Developer',
+      date: 'Jan 2022 - Present',
+      description:
+        'At Tutore I focus on developing and expanding the company’s educational platform, building tools that improve both the learning experience for students and the workflow for teachers and staff. My role combines frontend and backend development, as well as creating innovative features powered by AI.',
+      bullets: [
+        'Implemented real-time notifications using Socket.io.',
+        'Developed and integrated an automated system for email and SMS dispatching.',
+        'Designed and built client-side websites with a focus on user-friendly interfaces, performance optimization, and SEO.',
+        'Created data management tools that boosted productivity for non-IT personnel.',
+        'Developed an AI-powered quest bot for kids, generating interactive learning challenges.',
+        'Continuously contribute to the growth and improvement of the educational platform, ensuring scalability and modern tech standards.',
+      ],
+      showBullets: false,
     },
-    works() {
-      return [
-        {
-          company: 'Agora Tutoring',
-          position: 'Software Developer',
-          date: this.$t('WORKING_HISTORY.AGORA_TUTORING.DATE'),
-          description: [
-            this.$t('WORKING_HISTORY.AGORA_TUTORING.DESCRIPTION.1'),
-            this.$t('WORKING_HISTORY.AGORA_TUTORING.DESCRIPTION.2'),
-            
-          ],
-        },
-        {
-          company: 'Tutore (2)',
-          position: 'Fullstack Web Developer',
-          date: this.$t('WORKING_HISTORY.TUTORE_IT.DATE'),
-          description: [
-            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.1'),
-            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.2'),
-            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.3'),
-            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.4'),
-            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.5'),
-            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.6'),
-            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.7'),
-            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.8'),
-            this.$t('WORKING_HISTORY.TUTORE_IT.DESCRIPTION.9'),
-          ],
-        },
-        {
-          company: 'Tutore (1)',
-          position: 'Technical Support Specialist',
-          date: this.$t('WORKING_HISTORY.TUTORE_HELPDESK.DATE'),
-          description: [
-            this.$t('WORKING_HISTORY.TUTORE_HELPDESK.DESCRIPTION.1'),
-            this.$t('WORKING_HISTORY.TUTORE_HELPDESK.DESCRIPTION.2'),
-          ],
-        },
-        {
-          company: 'Shumee',
-          position: 'Sales Manager',
-          date: this.$t('WORKING_HISTORY.SHUMEE.DATE'),
-          description: [
-            this.$t('WORKING_HISTORY.SHUMEE.DESCRIPTION.1'),
-            this.$t('WORKING_HISTORY.SHUMEE.DESCRIPTION.2'),
-            this.$t('WORKING_HISTORY.SHUMEE.DESCRIPTION.3'),
-          ],
-        },
-      ];
+    {
+      company: 'Agora Tutoring',
+      position: 'Software Engineer | PM',
+      date: 'Jun 2024 - Sep 2025',
+      description:
+        'At Agora Tutoring I contributed to the development and maintenance of the company’s educational platform, while also coordinating a small team of developers to ensure smooth project delivery. My role combined hands-on coding with project management and team guidance.',
+      bullets: [
+        'Supervised a team of developers, overseeing task assignments, code reviews, and aligning work with business goals.',
+        'Migrated the backend from Apollo 2 → Apollo 4, ensuring long-term stability and compatibility with modern packages.',
+        'Set up CI/CD pipelines with GitHub Actions, created test environments, and wrote Jest tests to guarantee reliable deployments.',
+        'Designed and implemented a payment portal, making transactions faster and more user-friendly.',
+        'Refactored and improved authentication, integrating Firebase Authentication for a smoother login experience.',
+      ],
+      showBullets: false,
     },
-  },
-};
+    {
+      company: 'Tutore Poland',
+      position: 'Technical Support',
+      date: 'Oct 2021 - Dec 2021',
+      description:
+        'I provided technical support to students and teachers, helping them successfully use the company’s educational platform. My role required strong communication skills, quick problem-solving, and ensuring a smooth digital experience for end users.',
+      bullets: [
+        'Assisted users with issues related to application installation, login, and class participation.',
+        'Provided step-by-step guidance to resolve technical problems in real time via phone and online support.',
+        'Helped onboard new users, introducing them to the platform’s features and services.',
+        'Promoted company services by building trustful relationships with customers.',
+      ],
+      showBullets: false,
+    },
+    {
+      company: 'Shumee',
+      position: 'Sales Manager',
+      date: 'Mar 2021 - Sep 2021',
+      description:
+        'Although this role was not directly related to IT, it helped me build valuable skills that I now use as a developer. I worked on analyzing international markets and ensuring product quality, which required attention to detail, problem-solving, and clear communication with business partners.',
+      bullets: [
+        'Conducted market research and business analysis for international sales.',
+        'Managed product listings, ensuring technical accuracy and compliance with company standards.',
+        'Set up price lists and margins, balancing competitiveness with profitability.',
+        'Developed client-facing and communication skills that now support me in collaborating with stakeholders in IT projects.',
+      ],
+      showBullets: false,
+    },
+  ]);
+
+  const prevTab = () => {
+    const currentIndex = works.value.findIndex((_, index) => `option-${index}` === tab.value);
+
+    if (currentIndex > 0) {
+      tab.value = `option-${currentIndex - 1}`;
+    } else {
+      tab.value = `option-${works.value.length - 1}`;
+    }
+  };
+
+  const nextTab = () => {
+    const currentIndex = works.value.findIndex((_, index) => `option-${index}` === tab.value);
+
+    if (currentIndex < works.value.length - 1) {
+      tab.value = `option-${currentIndex + 1}`;
+    } else {
+      tab.value = 'option-0';
+    }
+  };
+
+  const toggleDetails = (work) => {
+    work.showBullets = !work.showBullets;
+    works.value.forEach((w) => {
+      if (w !== work) w.showBullets = false;
+    });
+  };
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/colors.scss';
+  @use '@/styles/colors.scss' as *;
 
-.date {
-  color: $light-grey;
-}
+  .c-secondary {
+    color: $text-inactive;
+  }
+
+  .vertical-tab-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: fit-content;
+
+    .dot-navigation {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 10px 0;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+
+      &::before {
+        content: '';
+        flex-grow: 1;
+        border-left: 1px solid $cyan;
+        width: 1px;
+      }
+
+      &::after {
+        content: '';
+        flex-grow: 1;
+        border-left: 1px solid $cyan;
+        width: 1px;
+      }
+    }
+
+    .nav-arrow {
+      background: $white-05;
+      backdrop-filter: blur(5px);
+      border: 1px solid $cyan;
+      border-radius: 50%;
+      margin: 10px 0;
+      width: 44px;
+      height: 44px;
+
+      .v-icon {
+        color: $white-7;
+        font-size: 24px;
+      }
+
+      &:hover {
+        background: $white-15;
+        .v-icon {
+          color: $white;
+        }
+      }
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $white-3;
+      transition: background-color 0.3s ease;
+
+      &.active {
+        background-color: $cyan;
+        box-shadow: 0 0 8px $white-5;
+      }
+    }
+  }
+
+  .work-card {
+    position: relative;
+    width: 100%;
+    padding: 30px 0 30px 30px;
+    border-radius: 20px;
+
+    &.active-card {
+      border: none;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 2px;
+        background: linear-gradient(90deg, $cyan, $cyan-5, transparent);
+        mask:
+          linear-gradient($white 0 0) content-box,
+          linear-gradient($white 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+    }
+
+    .bullet-point {
+      position: relative;
+      padding-left: 20px;
+
+      &::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 24px;
+        line-height: 1;
+      }
+    }
+
+    .details-button {
+      text-decoration: underline;
+      text-transform: none;
+      font-size: 16px;
+      width: fit-content;
+      padding: 0;
+    }
+  }
 </style>

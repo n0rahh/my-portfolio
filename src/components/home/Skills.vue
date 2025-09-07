@@ -1,75 +1,43 @@
 <template>
-  <v-container
-    id="skills"
-    class="container py-16"
-  >
-    <v-row>
-      <v-col
-        lg="5"
-        cols="12"
-        class="d-flex flex-column align-start"
-      >
-        <span
-          v-bind="aosAttribute('fade-down', 200, 300, 'ease-in-out', 'center')"
-          class="my-8"
-          :class="title"
-        >{{ $t('HOME_PAGE.HOME_SKILLS.SKILLS_TITLE') }}</span>
-
-        <main-skills />
-      </v-col>
-      <v-col
-        v-if="$vuetify.display.lgAndUp"
-        cols="2"
-        class="d-flex justify-center"
-        v-bind="aosAttribute('flip-left', 300, 1000, 'ease-in-out', 'center')"
-      >
-        <span
-          class="my-8"
-          :class="title"
-        >&amp;</span>
-      </v-col>
-
-      <v-col
-        lg="5"
-        cols="12"
-        class="d-flex flex-column"
-        :class="{
-          'align-end': $vuetify.display.lgAndUp,
-          'mt-6': $vuetify.display.mdAndDown,
-        }"
-      >
-        <span
-          v-bind="aosAttribute('fade-down', 200, 300, 'ease-in-out', 'center')"
-          class="my-8"
-          :class="title"
-        >{{ $t('HOME_PAGE.HOME_SKILLS.WORK_TITLE') }}</span>
-
-        <working-history />
-      </v-col>
-    </v-row>
-  </v-container>
+  <SectionContainer id="skills">
+    <GlassCard
+      type="main"
+      title="Skills & Work"
+    >
+      <v-row>
+        <v-col
+          cols="6"
+          class="d-flex"
+        >
+          <GlassCard
+            type="content"
+            class="d-flex flex-column"
+          >
+            <div>
+              <span class="h2">Skills</span>
+              <main-skills class="mt-6" />
+            </div>
+          </GlassCard>
+        </v-col>
+        <v-col cols="6">
+          <GlassCard
+            type="content"
+            class="d-flex flex-column"
+          >
+            <div>
+              <span class="h2">Work Experience</span>
+              <working-history class="mt-6" />
+            </div>
+          </GlassCard>
+        </v-col>
+      </v-row>
+    </GlassCard>
+  </SectionContainer>
 </template>
 
-<script>
-import MainSkills from '@/components/skills/MainSkills.vue';
-import WorkingHistory from '@/components/skills/WorkingHistory.vue';
-import aosMixin from '@/helpers/animation';
-import GetLocale from '@/locales/helpers/get-locale';
-
-export default {
-  name: 'Skills',
-  components: {
-    MainSkills,
-    WorkingHistory,
-  },
-  mixins: [aosMixin],
-  computed: {
-    locale() {
-      return GetLocale.currentLocale;
-    },
-    title() {
-      return this.locale === 'pl' || this.$vuetify.display.mdAndDown ? 'h-unique' : 'h0';
-    },
-  },
-};
+<script setup>
+  import SectionContainer from '@/components/UI/SectionContainer.vue';
+  import GlassCard from '@/components/UI/GlassCard.vue';
+  import MainSkills from '@/components/skills/MainSkills.vue';
+  import WorkingHistory from '@/components/skills/WorkingHistory.vue';
 </script>
