@@ -1,6 +1,6 @@
 <template>
   <v-container
-    class="container py-16"
+    class="container pt-16 mt-8"
     :class="{
       'px-6': $vuetify.display.mdAndDown && !$vuetify.display.xs,
       'px-4': $vuetify.display.xs,
@@ -8,28 +8,32 @@
   >
     <v-row>
       <v-col cols="12">
-        <span class="h2">Privacy policy</span>
-        <br /><br />
-        <span class="p2 mt-16">
-          This privacy policy outlines the types of personal information that is received and
-          collected by this website and how it is used.
-        </span>
-        <div class="p2 mt-8">
-          <p
-            v-for="(pkt, index) in policyPkts"
-            :key="index"
-          >
-            <span>{{ pkt.title }}</span>
-            <br />
-            <span class="formatted-text">{{ pkt.description }}</span>
-          </p>
-        </div>
+        <GlassCard title="Privacy policy">
+          <div class="d-flex flex-column">
+            <span class="p2 mt-8">
+              This privacy policy outlines the types of personal information that is received and
+              collected by this website and how it is used.
+            </span>
+            <div class="p2 mt-8">
+              <p
+                v-for="(pkt, index) in policyPkts"
+                :key="index"
+              >
+                <span>{{ pkt.title }}</span>
+                <br />
+                <span class="formatted-text">{{ pkt.description }}</span>
+              </p>
+            </div>
+          </div>
+        </GlassCard>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script setup>
+  import GlassCard from '@/components/UI/GlassCard.vue';
+
   const policyPkts = [
     {
       title: '1. Data Collection',
