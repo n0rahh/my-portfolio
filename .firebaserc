@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "my-portfolio-6167f"
+    "default": "my-portfolio-6167f",
+    "staging": "vladeq-staging"
   }
 }
