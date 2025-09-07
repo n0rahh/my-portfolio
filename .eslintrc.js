@@ -1,38 +1,33 @@
-module.exports = {
+export default {
   root: true,
-  extends: [
-    'eslint:recommended',
-    'plugin:vue/recommended',
-  ],
   env: {
     browser: true,
     es2021: true,
     node: true,
   },
+  extends: [
+    "eslint:recommended",
+    "plugin:vue/vue3-recommended",
+    "plugin:prettier/recommended",
+    "prettier",
+  ],
   parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
-  plugins: ['prettier'],
   rules: {
-    quotes: ['error', 'single'],
-    semi: ['error', 'always'],
-    indent: ['error', 2],
-    'comma-dangle': ['error', 'always-multiline'],
-    'no-multi-spaces': ['error'],
-    'vue/multi-word-component-names': 0,
-    'vue/no-restricted-component-options': [
-      'error',
+    "vue/multi-word-component-names": "off",
+    "vue/require-default-prop": "off",
+    "vue/first-attribute-linebreak": ["error", { singleline: "beside", multiline: "below" }],
+    "vue/max-attributes-per-line": [
+      "error",
       {
-        name: 'component',
-        message: 'Use "components" instead.',
+        singleline: 1,
+        multiline: { max: 1 },
       },
     ],
-    'vue/html-indent': ['error', 2, {
-      'attribute': 1,
-      'closeBracket': 0,
-      'alignAttributesVertically': true,
-      'ignores': [],
-    }],
+    "prettier/prettier": "error",
+    "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
   },
 };
