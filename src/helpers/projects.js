@@ -1,6 +1,3 @@
-import { ref } from 'vue';
-import i18n from '@/i18n';
-
 const Projects = {
   projects: {
     1: {
@@ -23,32 +20,38 @@ const Projects = {
           name: 'Sass',
         },
       ],
-      longDescription: ref(i18n.global.t('PROJECTS.K20_APARTMENTS.DESCRIPTION')),
+      // longDescription: ref(i18n.global.t("PROJECTS.K20_APARTMENTS.DESCRIPTION")),
       longDescriptionValue: 'K20_APARTMENTS',
+      projectType: 'Freelance Project',
       sourceCodeUrl: '',
-      usedTechnologies: [
-        {
-          name: 'Vue',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
-          value: 'VUE',
-        },
-        {
-          name: 'Vuetify',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY'),
-          value: 'VUETIFY',
-        },
-        {
-          name: 'Firebase',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE'),
-          value: 'FIREBASE',
-        },
-        {
-          name: 'Sanity',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.SANITY'),
-          value: 'SANITY',
-        },
+      // usedTechnologies: [
+      //   {
+      //     name: "Vue",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE"),
+      //     value: "VUE",
+      //   },
+      //   {
+      //     name: "Vuetify",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY"),
+      //     value: "VUETIFY",
+      //   },
+      //   {
+      //     name: "Firebase",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE"),
+      //     value: "FIREBASE",
+      //   },
+      //   {
+      //     name: "Sanity",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.SANITY"),
+      //     value: "SANITY",
+      //   },
+      // ],
+      images: [
+        'k20apartamenty-home.jpg',
+        'k20apartamenty-gallery.jpg',
+        'k20apartamenty-contact.jpg',
       ],
-      images: ['k20apartamenty-home.jpg','k20apartamenty-gallery.jpg', 'k20apartamenty-contact.jpg'],
+      tileUrl: 'orange.png',
     },
     2: {
       title: 'Tutore',
@@ -70,52 +73,54 @@ const Projects = {
           name: 'NestJS',
         },
       ],
-      longDescription: i18n.global.t('PROJECTS.TUTORE.DESCRIPTION'),
+      // longDescription: i18n.global.t("PROJECTS.TUTORE.DESCRIPTION"),
       longDescriptionValue: 'TUTORE',
+      projectType: 'Educational Platform',
       sourceCodeUrl: '',
-      usedTechnologies: [
-        {
-          name: 'Vue',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
-          value: 'VUE',
-        },
-        {
-          name: 'Vuetify',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY'),
-          value: 'VUETIFY',
-        },
-        {
-          name: 'Firebase',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE_AUTH'),
-          value: 'FIREBASE_AUTH',
-        },
-        {
-          name: 'NuxtJS',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.NUXT'),
-          value: 'NUXT',
-        },
-        {
-          name: 'NestJS',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.NEST'),
-          value: 'NEST',
-        },
-        {
-          name: 'Knex',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.KNEX'),
-          value: 'KNEX',
-        },
-        {
-          name: 'TypeScript',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.TYPESCRIPT'),
-          value: 'TYPESCRIPT',
-        },
-        {
-          name: 'Strapi',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.STRAPI'),
-          value: 'STRAPI',
-        },
-      ],
+      // usedTechnologies: [
+      //   {
+      //     name: "Vue",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE"),
+      //     value: "VUE",
+      //   },
+      //   {
+      //     name: "Vuetify",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY"),
+      //     value: "VUETIFY",
+      //   },
+      //   {
+      //     name: "Firebase",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE_AUTH"),
+      //     value: "FIREBASE_AUTH",
+      //   },
+      //   {
+      //     name: "NuxtJS",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.NUXT"),
+      //     value: "NUXT",
+      //   },
+      //   {
+      //     name: "NestJS",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.NEST"),
+      //     value: "NEST",
+      //   },
+      //   {
+      //     name: "Knex",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.KNEX"),
+      //     value: "KNEX",
+      //   },
+      //   {
+      //     name: "TypeScript",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.TYPESCRIPT"),
+      //     value: "TYPESCRIPT",
+      //   },
+      //   {
+      //     name: "Strapi",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.STRAPI"),
+      //     value: "STRAPI",
+      //   },
+      // ],
       images: ['tutore-map.jpg', 'tutore-form.jpg', 'tutore-dashboard.jpg', 'tutore-quizz.jpg'],
+      tileUrl: 'blue.png',
     },
     3: {
       title: 'Tutore Partners',
@@ -137,27 +142,29 @@ const Projects = {
           name: 'CSS',
         },
       ],
-      longDescription: i18n.global.t('PROJECTS.TUTORE_PARTNERS.DESCRIPTION'),
+      // longDescription: i18n.global.t("PROJECTS.TUTORE_PARTNERS.DESCRIPTION"),
       longDescriptionValue: 'TUTORE_PARTNERS',
+      projectType: 'Landing Page',
       sourceCodeUrl: '',
-      usedTechnologies: [
-        {
-          name: 'Vue',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
-          value: 'VUE',
-        },
-        {
-          name: 'Vuetify',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY'),
-          value: 'VUETIFY',
-        },
-        {
-          name: 'Firebase',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE'),
-          value: 'FIREBASE',
-        },
-      ],
+      // usedTechnologies: [
+      //   {
+      //     name: "Vue",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE"),
+      //     value: "VUE",
+      //   },
+      //   {
+      //     name: "Vuetify",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY"),
+      //     value: "VUETIFY",
+      //   },
+      //   {
+      //     name: "Firebase",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE"),
+      //     value: "FIREBASE",
+      //   },
+      // ],
       images: ['tutore-partners-home.jpg'],
+      tileUrl: 'aquamarine.png',
     },
     4: {
       title: 'CRM',
@@ -179,37 +186,46 @@ const Projects = {
           name: 'Firebase',
         },
       ],
-      longDescription: i18n.global.t('PROJECTS.CRM_TUTORE.DESCRIPTION'),
+      // longDescription: i18n.global.t("PROJECTS.CRM_TUTORE.DESCRIPTION"),
       longDescriptionValue: 'CRM_TUTORE',
+      projectType: 'CRM System',
       sourceCodeUrl: '',
-      usedTechnologies: [
-        {
-          name: 'Vue',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
-          value: 'VUE',
-        },
-        {
-          name: 'Vuetify',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY'),
-          value: 'VUETIFY',
-        },
-        {
-          name: 'Firebase',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE'),
-          value: 'FIREBASE',
-        },
-        {
-          name: 'Express',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.EXPRESS'),
-          value: 'EXPRESS',
-        },
-        {
-          name: 'MySQL',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.MYSQL'),
-          value: 'MYSQL',
-        },
+      // usedTechnologies: [
+      //   {
+      //     name: "Vue",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE"),
+      //     value: "VUE",
+      //   },
+      //   {
+      //     name: "Vuetify",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY"),
+      //     value: "VUETIFY",
+      //   },
+      //   {
+      //     name: "Firebase",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE"),
+      //     value: "FIREBASE",
+      //   },
+      //   {
+      //     name: "Express",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.EXPRESS"),
+      //     value: "EXPRESS",
+      //   },
+      //   {
+      //     name: "MySQL",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.MYSQL"),
+      //     value: "MYSQL",
+      //   },
+      // ],
+      images: [
+        'crm-calendar.jpg',
+        'crm-enroll.jpg',
+        'crm-onboarding.jpg',
+        'crm-business-card.jpg',
+        'crm-criteria.jpg',
+        'crm-sms.jpg',
       ],
-      images: ['crm-calendar.jpg', 'crm-enroll.jpg', 'crm-onboarding.jpg', 'crm-business-card.jpg', 'crm-criteria.jpg', 'crm-sms.jpg'],
+      tileUrl: 'purple.png',
     },
     5: {
       title: 'Books shop',
@@ -231,32 +247,34 @@ const Projects = {
           name: 'JavaScript',
         },
       ],
-      longDescription: i18n.global.t('PROJECTS.BOOKS_SHOP.DESCRIPTION'),
+      // longDescription: i18n.global.t("PROJECTS.BOOKS_SHOP.DESCRIPTION"),
       longDescriptionValue: 'BOOKS_SHOP',
+      projectType: 'Personal Project',
       sourceCodeUrl: 'https://github.com/n0rahh/books_project.git',
-      usedTechnologies: [
-        {
-          name: 'Vue',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
-          value: 'VUE',
-        },
-        {
-          name: 'Vuex',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUEX'),
-          value: 'VUEX',
-        },
-        {
-          name: 'CSS',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.CSS'),
-          value: 'CSS',
-        },
-        {
-          name: 'JavaScript',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.JAVASCRIPT'),
-          value: 'JAVASCRIPT',
-        },
-      ],
+      // usedTechnologies: [
+      //   {
+      //     name: "Vue",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE"),
+      //     value: "VUE",
+      //   },
+      //   {
+      //     name: "Vuex",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUEX"),
+      //     value: "VUEX",
+      //   },
+      //   {
+      //     name: "CSS",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.CSS"),
+      //     value: "CSS",
+      //   },
+      //   {
+      //     name: "JavaScript",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.JAVASCRIPT"),
+      //     value: "JAVASCRIPT",
+      //   },
+      // ],
       images: ['books-home.jpg', 'books-cart.jpg', 'books-summary.jpg'],
+      tileUrl: 'pink.png',
     },
     6: {
       title: 'My portfolio',
@@ -278,44 +296,46 @@ const Projects = {
           name: 'Firebase',
         },
       ],
-      longDescription: i18n.global.t('PROJECTS.MY_PORTFOLIO.DESCRIPTION'),
+      // longDescription: i18n.global.t("PROJECTS.MY_PORTFOLIO.DESCRIPTION"),
       longDescriptionValue: 'MY_PORTFOLIO',
       sourceCodeUrl: 'https://github.com/n0rahh/my-portfolio.git',
-      usedTechnologies: [
-        {
-          name: 'Vue',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE'),
-          value: 'VUE',
-        },
-        {
-          name: 'Vuetify',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY'),
-          value: 'VUETIFY',
-        },
-        {
-          name: 'i18n',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.I18N'),
-          value: 'I18N',
-        },
-        {
-          name: 'Firebase',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE_2'),
-          value: 'FIREBASE_2',
-        },
-        {
-          name: 'AOS',
-          description: i18n.global.t('PROJECTS.TECHNOLOGIES_DESCRIPTION.AOS'),
-          value: 'AOS',
-        },
-      ],
+      projectType: 'Personal Project',
+      // usedTechnologies: [
+      //   {
+      //     name: "Vue",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUE"),
+      //     value: "VUE",
+      //   },
+      //   {
+      //     name: "Vuetify",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.VUETIFY"),
+      //     value: "VUETIFY",
+      //   },
+      //   {
+      //     name: "i18n",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.I18N"),
+      //     value: "I18N",
+      //   },
+      //   {
+      //     name: "Firebase",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.FIREBASE_2"),
+      //     value: "FIREBASE_2",
+      //   },
+      //   {
+      //     name: "AOS",
+      //     description: i18n.global.t("PROJECTS.TECHNOLOGIES_DESCRIPTION.AOS"),
+      //     value: "AOS",
+      //   },
+      // ],
       images: ['portfolio.jpg'],
+      tileUrl: 'yellow.png',
     },
   },
 
   get allProjects() {
     return this.projects;
   },
-  
+
   getProject(id) {
     return this.projects[id];
   },
