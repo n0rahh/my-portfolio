@@ -1,20 +1,23 @@
 import axios from 'axios';
 
-let baseURL = 'http://localhost:5000/my-portfolio-6167f/us-central1';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
-if (!['localhost'].includes(window.location.hostname)) {
-  baseURL = 'https://us-central1-my-portfolio-6167f.cloudfunctions.net';
-}
-
-const httpPlugin = {
-  install(Vue) {
-    const instance = axios.create({
-      baseURL,
-      timeout: 10000,
-    });
-
-    Vue.config.globalProperties.$http = instance;
+const apiClient = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
   },
-};
+  timeout: 5000,
+});
 
-export default httpPlugin;
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      console.error('Unauthorized access. Redirecting...');
+    }
+    return Promise.reject(error);
+  }
+);
+
+export const http = apiClient;
