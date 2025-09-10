@@ -83,13 +83,17 @@
       value: 'programming',
     },
     {
+      title: 'Mobile',
+      value: 'mobile',
+    },
+    {
       title: 'Other',
       value: 'other',
     },
   ]);
   const skills = ref([
     {
-      name: 'Vue/Vuex',
+      name: 'Vue',
       percent: '80%',
       type: 'frontend',
     },
