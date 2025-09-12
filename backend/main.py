@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from starlette.status import HTTP_500_INTERNAL_SERVER_ERROR
 from fastapi.middleware.cors import CORSMiddleware
 
-from models import ProjectsList, Skills, ContactForm
+from models import ProjectsList, Skills, Experiences
 from pymongo import MongoClient, ASCENDING
 
 from dotenv import load_dotenv
@@ -65,4 +65,20 @@ async def get_projects():
         raise HTTPException(
             status_code=HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An error occurred while fetching projects. Please try again later."
+        )
+
+
+@app.get("/experiences/all")
+async def get_experiences():
+    try:
+        experiences_cursor = db.experiences.find({"active": True})
+
+        experiences = [Experiences(**exp).model_dump(mode='json') for exp in experiences_cursor]
+
+        return {"experiences": experiences}
+    except Exception as e:
+        print(f"Error fetching experiences: {e}")
+        raise HTTPException(
+            status_code=HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred while fetching experiences. Please try again later."
         )

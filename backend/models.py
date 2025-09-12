@@ -79,3 +79,12 @@ class Projects(MongoBaseModel):
     active: bool = True
     category: str
     tileUrl: str
+
+class Experiences(MongoBaseModel):
+    company: str
+    position: str
+    dateRange: str
+    description: str
+    achievements: List[str]
+    active: bool = True
+    order: int
