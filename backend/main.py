@@ -1,0 +1,51 @@
+from fastapi import FastAPI, HTTPException
+from starlette.status import HTTP_500_INTERNAL_SERVER_ERROR
+from fastapi.middleware.cors import CORSMiddleware
+
+from models import Skills, ContactForm
+from pymongo import MongoClient
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+app = FastAPI()
+
+origins = os.getenv('CORS_ALLOW_ORIGINS', 'http://localhost:3000').split(',')
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
+)
+
+MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017')
+print(f"Connecting to MongoDB at {MONGO_URI}")
+client = MongoClient(MONGO_URI)
+db = client.portfolio
+
+
+@app.get("/skills/all")
+async def get_skills():
+    try:
+        active_categories_cursor = db.skill_categories.find({"active": True}, {"name": 1, "_id": 0})
+        active_categories_names = [cat['name'] for cat in active_categories_cursor]
+
+        if not active_categories_names:
+            return {"skills": [], "skillCategories": []}
+
+        skills_cursor = db.skills.find({"type": {"$in": active_categories_names}})
+        skills = [Skills(**skill).model_dump(mode='json') for skill in skills_cursor]
+
+        return {"skills": skills, "skillCategories": active_categories_names}
+
+    except Exception as e:
+        print(f"Error fetching skills: {e}")
+        raise HTTPException(
+            status_code=HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred while fetching skills. Please try again later."
+        )
+    
