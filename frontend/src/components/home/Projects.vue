@@ -24,14 +24,16 @@
                 :src="getTileUrl(project.tileUrl)"
                 height="120"
                 width="120"
+                max-width="120"
+                max-height="120"
               />
               <div class="d-flex flex-column justify-space-between">
                 <span class="ml-6 mt-6 p2">
-                  {{ project.projectType }}
+                  {{ project.category }}
                 </span>
                 <div class="d-flex justify-space-between mb-6s">
                   <div
-                    v-for="(description, index) in project.shortDescription"
+                    v-for="(description, index) in project.technologies"
                     :key="index"
                     class="mb-0 d-flex align-center ml-6"
                   >
@@ -54,17 +56,16 @@
 <script setup>
   import { onMounted, ref } from 'vue';
   import { useRouter } from 'vue-router';
+  import { http } from '@/plugins/http';
 
   import GlassCard from '@/components/UI/GlassCard.vue';
   import SectionContainer from '@/components/UI/SectionContainer.vue';
 
-  import Projects from '@/helpers/projects';
-
   const projectsList = ref([]);
   const router = useRouter();
 
-  onMounted(() => {
-    projectsList.value = Projects.allProjects;
+  onMounted(async () => {
+    await fetchProjects();
   });
 
   const openProject = (index) => {
@@ -77,6 +78,16 @@
 
   const getIconUrl = (iconName) => {
     return new URL(`/src/assets/icons/technologies/${iconName}`, import.meta.url).href;
+  };
+
+  const fetchProjects = async () => {
+    try {
+      const { data } = await http.get('/projects/all');
+
+      projectsList.value = data.projects;
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    }
   };
 </script>
 
