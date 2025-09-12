@@ -49,7 +49,7 @@
         >
           <v-window-item
             v-for="(work, index) in works"
-            :key="index"
+            :key="work.id"
             :value="`option-${index}`"
             :class="[
               'work-card',
@@ -63,7 +63,7 @@
               <div class="p2 d-flex align-center justify-space-between">
                 <span class="c-secondary">{{ work.position }}</span>
 
-                <span class="c-secondary">{{ work.date }}</span>
+                <span class="c-secondary">{{ work.dateRange }}</span>
               </div>
 
               <span class="p2 mt-4">
@@ -71,15 +71,15 @@
               </span>
               <v-expand-transition>
                 <div
-                  v-if="work.showBullets"
+                  v-if="work.showAchievements"
                   class="mt-4 d-flex flex-column"
                 >
                   <span
-                    v-for="(bullet, i) in work.bullets"
+                    v-for="(achievement, i) in work.achievements"
                     :key="i"
-                    class="p2 mt-4 bullet-point"
+                    class="p2 mt-4 achievement-point"
                   >
-                    {{ bullet }}
+                    {{ achievement }}
                   </span>
                 </div>
               </v-expand-transition>
@@ -91,7 +91,7 @@
                   class="details-button"
                   @click="toggleDetails(work)"
                 >
-                  {{ work.showBullets ? 'Hide Details' : 'Show Details' }}
+                  {{ work.showAchievements ? 'Hide Details' : 'Show Details' }}
                 </v-btn>
               </div>
             </div>
@@ -103,71 +103,27 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { onMounted, ref } from 'vue';
+  import { http } from '@/plugins/http';
 
   const tab = ref('option-0');
 
-  const works = ref([
-    {
-      company: 'Tutore Poland',
-      position: 'Fullstack Developer',
-      date: 'Jan 2022 - Present',
-      description:
-        'At Tutore I focus on developing and expanding the company’s educational platform, building tools that improve both the learning experience for students and the workflow for teachers and staff. My role combines frontend and backend development, as well as creating innovative features powered by AI.',
-      bullets: [
-        'Implemented real-time notifications using Socket.io.',
-        'Developed and integrated an automated system for email and SMS dispatching.',
-        'Designed and built client-side websites with a focus on user-friendly interfaces, performance optimization, and SEO.',
-        'Created data management tools that boosted productivity for non-IT personnel.',
-        'Developed an AI-powered quest bot for kids, generating interactive learning challenges.',
-        'Continuously contribute to the growth and improvement of the educational platform, ensuring scalability and modern tech standards.',
-      ],
-      showBullets: false,
-    },
-    {
-      company: 'Agora Tutoring',
-      position: 'Software Engineer | PM',
-      date: 'Jun 2024 - Sep 2025',
-      description:
-        'At Agora Tutoring I contributed to the development and maintenance of the company’s educational platform, while also coordinating a small team of developers to ensure smooth project delivery. My role combined hands-on coding with project management and team guidance.',
-      bullets: [
-        'Supervised a team of developers, overseeing task assignments, code reviews, and aligning work with business goals.',
-        'Migrated the backend from Apollo 2 → Apollo 4, ensuring long-term stability and compatibility with modern packages.',
-        'Set up CI/CD pipelines with GitHub Actions, created test environments, and wrote Jest tests to guarantee reliable deployments.',
-        'Designed and implemented a payment portal, making transactions faster and more user-friendly.',
-        'Refactored and improved authentication, integrating Firebase Authentication for a smoother login experience.',
-      ],
-      showBullets: false,
-    },
-    {
-      company: 'Tutore Poland',
-      position: 'Technical Support',
-      date: 'Oct 2021 - Dec 2021',
-      description:
-        'I provided technical support to students and teachers, helping them successfully use the company’s educational platform. My role required strong communication skills, quick problem-solving, and ensuring a smooth digital experience for end users.',
-      bullets: [
-        'Assisted users with issues related to application installation, login, and class participation.',
-        'Provided step-by-step guidance to resolve technical problems in real time via phone and online support.',
-        'Helped onboard new users, introducing them to the platform’s features and services.',
-        'Promoted company services by building trustful relationships with customers.',
-      ],
-      showBullets: false,
-    },
-    {
-      company: 'Shumee',
-      position: 'Sales Manager',
-      date: 'Mar 2021 - Sep 2021',
-      description:
-        'Although this role was not directly related to IT, it helped me build valuable skills that I now use as a developer. I worked on analyzing international markets and ensuring product quality, which required attention to detail, problem-solving, and clear communication with business partners.',
-      bullets: [
-        'Conducted market research and business analysis for international sales.',
-        'Managed product listings, ensuring technical accuracy and compliance with company standards.',
-        'Set up price lists and margins, balancing competitiveness with profitability.',
-        'Developed client-facing and communication skills that now support me in collaborating with stakeholders in IT projects.',
-      ],
-      showBullets: false,
-    },
-  ]);
+  const works = ref([]);
+
+  onMounted(async () => {
+    await fetchExperiences();
+  });
+
+  const fetchExperiences = async () => {
+    try {
+      const { data } = await http.get('/experiences/all');
+      works.value = data.experiences.map((work) => {
+        return { ...work, showAchievements: false };
+      });
+    } catch (error) {
+      console.error('Error fetching experiences:', error);
+    }
+  };
 
   const prevTab = () => {
     const currentIndex = works.value.findIndex((_, index) => `option-${index}` === tab.value);
@@ -190,9 +146,9 @@
   };
 
   const toggleDetails = (work) => {
-    work.showBullets = !work.showBullets;
+    work.showAchievements = !work.showAchievements;
     works.value.forEach((w) => {
-      if (w !== work) w.showBullets = false;
+      if (w !== work) w.showAchievements = false;
     });
   };
 </script>
@@ -297,7 +253,7 @@
       }
     }
 
-    .bullet-point {
+    .achievement-point {
       position: relative;
       padding-left: 20px;
 
