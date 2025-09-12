@@ -2,8 +2,8 @@ from fastapi import FastAPI, HTTPException
 from starlette.status import HTTP_500_INTERNAL_SERVER_ERROR
 from fastapi.middleware.cors import CORSMiddleware
 
-from models import Skills, ContactForm
-from pymongo import MongoClient
+from models import ProjectsList, Skills, ContactForm
+from pymongo import MongoClient, ASCENDING
 
 from dotenv import load_dotenv
 import os
@@ -23,7 +23,6 @@ app.add_middleware(
 )
 
 MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017')
-print(f"Connecting to MongoDB at {MONGO_URI}")
 client = MongoClient(MONGO_URI)
 db = client.portfolio
 
@@ -48,4 +47,22 @@ async def get_skills():
             status_code=HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An error occurred while fetching skills. Please try again later."
         )
-    
+
+
+@app.get("/projects/all")
+async def get_projects():
+    try:
+        projects_cursor = db.projects.find(
+            {"active": True},
+            {"id": 1, "title": 1, "order": 1, "technologies": 1, "category": 1, "tileUrl": 1}
+        ).sort("order", ASCENDING)
+
+        projects = [ProjectsList(**project).model_dump(mode='json') for project in projects_cursor]
+
+        return {"projects": projects}
+    except Exception as e:
+        print(f"Error fetching projects: {e}")
+        raise HTTPException(
+            status_code=HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred while fetching projects. Please try again later."
+        )

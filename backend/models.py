@@ -49,6 +49,13 @@ class ContactForm(BaseModel):
     message: str
     file: Union[bytes, None] = None
 
+class ProjectsList(MongoBaseModel):
+    title: str
+    order: int
+    technologies: List[Technology]
+    category: str
+    tileUrl: str
+
 # Models
 class SkillCategories(MongoBaseModel):
     name: SkillTypes
@@ -59,7 +66,7 @@ class Skills(MongoBaseModel):
     percentage: str
     type: SkillTypes
 
-class Projects(BaseModel):
+class Projects(MongoBaseModel):
     title: str
     shortDescription: str
     longDescription: str
@@ -70,3 +77,5 @@ class Projects(BaseModel):
     images: List[str]
     order: int
     active: bool = True
+    category: str
+    tileUrl: str
