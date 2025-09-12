@@ -6,16 +6,16 @@
     <v-row class="mb-2">
       <v-tabs
         v-for="type in skillTypes"
-        :key="type.value"
+        :key="type"
         v-model="tab"
         hide-slider
       >
         <v-tab
-          :value="type.value"
+          :value="type"
           class="mb-4 p3 tab-chip"
-          :class="{ active: tab === type.value }"
+          :class="{ active: tab === type }"
         >
-          {{ type.title }}
+          {{ type }}
         </v-tab>
       </v-tabs>
     </v-row>
@@ -42,7 +42,7 @@
             :class="{
               fill: animate,
             }"
-            :style="progressBarWidth(skill.percent)"
+            :style="progressBarWidth(skill.percentage)"
           />
         </div>
       </v-col>
@@ -51,7 +51,7 @@
         sm="1"
         class="py-0"
       >
-        <span class="percent-text">{{ skill.percent }}</span>
+        <span class="percentage-text">{{ skill.percentage }}</span>
       </v-col>
       <v-col
         v-if="$vuetify.display.xs"
@@ -66,155 +66,20 @@
 
 <script setup>
   import { ref, watch, onMounted } from 'vue';
+  import { http } from '@/plugins/http';
 
   const animate = ref(false);
   const tab = ref('backend');
-  const skillTypes = ref([
-    {
-      title: 'Frontend',
-      value: 'frontend',
-    },
-    {
-      title: 'Backend',
-      value: 'backend',
-    },
-    {
-      title: 'Programming',
-      value: 'programming',
-    },
-    {
-      title: 'Mobile',
-      value: 'mobile',
-    },
-    {
-      title: 'Other',
-      value: 'other',
-    },
-  ]);
-  const skills = ref([
-    {
-      name: 'Vue',
-      percent: '80%',
-      type: 'frontend',
-    },
-    {
-      name: 'Vuetify',
-      percent: '90%',
-      type: 'frontend',
-    },
-    {
-      name: 'Node',
-      percent: '60%',
-      type: 'programming',
-    },
-    {
-      name: 'JavaScript',
-      percent: '70%',
-      type: 'programming',
-    },
-    {
-      name: 'TypeScript',
-      percent: '50%',
-      type: 'programming',
-    },
-    {
-      name: 'Python',
-      percent: '20%',
-      type: 'programming',
-    },
-    {
-      name: 'Express',
-      percent: '70%',
-      type: 'backend',
-    },
-    {
-      name: 'Nest/Knex',
-      percent: '50%',
-      type: 'backend',
-    },
-    {
-      name: 'REST API',
-      percent: '60%',
-      type: 'backend',
-    },
-    {
-      name: 'Cypress',
-      percent: '20%',
-      type: 'other',
-    },
-    {
-      name: 'SCRUM',
-      percent: '40%',
-      type: 'other',
-    },
-    {
-      name: 'Jira',
-      percent: '60%',
-      type: 'other',
-    },
-    {
-      name: 'Postman',
-      percent: '40%',
-      type: 'other',
-    },
-    {
-      name: 'Git/Github',
-      percent: '70%',
-      type: 'other',
-    },
-    {
-      name: 'Firebase',
-      percent: '70%',
-      type: 'other',
-    },
-    {
-      name: 'MySQL',
-      percent: '70%',
-      type: 'backend',
-    },
-    {
-      name: 'HTML5',
-      percent: '80%',
-      type: 'frontend',
-    },
-    {
-      name: 'CSS3/Sass',
-      percent: '80%',
-      type: 'frontend',
-    },
-    {
-      name: 'React/Next',
-      percent: '50%',
-      type: 'frontend',
-    },
-    {
-      name: 'Tailwind',
-      percent: '50%',
-      type: 'frontend',
-    },
-    {
-      name: 'GraphQL',
-      percent: '30%',
-      type: 'backend',
-    },
-    {
-      name: 'MongoDB',
-      percent: '30%',
-      type: 'backend',
-    },
-  ]);
+  const skillTypes = ref([]);
+  const skills = ref([]);
   const sortedSkills = ref([]);
 
   watch(tab, () => {
     sort(tab.value);
   });
 
-  onMounted(() => {
-    tab.value = 'frontend';
-    sort(tab.value);
-    setTimeout(() => {
-      animate.value = true;
-    }, 100);
+  onMounted(async () => {
+    await fetchSkills();
   });
 
   const progressBarWidth = (index) => {
@@ -226,8 +91,25 @@
       return skill.type === type;
     });
     sortedSkills.value = typedSkills.sort((a, b) => {
-      return parseFloat(b.percent) - parseFloat(a.percent);
+      return parseFloat(b.percentage) - parseFloat(a.percentage);
     });
+  };
+
+  const fetchSkills = async () => {
+    try {
+      const { data } = await http.get('/skills/all');
+      skills.value = data.skills;
+      skillTypes.value = data.skillCategories;
+      if (skillTypes.value.length > 0) {
+        tab.value = skillTypes.value[0];
+        sort(tab.value);
+      }
+      setTimeout(() => {
+        animate.value = true;
+      }, 100);
+    } catch (error) {
+      console.error('Error fetching skills:', error);
+    }
   };
 </script>
 
@@ -245,7 +127,7 @@
     }
   }
 
-  .percent-text {
+  .percentage-text {
     color: $aqua-neon;
   }
 
