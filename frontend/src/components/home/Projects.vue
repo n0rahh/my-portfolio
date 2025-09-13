@@ -8,7 +8,6 @@
         <v-col
           v-for="(project, i) in projectsList"
           :key="i"
-          lg="4"
           sm="6"
           cols="12"
         >
@@ -33,15 +32,26 @@
                 </span>
                 <div class="d-flex justify-space-between mb-6s">
                   <div
-                    v-for="(description, index) in project.technologies"
+                    v-for="(technology, index) in project.technologies"
                     :key="index"
                     class="mb-0 d-flex align-center ml-6"
                   >
                     <v-img
                       width="30"
                       height="30"
-                      :src="getIconUrl(description.icon)"
-                    />
+                      :src="getIconUrl(technology.icon)"
+                    >
+                      <v-tooltip
+                        theme="light"
+                        activator="parent"
+                        location="top"
+                      >
+                        <div class="d-flex flex-column">
+                          <span class="w-600">{{ technology.name }}</span>
+                          <span>{{ technology.category }}</span>
+                        </div>
+                      </v-tooltip>
+                    </v-img>
                   </div>
                 </div>
               </div>
