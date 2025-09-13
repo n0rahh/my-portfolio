@@ -1,8 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from starlette.status import HTTP_500_INTERNAL_SERVER_ERROR
 from fastapi.middleware.cors import CORSMiddleware
+from datetime import datetime
+from bson import ObjectId
 
-from models import ProjectsList, Skills, Experiences
+from models import ProjectsList, Skills, Experiences, ContactForm
 from pymongo import MongoClient, ASCENDING
 
 from dotenv import load_dotenv
@@ -81,4 +83,27 @@ async def get_experiences():
         raise HTTPException(
             status_code=HTTP_500_INTERNAL_SERVER_ERROR,
             detail="An error occurred while fetching experiences. Please try again later."
+        )
+    
+
+@app.post("/contact")
+async def contact(form: ContactForm):
+    try:
+        inquiry_dict = {
+            "_id": ObjectId(),
+            "name": form.name,
+            "email": form.email,
+            "message": form.message,
+            "fileBase64": form.fileBase64,
+            "createdAt": datetime.now()
+        }
+
+        db.inquiries.insert_one(inquiry_dict)
+
+        return {"message": "Your message has been received. Thank you!"}
+    except Exception as e:
+        print(f"Error submitting contact form: {e}")
+        raise HTTPException(
+            status_code=HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An error occurred while submitting the contact form. Please try again later."
         )

@@ -2,6 +2,7 @@ from typing import Optional, List, Union
 from pydantic import BaseModel, Field
 from enum import Enum
 from bson import ObjectId
+from datetime import datetime
 
 # Base setup
 class PyObjectId(ObjectId):
@@ -47,7 +48,7 @@ class ContactForm(BaseModel):
     name: str
     email: str
     message: str
-    file: Union[bytes, None] = None
+    fileBase64: Optional[str] = None
 
 class ProjectsList(MongoBaseModel):
     title: str
@@ -88,3 +89,10 @@ class Experiences(MongoBaseModel):
     achievements: List[str]
     active: bool = True
     order: int
+
+class Inquiries(MongoBaseModel):
+    name: str
+    email: str
+    message: str
+    fileBase64: Optional[str] = None
+    createdAt: datetime = Field(default_factory=datetime.now)
