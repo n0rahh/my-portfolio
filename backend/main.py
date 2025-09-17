@@ -73,7 +73,7 @@ async def get_projects():
 @app.get("/experiences/all")
 async def get_experiences():
     try:
-        experiences_cursor = db.experiences.find({"active": True})
+        experiences_cursor = db.experiences.find({"active": True}).sort('order', ASCENDING)
 
         experiences = [Experiences(**exp).model_dump(mode='json') for exp in experiences_cursor]
 
