@@ -32,7 +32,7 @@ db = client.portfolio
 @app.get("/skills/all")
 async def get_skills():
     try:
-        active_categories_cursor = db.skill_categories.find({"active": True}, {"name": 1, "_id": 0})
+        active_categories_cursor = db.skill_categories.find({"active": True}, {"name": 1, "_id": 0}).sort("order", ASCENDING)
         active_categories_names = [cat['name'] for cat in active_categories_cursor]
 
         if not active_categories_names:

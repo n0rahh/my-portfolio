@@ -61,6 +61,7 @@ class ProjectsList(MongoBaseModel):
 class SkillCategories(MongoBaseModel):
     name: SkillTypes
     active: bool = True
+    order: int
 
 class Skills(MongoBaseModel):
     name: str
