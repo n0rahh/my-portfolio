@@ -19,5 +19,11 @@
 <style lang="scss" scoped>
   .container {
     height: 100vh;
+
+    //prev: 960px
+    @media (max-width: 1279px) {
+      min-height: 100vh;
+      height: auto;
+    }
   }
 </style>
