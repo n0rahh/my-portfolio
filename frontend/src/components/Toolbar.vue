@@ -3,7 +3,10 @@
     flat
     class="toolbar"
   >
-    <v-container class="toolbar-container">
+    <v-container
+      v-if="!isProjectPage"
+      class="toolbar-container"
+    >
       <a
         href="/"
         class="logo"
@@ -11,17 +14,22 @@
         <div class="logo_rectangle" />
       </a>
 
-      <div class="buttons d-flex align-center">
-        <v-btn
-          v-for="(item, i) in navigationList"
-          :key="i"
-          variant="text"
-          color="white"
-          class="p2"
-          @click="scrollToSection(item.id)"
+      <div class="d-flex align-center">
+        <div
+          v-if="$vuetify.display.smAndUp"
+          class="d-flex align-center"
         >
-          {{ item.title }}
-        </v-btn>
+          <v-btn
+            v-for="(item, i) in navigationList"
+            :key="i"
+            variant="text"
+            color="white"
+            class="p2"
+            @click="scrollToSection(item.id)"
+          >
+            {{ item.title }}
+          </v-btn>
+        </div>
         <v-btn
           variant="text"
           color="white"
@@ -32,10 +40,31 @@
         </v-btn>
       </div>
     </v-container>
+    <v-container
+      v-else
+      class="toolbar-container"
+    >
+      <div class="d-flex justify-space-between align-center">
+        <v-btn
+          variant="text"
+          color="#48eed6"
+          class="back-button"
+          @click="goBack"
+        >
+          <v-icon class="mr-2">mdi-arrow-left</v-icon>
+          Back to Projects
+        </v-btn>
+      </div>
+    </v-container>
   </v-app-bar>
 </template>
 
 <script setup>
+  import { computed } from 'vue';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
+
   const navigationList = [
     {
       title: 'Main',
@@ -64,6 +93,8 @@
     },
   ];
 
+  const isProjectPage = computed(() => window.location.pathname.includes('project'));
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -73,6 +104,10 @@
 
   const openCV = () => {
     window.open('Vlad Herasymovych CV.pdf', '_blank');
+  };
+
+  const goBack = () => {
+    router.back();
   };
 </script>
 
@@ -141,6 +176,15 @@
           }
         }
       }
+
+      @media (max-width: 600px) {
+        padding: 8px 24px !important;
+        border-radius: 0 0 24px 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      padding: 0 12px !important;
     }
   }
 
