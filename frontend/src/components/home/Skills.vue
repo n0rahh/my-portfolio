@@ -6,28 +6,47 @@
     >
       <v-row>
         <v-col
-          cols="6"
-          class="d-flex"
+          lg="6"
+          cols="12"
+          class="d-flex align-stretch"
         >
           <GlassCard
             type="content"
-            class="d-flex flex-column"
+            custom-class="d-flex align-start flex-column justify-start"
           >
-            <div>
-              <span class="h2">Skills</span>
-              <main-skills class="mt-6" />
-            </div>
+            <span
+              :class="{
+                h2: $vuetify.display.mdAndUp,
+                h3: $vuetify.display.smAndDown,
+              }"
+            >
+              Skills
+            </span>
+            <main-skills
+              :class="{
+                'mt-6': $vuetify.display.mdAndUp,
+              }"
+            />
           </GlassCard>
         </v-col>
-        <v-col cols="6">
+        <v-col
+          lg="6"
+          cols="12"
+          class="d-flex align-stretch"
+        >
           <GlassCard
             type="content"
-            class="d-flex flex-column"
+            custom-class="d-flex align-start flex-column justify-start"
           >
-            <div>
-              <span class="h2">Work Experience</span>
-              <working-history class="mt-6" />
-            </div>
+            <span
+              :class="{
+                h2: $vuetify.display.mdAndUp,
+                h3: $vuetify.display.smAndDown,
+              }"
+            >
+              Work Experience
+            </span>
+            <working-history class="mt-6" />
           </GlassCard>
         </v-col>
       </v-row>

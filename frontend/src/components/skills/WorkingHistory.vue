@@ -5,8 +5,8 @@
   >
     <v-row>
       <v-col
+        v-if="$vuetify.display.mdAndUp"
         md="1"
-        cols="1"
         class="ml-n4 mr-4"
       >
         <div class="vertical-tab-navigation">
@@ -45,7 +45,7 @@
         <v-window
           v-model="tab"
           class="pa-0 ma-0"
-          direction="vertical"
+          :direction="$vuetify.display.mdAndUp ? 'vertical' : 'horizontal'"
         >
           <v-window-item
             v-for="(work, index) in works"
@@ -59,14 +59,33 @@
             ]"
           >
             <div class="d-flex flex-column">
-              <span class="h4 w-600">{{ work.company }}</span>
-              <div class="p2 d-flex align-center justify-space-between">
+              <span
+                class="h4 w-600"
+                :class="{
+                  'text-left mb-2': $vuetify.display.smAndDown,
+                }"
+              >
+                {{ work.company }}
+              </span>
+              <div
+                class="p2 d-flex"
+                :class="{
+                  'align-center justify-space-between': $vuetify.display.mdAndUp,
+                  'flex-column align-start': $vuetify.display.smAndDown,
+                }"
+              >
                 <span class="c-secondary">{{ work.position }}</span>
 
                 <span class="c-secondary">{{ work.dateRange }}</span>
               </div>
 
-              <span class="p2 mt-4">
+              <span
+                class="mt-4"
+                :class="{
+                  p2: $vuetify.display.mdAndUp,
+                  'text-left p3': $vuetify.display.smAndDown,
+                }"
+              >
                 {{ work.description }}
               </span>
               <v-expand-transition>
@@ -77,13 +96,22 @@
                   <span
                     v-for="(achievement, i) in work.achievements"
                     :key="i"
-                    class="p2 mt-4 achievement-point"
+                    class="mt-4 achievement-point"
+                    :class="{
+                      p2: $vuetify.display.mdAndUp,
+                      'text-left p3': $vuetify.display.smAndDown,
+                    }"
                   >
                     {{ achievement }}
                   </span>
                 </div>
               </v-expand-transition>
-              <div class="d-flex justify-end">
+              <div
+                class="d-flex justify-end"
+                :class="{
+                  'mt-4': $vuetify.display.smAndDown,
+                }"
+              >
                 <v-btn
                   variant="text"
                   color="#48eed6"
@@ -98,17 +126,46 @@
           </v-window-item>
         </v-window>
       </v-col>
+      <v-col
+        v-if="$vuetify.display.smAndDown"
+        cols="12"
+      >
+        <div class="horizontal-tab-navigation">
+          <div class="dot-navigation">
+            <div
+              v-for="(_, index) in works"
+              :key="index"
+              :class="['nav-dot', { active: tab === `option-${index}` }]"
+            />
+          </div>
+        </div>
+      </v-col>
     </v-row>
+    <v-dialog
+      :model-value="showDialog"
+      max-width="700px"
+    >
+      <JobDetailsDialog
+        :description="activeWork.description"
+        :achievements="activeWork.achievements"
+        @close="showDialog = false"
+      />
+    </v-dialog>
   </v-container>
 </template>
 
 <script setup>
   import { onMounted, ref } from 'vue';
+  import { useDisplay } from 'vuetify';
   import { http } from '@/plugins/http';
+  import JobDetailsDialog from '../UI/JobDetailsDialog.vue';
+
+  const display = useDisplay();
 
   const tab = ref('option-0');
-
   const works = ref([]);
+  const showDialog = ref(false);
+  const activeWork = ref(null);
 
   onMounted(async () => {
     await fetchExperiences();
@@ -146,10 +203,15 @@
   };
 
   const toggleDetails = (work) => {
-    work.showAchievements = !work.showAchievements;
-    works.value.forEach((w) => {
-      if (w !== work) w.showAchievements = false;
-    });
+    if (display.lgAndUp.value) {
+      activeWork.value = work;
+      showDialog.value = true;
+    } else {
+      work.showAchievements = !work.showAchievements;
+      works.value.forEach((w) => {
+        if (w !== work) w.showAchievements = false;
+      });
+    }
   };
 </script>
 
@@ -158,6 +220,18 @@
 
   .c-secondary {
     color: $text-inactive;
+  }
+
+  .horizontal-tab-navigation {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .dot-navigation {
+      display: flex;
+      gap: 15px;
+      padding: 10px 0;
+    }
   }
 
   .vertical-tab-navigation {
@@ -213,18 +287,18 @@
         }
       }
     }
+  }
 
-    .nav-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: $white-3;
-      transition: background-color 0.3s ease;
+  .nav-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $white-3;
+    transition: background-color 0.3s ease;
 
-      &.active {
-        background-color: $cyan;
-        box-shadow: 0 0 8px $white-5;
-      }
+    &.active {
+      background-color: $cyan;
+      box-shadow: 0 0 8px $white-5;
     }
   }
 

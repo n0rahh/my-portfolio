@@ -4,20 +4,24 @@
     class="px-0"
   >
     <v-row class="mb-2">
-      <v-tabs
-        v-for="type in skillTypes"
-        :key="type"
-        v-model="tab"
-        hide-slider
-      >
-        <v-tab
-          :value="type"
-          class="mb-4 p3 tab-chip"
-          :class="{ active: tab === type }"
-        >
-          {{ type }}
-        </v-tab>
-      </v-tabs>
+      <v-col cols="12">
+        <div class="tabs-scroll">
+          <v-tabs
+            v-model="tab"
+            hide-slider
+          >
+            <v-tab
+              v-for="type in skillTypes"
+              :key="type"
+              :value="type"
+              class="mb-4 p3 tab-chip"
+              :class="{ active: tab === type }"
+            >
+              {{ type }}
+            </v-tab>
+          </v-tabs>
+        </div>
+      </v-col>
     </v-row>
     <v-row
       v-for="(skill, index) in sortedSkills"
@@ -25,15 +29,19 @@
       class="mb-2"
     >
       <v-col
-        v-if="$vuetify.display.smAndUp"
-        cols="4"
+        cols="6"
+        md="2"
+        lg="4"
         class="py-0 d-flex align-center"
+        :class="{
+          'mb-1': $vuetify.display.smAndDown,
+        }"
       >
         <span class="p1">{{ skill.name }}</span>
       </v-col>
       <v-col
         cols="12"
-        sm="7"
+        md="7"
         class="py-0 d-flex align-center"
       >
         <div class="progress-wrapper">
@@ -48,17 +56,10 @@
       </v-col>
       <v-col
         cols="12"
-        sm="1"
+        md="1"
         class="py-0"
       >
         <span class="percentage-text">{{ skill.percentage }}</span>
-      </v-col>
-      <v-col
-        v-if="$vuetify.display.xs"
-        cols="12"
-        class="mt-n6"
-      >
-        <span class="h4">{{ skill.name }}</span>
       </v-col>
     </v-row>
   </v-container>
@@ -144,6 +145,36 @@
     }
   }
 
+  .tabs-scroll {
+    @media (max-width: 450px) {
+      max-width: 300px;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    @media (max-width: 400px) {
+      max-width: 220px;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  .v-tab {
+    @media (max-width: 600px) {
+      display: inline-block !important;
+    }
+  }
+
   .tab-chip {
     border-radius: 32px !important;
     padding: 0 16px;
@@ -151,6 +182,22 @@
     margin-right: 12px;
     line-height: 12px;
     height: 40px;
+
+    @media (max-width: 1500px) {
+      height: 44px !important;
+      line-height: 14px;
+      font-size: 14px;
+      padding: 0 8px;
+      min-width: 76px !important;
+    }
+
+    @media (max-width: 600px) {
+      height: 32px !important;
+      line-height: 10px;
+      font-size: 10px;
+      padding: 0 8px;
+      min-width: 64px !important;
+    }
   }
 
   .active {
