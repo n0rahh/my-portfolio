@@ -7,10 +7,26 @@
       <v-col cols="12">
         <GlassCard>
           <div class="d-flex flex-column">
-            <span class="h1"> Hello, </span>
+            <span
+              :class="{
+                h0: $vuetify.display.lgAndUp,
+                h1: $vuetify.display.mdAndDown,
+                h2: $vuetify.display.smAndDown,
+              }"
+            >
+              Hello,
+            </span>
             <div class="d-flex flex-column">
-              <span class="h1"> I am Vlad </span>
-              <span class="mt-8 h4 subtitle">
+              <span
+                :class="{
+                  h0: $vuetify.display.lgAndUp,
+                  h1: $vuetify.display.mdAndDown,
+                  h2: $vuetify.display.smAndDown,
+                }"
+              >
+                I am Vlad
+              </span>
+              <span class="mt-8 subtitle">
                 Software Engineer | Web Developer | Tech Enthusiast
               </span>
             </div>
@@ -39,6 +55,21 @@
 
   .subtitle {
     color: $text-inactive;
+    font-size: 24px;
+
+    @media (max-width: 1024px) {
+      font-size: 22px;
+    }
+
+    @media (max-width: 960px) {
+      text-align: center;
+      font-size: 20px;
+    }
+
+    @media (max-width: 600px) {
+      text-align: center;
+      font-size: 16px;
+    }
   }
 
   .photo-container {
@@ -81,6 +112,23 @@
       object-fit: cover;
       box-shadow: 0 2px 10px $black-25;
       z-index: 2;
+    }
+
+    @media (max-width: 1300px) {
+      width: 300px;
+      height: fit-content;
+    }
+
+    @media (max-width: 960px) {
+      width: 250px;
+      height: 250px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 600px) {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 24px;
     }
   }
 </style>
