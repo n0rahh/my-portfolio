@@ -21,6 +21,7 @@
               >
                 <span>{{ pkt.title }}</span>
                 <br />
+                <br />
                 <span class="formatted-text">{{ pkt.description }}</span>
               </p>
             </div>
@@ -36,29 +37,39 @@
 
   const policyPkts = [
     {
-      title: '1. Data Collection',
+      title: '§1. Data Controller',
       description:
-        "The website collects only the personal data provided voluntarily by the user through the contact form. This includes the user's name, email address, message, and optional file attachment. The website does not collect any other personal data or information.\n\n",
+        'The data controller for your personal data is Vlad Herasymovych. For any inquiries regarding the processing of your personal data, you can contact me at: vlad.herasymovychh@gmail.com.\n\n',
     },
     {
-      title: '2. Data Usage',
+      title: '§2. Purpose and Legal Basis for Data Processing',
       description:
-        "The collected personal data is used solely for the purpose of responding to the user's inquiry or request. The website does not share, sell, or distribute any personal data to third parties. The website does not use personal data for marketing or advertising purposes.\n\n",
+        'Your personal data provided through the contact form will be processed solely for the purpose of responding to your inquiry and for any further correspondence on this matter. The legal basis for this processing is my legitimate interest as the data controller (Art. 6(1)(f) of the GDPR), which involves managing and responding to requests sent via the contact form.\n\n',
     },
     {
-      title: '3. Data Retention',
+      title: '§3. Scope of Processed Data',
       description:
-        "Personal data processed through the contact form will be stored for the period necessary to respond to the user's inquiry or request, as well as for any further contact related to that inquiry. After this time, the data will be deleted.\n\n",
+        'I process the data you provide in the contact form: your name, email address, the content of your message, and any attached files. This data is essential for me to be able to respond to you.\n\n',
     },
     {
-      title: '4. Recipients of personal data',
+      title: '§4. Data Recipients',
       description:
-        'Personal data of users of the portfolio website are not disclosed to any other entities, except where required by law.\n\n',
+        'Your personal data may be shared with entities whose services I use to operate this website and manage communication (e.g., my hosting provider, email service provider).\n\n',
     },
     {
-      title: '5. Cookies and Other Technologies',
+      title: '§5. Data Retention Period',
       description:
-        "The portfolio website does not use cookies or other tracking technologies. It only stores the locale value in localStorage to remember the user's selected language. This information is used solely to display the website in the selected language and is not shared with any other parties. Users can delete this value from localStorage at any time by setting the language to default or by clearing the localStorage completely.\n\n",
+        'Your personal data will be stored for the period necessary to respond to your inquiry and conduct any follow-up correspondence. After this period, the data may be archived for legal compliance purposes or deleted.\n\n',
+    },
+    {
+      title: '§6. Your Rights',
+      description:
+        "You have the following rights concerning your personal data:\n\n • The right to access your data (Art. 15 GDPR).\n • The right to rectification of your data (Art. 16 GDPR).\n • The right to erasure of your data ('right to be forgotten') (Art. 17 GDPR).\n • The right to restrict processing (Art. 18 GDPR).\n • The right to data portability (Art. 20 GDPR).\n • The right to object to processing (Art. 21 GDPR).\n • The right to lodge a complaint with a supervisory authority (e.g., the President of the Personal Data Protection Office in Poland) if you believe that the processing of your data violates the GDPR.\n\n Providing your data is voluntary, but necessary to send a message through the contact form.\n\n",
+    },
+    {
+      title: '§7. Data Security',
+      description:
+        'I ensure that I apply appropriate technical and organizational measures to secure your personal data.\n\n',
     },
   ];
 </script>
