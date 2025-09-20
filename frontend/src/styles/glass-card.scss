@@ -2,7 +2,7 @@
 
 .glass-card {
   width: 100%;
-  height: fit-content;
+  height: 100%;
   padding: 60px 80px;
   position: relative;
   display: flex;
@@ -35,6 +35,16 @@
     background: linear-gradient(135deg, $white-05 0%, $white-0 50%, $white-02 100%);
     pointer-events: none;
   }
+
+  @media (max-width: 960px) {
+    flex-direction: column-reverse;
+    padding: 42px;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    padding: 24px;
+  }
 }
 
 .main {
@@ -44,6 +54,10 @@
   background-color: $white-05;
   border: 1px solid $white-15;
   box-shadow: 0 8px 32px $black-25;
+
+  @media (max-width: 960px) {
+    border-radius: 48px;
+  }
 }
 
 .content {
@@ -54,4 +68,9 @@
   border: 2px solid $cyan;
   border-radius: 48px;
   padding: 20px 40px;
+
+  @media (max-width: 600px) {
+    border-radius: 28px;
+    padding: 16px;
+  }
 }

@@ -3,7 +3,8 @@
 @use './colors.scss' as *;
 @use './glass-card.scss' as *;
 
-#app {
+#app,
+.v-dialog {
   font-family: 'Roboto Mono', monospace;
 }
 
