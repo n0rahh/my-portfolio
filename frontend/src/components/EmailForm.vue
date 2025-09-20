@@ -86,13 +86,13 @@
             class="ml-2"
             :class="{
               'text-error': !isValid && isBtnClicked,
-              'd-flex flex-column align-start': $vuetify.display.smAndDown,
+              'd-flex flex-column align-start': $vuetify.display.xs,
             }"
           >
-            <span>Terms and Conditions</span>
+            <span>I have read and agree to the </span>
             <a
               :class="{
-                'ml-2': $vuetify.display.mdAndUp,
+                'ml-2': $vuetify.display.smAndUp,
               }"
               href="/policy"
             >
@@ -102,7 +102,11 @@
         </v-col>
       </v-row>
 
-      <v-row>
+      <v-row
+        :class="{
+          'mt-8': $vuetify.display.smAndDown,
+        }"
+      >
         <v-col
           cols="12"
           class="py-0 d-flex justify-end align-center"
@@ -111,6 +115,7 @@
             class="send-button"
             :loading="isSending"
             type="submit"
+            :block="$vuetify.display.smAndDown"
           >
             <span>Send</span>
           </v-btn>
