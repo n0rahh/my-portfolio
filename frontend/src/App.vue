@@ -19,9 +19,12 @@
 
 <script setup>
   import { onMounted, onBeforeUnmount } from 'vue';
+  import { useDisplay } from 'vuetify';
   import Toolbar from '@/components/Toolbar.vue';
   import Social from '@/components/Social.vue';
   import Footer from '@/components/Footer.vue';
+
+  const display = useDisplay();
 
   const options = {
     fpsLimit: 120,
@@ -101,9 +104,11 @@
   };
 
   onMounted(() => {
+    if (display.mdAndDown.value) return;
     window.addEventListener('wheel', handleWheel, { passive: false });
   });
   onBeforeUnmount(() => {
+    if (display.mdAndDown.value) return;
     window.removeEventListener('wheel', handleWheel);
   });
 </script>
