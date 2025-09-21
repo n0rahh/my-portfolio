@@ -16,7 +16,6 @@
     direction: {
       type: String,
       required: true,
-      validator: (value) => ['left', 'right'].includes(value),
     },
     disabled: {
       type: Boolean,
