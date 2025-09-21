@@ -37,6 +37,7 @@
                   <div class="d-flex mt-4">
                     <v-img
                       :src="getTileUrl(project.tileUrl)"
+                      :lazy-src="getTileUrl('purple.png')"
                       height="120"
                       width="120"
                       max-width="120"
