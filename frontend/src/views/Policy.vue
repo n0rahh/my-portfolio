@@ -33,7 +33,20 @@
 </template>
 
 <script setup>
+  import { useHead } from '@vueuse/head';
+
   import GlassCard from '@/components/UI/GlassCard.vue';
+
+  useHead({
+    title: 'Privacy Policy | Vlad Herasymovych',
+    meta: [
+      {
+        name: 'description',
+        content:
+          "Privacy policy of Vlad Herasymovych's portfolio – information about user data and privacy.",
+      },
+    ],
+  });
 
   const policyPkts = [
     {

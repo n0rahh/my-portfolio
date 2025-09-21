@@ -13,6 +13,7 @@
   "dependencies": {
     "@mdi/font": "5.9.55",
     "@tsparticles/vue3": "^3.0.1",
+    "@vueuse/head": "^2.0.0",
     "axios": "^1.4.0",
     "firebase": "^9.22.2",
     "firebase-admin": "^11.9.0",
