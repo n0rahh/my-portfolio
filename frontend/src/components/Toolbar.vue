@@ -10,6 +10,7 @@
       <a
         href="/"
         class="logo"
+        aria-label="Go to homepage"
       >
         <div class="logo_rectangle" />
       </a>

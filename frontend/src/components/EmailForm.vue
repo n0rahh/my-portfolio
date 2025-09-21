@@ -16,6 +16,7 @@
             ref="nameRef"
             v-model="name"
             label="Name"
+            aria-label="Name"
             :rules="[rules.name]"
             :error-messages="errorMessages.name"
             placeholder="John Doe"
@@ -31,6 +32,7 @@
             ref="emailRef"
             v-model="email"
             label="Email"
+            aria-label="Email"
             :rules="[rules.email]"
             :error-messages="errorMessages.email"
             placeholder="johndoe@gmail.com"
@@ -50,6 +52,7 @@
             v-model="content"
             class="mt-2"
             label="Message"
+            aria-label="Message"
             :rules="[rules.content]"
             :error-messages="errorMessages.content"
             placeholder="Enter your message"
@@ -61,6 +64,7 @@
             v-model="file"
             ref="fileInputRef"
             label="File"
+            aria-label="File"
             variant="underlined"
             :show-size="1024"
             type="file"
@@ -81,6 +85,7 @@
             :class="{
               'text-error': !isValid && isBtnClicked,
             }"
+            aria-label="Terms and Conditions"
           />
           <v-label
             class="ml-2"
@@ -88,6 +93,7 @@
               'text-error': !isValid && isBtnClicked,
               'd-flex flex-column align-start': $vuetify.display.xs,
             }"
+            aria-label="Privacy Policy Agreement"
           >
             <span>I have read and agree to the </span>
             <a
@@ -223,6 +229,7 @@
   };
 
   const sendEmail = async () => {
+    if (isSending.value) return;
     isBtnClicked.value = true;
     await validateForm();
 

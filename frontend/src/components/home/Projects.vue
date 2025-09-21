@@ -6,16 +6,12 @@
       custom-class="d-flex flex-column align-center py-10 px-6"
     >
       <div class="projects-carousel-container">
-        <v-btn
+        <ArrowButton
           v-if="$vuetify.display.mdAndUp"
-          icon
-          flat
-          class="nav-arrow"
-          @click="prevPage"
+          direction="left"
           :disabled="currentPage === 0"
-        >
-          <v-icon>mdi-chevron-left</v-icon>
-        </v-btn>
+          @click="prevPage"
+        />
 
         <v-window
           v-model="currentPage"
@@ -69,6 +65,7 @@
                               theme="light"
                               activator="parent"
                               location="top"
+                              :aria-label="`Technology: ${technology.name}, Category: ${technology.category}`"
                             >
                               <div class="d-flex flex-column">
                                 <span class="w-600">{{ technology.name }}</span>
@@ -86,16 +83,12 @@
           </v-window-item>
         </v-window>
 
-        <v-btn
+        <ArrowButton
           v-if="$vuetify.display.mdAndUp"
-          icon
-          flat
-          class="nav-arrow"
-          @click="nextPage"
+          direction="right"
           :disabled="currentPage === paginatedProjects.length - 1"
-        >
-          <v-icon>mdi-chevron-right</v-icon>
-        </v-btn>
+          @click="nextPage"
+        />
       </div>
 
       <div class="dot-navigation-horizontal mt-4">
@@ -118,6 +111,7 @@
 
   import GlassCard from '@/components/UI/GlassCard.vue';
   import SectionContainer from '@/components/UI/SectionContainer.vue';
+  import ArrowButton from '@/components/UI/ArrowButton.vue';
 
   const display = useDisplay();
 
@@ -183,33 +177,6 @@
 
   .projects-window {
     flex-grow: 1;
-  }
-
-  .nav-arrow {
-    background: $white-05;
-    backdrop-filter: blur(5px);
-    border: 1px solid $cyan;
-    border-radius: 50%;
-    margin: 0 10px;
-    width: 44px;
-    height: 44px;
-    z-index: 100;
-
-    .v-icon {
-      color: $white-7;
-      font-size: 24px;
-    }
-
-    &:hover {
-      background: $white-15;
-      .v-icon {
-        color: $white;
-      }
-    }
-
-    &:disabled {
-      opacity: 0.3;
-    }
   }
 
   .dot-navigation-horizontal {

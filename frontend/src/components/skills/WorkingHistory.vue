@@ -10,14 +10,10 @@
         class="ml-n4 mr-4"
       >
         <div class="vertical-tab-navigation">
-          <v-btn
-            icon
-            flat
-            class="nav-arrow"
+          <ArrowButton
+            direction="up"
             @click="prevTab"
-          >
-            <v-icon>mdi-chevron-up</v-icon>
-          </v-btn>
+          />
 
           <div class="dot-navigation">
             <div
@@ -27,14 +23,10 @@
             />
           </div>
 
-          <v-btn
-            icon
-            flat
-            class="nav-arrow"
+          <ArrowButton
+            direction="down"
             @click="nextTab"
-          >
-            <v-icon>mdi-chevron-down</v-icon>
-          </v-btn>
+          />
         </div>
       </v-col>
 
@@ -158,7 +150,9 @@
   import { onMounted, ref } from 'vue';
   import { useDisplay } from 'vuetify';
   import { http } from '@/plugins/http';
-  import JobDetailsDialog from '../UI/JobDetailsDialog.vue';
+
+  import JobDetailsDialog from '@/components/UI/JobDetailsDialog.vue';
+  import ArrowButton from '@/components/UI/ArrowButton.vue';
 
   const display = useDisplay();
 
@@ -263,28 +257,6 @@
         flex-grow: 1;
         border-left: 1px solid $cyan;
         width: 1px;
-      }
-    }
-
-    .nav-arrow {
-      background: $white-05;
-      backdrop-filter: blur(5px);
-      border: 1px solid $cyan;
-      border-radius: 50%;
-      margin: 10px 0;
-      width: 44px;
-      height: 44px;
-
-      .v-icon {
-        color: $white-7;
-        font-size: 24px;
-      }
-
-      &:hover {
-        background: $white-15;
-        .v-icon {
-          color: $white;
-        }
       }
     }
   }

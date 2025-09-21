@@ -1,16 +1,21 @@
 <template>
   <div class="social">
-    <v-list class="social-wrapper">
+    <v-list
+      class="social-wrapper"
+      role="list"
+    >
       <v-list-item
         v-for="(item, i) in socials"
         :key="i"
         class="social-wrapper__item"
+        role="listitem"
       >
         <v-btn
           variant="plain"
           :href="item.link"
           target="_blank"
           class="link"
+          :aria-label="`Visit ${item.text}`"
         >
           <v-icon
             class="icon"
