@@ -4,7 +4,7 @@
     class="toolbar"
   >
     <v-container
-      v-if="!isProjectPage"
+      v-if="!isProjectPage && !isPolicyPage"
       class="toolbar-container"
     >
       <a
@@ -53,7 +53,7 @@
           @click="goBack"
         >
           <v-icon class="mr-2">mdi-arrow-left</v-icon>
-          Back to Projects
+          Back to Home Page
         </v-btn>
       </div>
     </v-container>
@@ -95,6 +95,7 @@
   ];
 
   const isProjectPage = computed(() => window.location.pathname.includes('project'));
+  const isPolicyPage = computed(() => window.location.pathname.includes('policy'));
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
