@@ -34,10 +34,7 @@
                 cols="12"
                 class="d-flex justify-center"
               >
-                <div
-                  class="project-card"
-                  @click="openProject(project.id)"
-                >
+                <div class="project-card">
                   <div class="h4 text-left">
                     {{ project.title }}
                   </div>
