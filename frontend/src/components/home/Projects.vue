@@ -43,6 +43,7 @@
                       max-width="120"
                       max-height="120"
                       class="colorful-tile"
+                      alt="Colorful tile image"
                     />
                     <div class="d-flex flex-column justify-space-between w-100">
                       <span class="mt-6 p2 text-left">
@@ -61,6 +62,7 @@
                             width="30"
                             height="30"
                             :src="getIconUrl(technology.icon)"
+                            :alt="`Icon of ${technology.name}`"
                           >
                             <v-tooltip
                               theme="light"
