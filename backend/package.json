@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "description": "Backend API for the portfolio",
   "scripts": {
-    "start:dev": "uvicorn main:app --reload"
+    "start:dev": "docker-compose up"
   }
 }
