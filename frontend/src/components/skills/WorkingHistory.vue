@@ -147,12 +147,18 @@
 </template>
 
 <script setup>
-  import { onMounted, ref } from 'vue';
+  import { ref, watch } from 'vue';
   import { useDisplay } from 'vuetify';
-  import { http } from '@/plugins/http';
 
   import JobDetailsDialog from '@/components/UI/JobDetailsDialog.vue';
   import ArrowButton from '@/components/UI/ArrowButton.vue';
+
+  const props = defineProps({
+    worksPayload: {
+      type: Array,
+      required: true,
+    },
+  });
 
   const display = useDisplay();
 
@@ -161,20 +167,13 @@
   const showDialog = ref(false);
   const activeWork = ref(null);
 
-  onMounted(async () => {
-    await fetchExperiences();
-  });
-
-  const fetchExperiences = async () => {
-    try {
-      const { data } = await http.get('/experiences/all');
-      works.value = data.experiences.map((work) => {
-        return { ...work, showAchievements: false };
-      });
-    } catch (error) {
-      console.error('Error fetching experiences:', error);
-    }
-  };
+  watch(
+    () => props.worksPayload,
+    (newWorks) => {
+      works.value = newWorks;
+    },
+    { immediate: true }
+  );
 
   const prevTab = () => {
     const currentIndex = works.value.findIndex((_, index) => `option-${index}` === tab.value);

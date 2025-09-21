@@ -66,29 +66,25 @@
 </template>
 
 <script setup>
-  import { ref, watch, onMounted } from 'vue';
-  import { http } from '@/plugins/http';
+  import { ref, watch } from 'vue';
+
+  const props = defineProps({
+    skills: {
+      type: Array,
+      required: true,
+    },
+    skillTypes: {
+      type: Array,
+      required: true,
+    },
+  });
 
   const animate = ref(false);
   const tab = ref('backend');
-  const skillTypes = ref([]);
-  const skills = ref([]);
   const sortedSkills = ref([]);
 
-  watch(tab, () => {
-    sort(tab.value);
-  });
-
-  onMounted(async () => {
-    await fetchSkills();
-  });
-
-  const progressBarWidth = (index) => {
-    return `--progress: ${index}`;
-  };
-
   const sort = (type) => {
-    const typedSkills = skills.value.filter((skill) => {
+    const typedSkills = props.skills.filter((skill) => {
       return skill.type === type;
     });
     sortedSkills.value = typedSkills.sort((a, b) => {
@@ -96,22 +92,24 @@
     });
   };
 
-  const fetchSkills = async () => {
-    try {
-      const { data } = await http.get('/skills/all');
-      skills.value = data.skills;
-      skillTypes.value = data.skillCategories;
-      if (skillTypes.value.length > 0) {
-        tab.value = skillTypes.value[0];
-        sort(tab.value);
-      }
+  const progressBarWidth = (index) => {
+    return `--progress: ${index}`;
+  };
+
+  watch(tab, () => {
+    sort(tab.value);
+  });
+
+  watch(
+    () => props.skills,
+    () => {
+      sort(tab.value);
       setTimeout(() => {
         animate.value = true;
       }, 100);
-    } catch (error) {
-      console.error('Error fetching skills:', error);
-    }
-  };
+    },
+    { immediate: true }
+  );
 </script>
 
 <style lang="scss" scoped>

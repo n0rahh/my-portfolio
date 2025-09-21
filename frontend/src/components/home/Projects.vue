@@ -107,14 +107,20 @@
 </template>
 
 <script setup>
-  import { onMounted, ref, computed } from 'vue';
+  import { ref, computed, watch } from 'vue';
   import { useRouter } from 'vue-router';
   import { useDisplay } from 'vuetify';
-  import { http } from '@/plugins/http';
 
   import GlassCard from '@/components/UI/GlassCard.vue';
   import SectionContainer from '@/components/UI/SectionContainer.vue';
   import ArrowButton from '@/components/UI/ArrowButton.vue';
+
+  const props = defineProps({
+    projects: {
+      type: Array,
+      required: true,
+    },
+  });
 
   const display = useDisplay();
 
@@ -123,16 +129,21 @@
   const router = useRouter();
   const PROJECTS_PER_PAGE = display.mdAndDown.value ? 2 : 4;
 
+  watch(
+    () => props.projects,
+    (newProjects) => {
+      projectsList.value = newProjects;
+      currentPage.value = 0;
+    },
+    { immediate: true }
+  );
+
   const paginatedProjects = computed(() => {
     const pages = [];
     for (let i = 0; i < projectsList.value.length; i += PROJECTS_PER_PAGE) {
       pages.push(projectsList.value.slice(i, i + PROJECTS_PER_PAGE));
     }
     return pages;
-  });
-
-  onMounted(async () => {
-    await fetchProjects();
   });
 
   const openProject = (projectId) => {
@@ -145,15 +156,6 @@
 
   const getIconUrl = (iconName) => {
     return new URL(`/src/assets/icons/technologies/${iconName}`, import.meta.url).href;
-  };
-
-  const fetchProjects = async () => {
-    try {
-      const { data } = await http.get('/projects/all');
-      projectsList.value = data.projects;
-    } catch (error) {
-      console.error('Error fetching projects:', error);
-    }
   };
 
   const prevPage = () => {

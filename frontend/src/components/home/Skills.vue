@@ -26,6 +26,8 @@
               :class="{
                 'mt-6': $vuetify.display.mdAndUp,
               }"
+              :skills="skills"
+              :skill-types="skillTypes"
             />
           </GlassCard>
         </v-col>
@@ -46,7 +48,10 @@
             >
               Work Experience
             </span>
-            <working-history class="mt-6" />
+            <working-history
+              class="mt-6"
+              :works-payload="works"
+            />
           </GlassCard>
         </v-col>
       </v-row>
@@ -59,4 +64,19 @@
   import GlassCard from '@/components/UI/GlassCard.vue';
   import MainSkills from '@/components/skills/MainSkills.vue';
   import WorkingHistory from '@/components/skills/WorkingHistory.vue';
+
+  defineProps({
+    skills: {
+      type: Array,
+      required: true,
+    },
+    skillTypes: {
+      type: Array,
+      required: true,
+    },
+    works: {
+      type: Array,
+      required: true,
+    },
+  });
 </script>
