@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
 from bson import ObjectId
 
+from telegram_service import send_telegram_notification
+
 from models import ProjectsList, Skills, Experiences, ContactForm
 from pymongo import MongoClient, ASCENDING
 
@@ -99,6 +101,25 @@ async def contact(form: ContactForm):
         }
 
         db.inquiries.insert_one(inquiry_dict)
+
+        file_info = "No file attached."
+        if form.fileBase64:
+            file_info = "File attached."
+
+        message = (
+            f"*NEW CONTACT INQUIRY:*\n\n"
+            f"----------------------------------------\n"
+            f"*Name:* {form.name}\n"
+            f"*Email:* {form.email}\n"
+            f"*Attachment:* {file_info}\n"
+            f"----------------------------------------\n\n"
+            f"*Message:*\n{form.message}"
+        )
+        
+        notification_successful = await send_telegram_notification(message)
+
+        if not notification_successful:
+            print("Warning: Failed to send notification to Telegram.")
 
         return {"message": "Your message has been received. Thank you!"}
     except Exception as e:
