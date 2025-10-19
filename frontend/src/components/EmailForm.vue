@@ -5,7 +5,7 @@
   >
     <v-form
       ref="formRef"
-      @submit.prevent="sendEmail"
+      @submit.prevent="sendContactForm"
     >
       <v-row>
         <v-col
@@ -228,7 +228,7 @@
     notifyMessage.value = message;
   };
 
-  const sendEmail = async () => {
+  const sendContactForm = async () => {
     if (isSending.value) return;
     isBtnClicked.value = true;
     await validateForm();
