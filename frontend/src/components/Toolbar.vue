@@ -145,6 +145,8 @@
       border-radius: 0 0 32px 32px;
       background: $white-05;
       backdrop-filter: blur(25px);
+      // Own compositor layer — keeps the live blur from repainting the page.
+      transform: translateZ(0);
       border: 1px solid $white-15;
       box-shadow: 0 8px 24px 0 $black-25;
       margin: 0 auto;

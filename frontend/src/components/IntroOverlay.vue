@@ -21,7 +21,7 @@
   // Click anywhere skips it; reduced-motion users skip it automatically.
   import { onBeforeUnmount, onMounted, ref } from 'vue';
 
-  const INTRO_DURATION_MS = 2000;
+  const INTRO_DURATION_MS = 1700;
 
   const emit = defineEmits(['done']);
 
@@ -77,7 +77,7 @@
       overflow: hidden;
       white-space: nowrap;
       width: 10ch;
-      animation: intro-typing 1.1s steps(10, end) 0.35s both;
+      animation: intro-typing 0.9s steps(10, end) 0.15s both;
     }
 
     &__cursor {

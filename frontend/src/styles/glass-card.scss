@@ -56,6 +56,9 @@
   background-color: $white-05;
   border: 1px solid $white-15;
   box-shadow: $shadow-card;
+  // Own compositor layer: scrolling the card over the animated background
+  // re-blurs only this layer instead of repainting the page.
+  transform: translateZ(0);
 
   @include down($bp-md) {
     border-radius: $radius-xl;

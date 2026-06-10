@@ -78,7 +78,7 @@
 
     // Fixed-height scroll area: the section keeps its size no matter how many
     // jobs there are or how much detail is expanded.
-    max-height: 360px;
+    max-height: 500px;
     overflow-y: auto;
     // Don't hand the wheel over to the page when the list hits its edge.
     overscroll-behavior: contain;
@@ -98,7 +98,7 @@
     }
 
     @include down($bp-lg) {
-      max-height: 320px;
+      max-height: 400px;
     }
 
     &__item {

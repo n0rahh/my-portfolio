@@ -119,11 +119,22 @@
     }
 
     draw();
-    rafId = requestAnimationFrame(step);
+  };
+
+  // Capped at ~30fps: every canvas frame forces the glass surfaces above it
+  // to re-run their backdrop blur, so fewer frames = visibly less shimmer.
+  const FRAME_INTERVAL_MS = 33;
+  let lastFrameTime = 0;
+
+  const loop = (timestamp) => {
+    rafId = requestAnimationFrame(loop);
+    if (timestamp - lastFrameTime < FRAME_INTERVAL_MS) return;
+    lastFrameTime = timestamp;
+    step();
   };
 
   const start = () => {
-    if (!rafId && !reducedMotion) rafId = requestAnimationFrame(step);
+    if (!rafId && !reducedMotion) rafId = requestAnimationFrame(loop);
   };
 
   const stop = () => {
@@ -132,6 +143,11 @@
   };
 
   const onVisibilityChange = () => (document.hidden ? stop() : start());
+
+  // Browsers throttle unfocused windows to irregular frame rates, which makes
+  // the animation (and the backdrop blurs above it) stutter — freeze instead.
+  const onWindowBlur = () => stop();
+  const onWindowFocus = () => start();
 
   const onPointerMove = (event) => {
     pointer.x = event.clientX;
@@ -152,6 +168,8 @@
 
     window.addEventListener('resize', resize, { passive: true });
     document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('blur', onWindowBlur);
+    window.addEventListener('focus', onWindowFocus);
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     window.addEventListener('pointerout', onPointerLeave, { passive: true });
   });
@@ -160,6 +178,8 @@
     stop();
     window.removeEventListener('resize', resize);
     document.removeEventListener('visibilitychange', onVisibilityChange);
+    window.removeEventListener('blur', onWindowBlur);
+    window.removeEventListener('focus', onWindowFocus);
     window.removeEventListener('pointermove', onPointerMove);
     window.removeEventListener('pointerout', onPointerLeave);
   });

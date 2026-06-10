@@ -19,11 +19,7 @@
       </button>
     </div>
 
-    <transition-group
-      name="skill-list"
-      tag="ul"
-      class="skill-list mt-6"
-    >
+    <ul class="skill-list mt-6">
       <li
         v-for="skill in visibleSkills"
         :key="`${activeType}-${skill.name}`"
@@ -40,7 +36,7 @@
           />
         </div>
       </li>
-    </transition-group>
+    </ul>
   </div>
 </template>
 
@@ -167,13 +163,5 @@
     .skill-row__bar {
       animation: none;
     }
-  }
-
-  .skill-list-enter-active {
-    transition: opacity 0.3s ease;
-  }
-
-  .skill-list-enter-from {
-    opacity: 0;
   }
 </style>

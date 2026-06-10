@@ -69,7 +69,7 @@
 
 <script setup>
   import { computed, ref } from 'vue';
-  import { useRouter } from 'vue-router';
+  // import { useRouter } from 'vue-router'; // re-enable with the project redirect
   import { mdiArrowRight } from '@mdi/js';
 
   import GlassCard from '@/components/UI/GlassCard.vue';
@@ -83,7 +83,7 @@
     },
   });
 
-  const router = useRouter();
+  // const router = useRouter(); // re-enable with the project redirect
 
   // One grid row (two cards) by default; the toggle reveals the rest.
   const INITIAL_COUNT = 2;
@@ -94,7 +94,10 @@
   );
 
   const openProject = (projectId) => {
-    router.push({ name: 'Project', params: { id: projectId } });
+    // Project detail pages are temporarily disabled — re-enable the redirect
+    // once the case-study content is filled in.
+    // router.push({ name: 'Project', params: { id: projectId } });
+    void projectId;
   };
 
   const slugify = (title) =>
