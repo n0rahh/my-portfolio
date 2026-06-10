@@ -1,47 +1,46 @@
+// Fluid type scale — sizes adapt between mobile and desktop without
+// per-breakpoint class switching in templates.
+
 .h0 {
-  font-size: 64px;
+  font-size: clamp(34px, 6vw, 64px);
+  line-height: 1.15;
 }
 
 h1,
 .h1 {
-  font-size: 48px;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.2;
 }
 
 h2,
 .h2 {
-  font-size: 34px;
+  font-size: clamp(26px, 4vw, 34px);
+  line-height: 1.25;
 }
 
 h3,
 .h3 {
-  font-size: 28px;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.3;
 }
 
 h4,
 .h4 {
-  font-size: 24px;
-}
-
-.h-unique {
-  font-size: 68px;
-  font-weight: 700;
-}
-
-.h-unique-2 {
-  font-size: 45px;
+  font-size: clamp(19px, 2.5vw, 24px);
+  line-height: 1.35;
 }
 
 p,
 .p1 {
-  font-size: 18px;
+  font-size: clamp(16px, 1.4vw, 18px);
 }
 
 .p2 {
-  font-size: 16px;
+  font-size: clamp(14px, 1.2vw, 16px);
 }
 
 .p3 {
-  font-size: 14px;
+  font-size: clamp(13px, 1.1vw, 14px);
 }
 
 .w {

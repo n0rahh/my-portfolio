@@ -1,12 +1,11 @@
 <template>
   <SectionContainer id="contact">
-    <v-row>
-      <v-col cols="12">
-        <GlassCard title="Let's stay in touch!">
-          <EmailForm />
-        </GlassCard>
-      </v-col>
-    </v-row>
+    <GlassCard
+      v-reveal
+      title="Let's stay in touch!"
+    >
+      <EmailForm />
+    </GlassCard>
   </SectionContainer>
 </template>
 

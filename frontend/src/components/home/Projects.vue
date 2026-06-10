@@ -1,119 +1,80 @@
 <template>
   <SectionContainer id="projects">
     <GlassCard
+      v-reveal
       type="main"
       title="Projects"
-      custom-class="d-flex flex-column align-center py-10 px-6"
+      custom-class="d-flex flex-column align-center py-10"
     >
-      <div class="projects-carousel-container">
-        <ArrowButton
-          v-if="$vuetify.display.mdAndUp"
-          direction="left"
-          :disabled="currentPage === 0"
-          @click="prevPage"
-        />
-
-        <v-window
-          v-model="currentPage"
-          class="projects-window"
-        >
-          <v-window-item
-            v-for="(page, pageIndex) in paginatedProjects"
-            :key="pageIndex"
-            :value="pageIndex"
-          >
-            <v-row>
-              <v-col
-                v-for="(project, projectIndex) in page"
-                :key="project.id || projectIndex"
-                lg="6"
-                cols="12"
-                class="d-flex justify-center"
-              >
-                <div class="project-card">
-                  <div class="h4 text-left">
-                    {{ project.title }}
-                  </div>
-                  <div class="d-flex mt-4">
-                    <v-img
-                      :src="getTileUrl(project.tileUrl)"
-                      :lazy-src="getTileUrl('purple.png')"
-                      height="120"
-                      width="120"
-                      max-width="120"
-                      max-height="120"
-                      class="colorful-tile"
-                      alt="Colorful tile image"
-                    />
-                    <div class="d-flex flex-column justify-space-between w-100">
-                      <span class="mt-6 p2 text-left">
-                        {{ project.category }}
-                      </span>
-                      <div
-                        class="d-flex justify-space-between"
-                        :class="{ 'mt-4 ': $vuetify.display.smAndDown }"
-                      >
-                        <div
-                          v-for="(technology, techIndex) in project.technologies"
-                          :key="techIndex"
-                          class="mb-0 d-flex align-center"
-                        >
-                          <v-img
-                            width="30"
-                            height="30"
-                            :src="getIconUrl(technology.icon)"
-                            :alt="`Icon of ${technology.name}`"
-                          >
-                            <v-tooltip
-                              theme="light"
-                              activator="parent"
-                              location="top"
-                              :aria-label="`Technology: ${technology.name}, Category: ${technology.category}`"
-                            >
-                              <div class="d-flex flex-column">
-                                <span class="w-600">{{ technology.name }}</span>
-                                <span>{{ technology.category }}</span>
-                              </div>
-                            </v-tooltip>
-                          </v-img>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </v-col>
-            </v-row>
-          </v-window-item>
-        </v-window>
-
-        <ArrowButton
-          v-if="$vuetify.display.mdAndUp"
-          direction="right"
-          :disabled="currentPage === paginatedProjects.length - 1"
-          @click="nextPage"
-        />
-      </div>
-
-      <div class="dot-navigation-horizontal mt-4">
+      <div class="projects-grid w-100">
         <div
-          v-for="(_, index) in paginatedProjects"
-          :key="index"
-          :class="['nav-dot', { active: currentPage === index }]"
-          @click="currentPage = index"
-        />
+          v-for="project in visibleProjects"
+          :key="project.id"
+          class="project-card"
+          role="link"
+          tabindex="0"
+          :aria-label="`Open project ${project.title}`"
+          @click="openProject(project.id)"
+          @keyup.enter="openProject(project.id)"
+        >
+          <TerminalWindow :title="`~/projects/${slugify(project.title)}`">
+            <span class="h4 w-600 d-block">{{ project.title }}</span>
+
+            <p class="terminal-command mt-3"><span class="prompt">&gt;</span> category</p>
+            <p class="terminal-output">{{ project.category }}</p>
+
+            <p class="terminal-command"><span class="prompt">&gt;</span> stack</p>
+            <div class="terminal-output d-flex flex-wrap ga-3 align-center pt-1">
+              <span
+                v-for="technology in project.technologies"
+                :key="technology.name"
+                class="tech-item p3"
+              >
+                <img
+                  width="20"
+                  height="20"
+                  loading="lazy"
+                  :src="getIconUrl(technology.icon)"
+                  alt=""
+                />
+                {{ technology.name }}
+              </span>
+            </div>
+
+            <p class="terminal-command project-card__cta">
+              <span class="prompt">&gt;</span> open --project
+              <v-icon
+                :icon="mdiArrowRight"
+                size="16"
+              />
+              <span class="terminal-cursor">_</span>
+            </p>
+          </TerminalWindow>
+        </div>
       </div>
+
+      <v-btn
+        v-if="projects.length > INITIAL_COUNT"
+        variant="text"
+        color="primary"
+        class="show-toggle mt-6"
+        @click="showAll = !showAll"
+      >
+        <span class="prompt">&gt;</span>&nbsp;
+        {{ showAll ? 'show --less' : `show --all (${projects.length})` }}
+      </v-btn>
     </GlassCard>
   </SectionContainer>
 </template>
 
 <script setup>
-  import { ref, computed, watch } from 'vue';
+  import { computed, ref } from 'vue';
   import { useRouter } from 'vue-router';
-  import { useDisplay } from 'vuetify';
+  import { mdiArrowRight } from '@mdi/js';
 
   import GlassCard from '@/components/UI/GlassCard.vue';
   import SectionContainer from '@/components/UI/SectionContainer.vue';
-  import ArrowButton from '@/components/UI/ArrowButton.vue';
+  import TerminalWindow from '@/components/UI/TerminalWindow.vue';
 
   const props = defineProps({
     projects: {
@@ -122,134 +83,113 @@
     },
   });
 
-  const display = useDisplay();
-
-  const projectsList = ref([]);
-  const currentPage = ref(0);
   const router = useRouter();
-  const PROJECTS_PER_PAGE = display.mdAndDown.value ? 2 : 4;
 
-  watch(
-    () => props.projects,
-    (newProjects) => {
-      projectsList.value = newProjects;
-      currentPage.value = 0;
-    },
-    { immediate: true }
+  // One grid row (two cards) by default; the toggle reveals the rest.
+  const INITIAL_COUNT = 2;
+  const showAll = ref(false);
+
+  const visibleProjects = computed(() =>
+    showAll.value ? props.projects : props.projects.slice(0, INITIAL_COUNT)
   );
 
-  const paginatedProjects = computed(() => {
-    const pages = [];
-    for (let i = 0; i < projectsList.value.length; i += PROJECTS_PER_PAGE) {
-      pages.push(projectsList.value.slice(i, i + PROJECTS_PER_PAGE));
-    }
-    return pages;
-  });
-
   const openProject = (projectId) => {
-    router.push(`/project/${projectId}`);
+    router.push({ name: 'Project', params: { id: projectId } });
   };
 
-  const getTileUrl = (imageName) => {
-    return new URL(`/src/assets/imgs/colorful-tiles/${imageName}`, import.meta.url).href;
-  };
+  const slugify = (title) =>
+    title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
 
-  const getIconUrl = (iconName) => {
-    return new URL(`/src/assets/icons/technologies/${iconName}`, import.meta.url).href;
-  };
-
-  const prevPage = () => {
-    if (currentPage.value > 0) {
-      currentPage.value--;
-    }
-  };
-
-  const nextPage = () => {
-    if (currentPage.value < paginatedProjects.value.length - 1) {
-      currentPage.value++;
-    }
-  };
+  const getIconUrl = (iconName) =>
+    new URL(`/src/assets/icons/technologies/${iconName}`, import.meta.url).href;
 </script>
 
 <style lang="scss" scoped>
-  @use '@/styles/colors.scss' as *;
+  @use '@/styles/tokens.scss' as *;
 
-  .projects-carousel-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
+  // Equal-height cards: grid rows stretch every card in a row to the tallest
+  // one, and the CTA pins itself to the bottom of each window.
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    // All rows share the height of the tallest card.
+    grid-auto-rows: 1fr;
+    gap: $space-lg;
 
-  .projects-window {
-    flex-grow: 1;
-  }
-
-  .dot-navigation-horizontal {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 10px 0;
-    .nav-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: $white-3;
-      transition: background-color 0.3s ease;
-      cursor: pointer;
-      &.active {
-        background-color: $cyan;
-        box-shadow: 0 0 8px $white-5;
-      }
+    // Two cards per row from tablet up.
+    @include up($bp-md) {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
+
+  .show-toggle {
+    text-transform: none;
+    font-family: inherit;
+  }
+
+  .tech-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: $white-7;
+
+    img {
+      display: block;
+    }
+  }
+
   .project-card {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 563px;
-    height: 250px;
-    margin: 20px;
-    padding: 30px 30px;
-    position: relative;
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-    z-index: 100;
-
-    backdrop-filter: blur(3.9px);
-    -webkit-backdrop-filter: blur(3.9px);
-    background-color: $deep-blue-37;
-    box-shadow: 0 10px 40px $black-25;
-    border: 2px solid $cyan;
-    border-radius: 32px;
     cursor: pointer;
+    transition: transform $transition-base;
 
-    &:hover {
+    :deep(.terminal-window) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    :deep(.terminal-window__body) {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    &__cta {
+      margin-top: auto;
+      padding-top: $space-md;
+      color: $text-inactive;
+      transition: color $transition-base;
+
+      .v-icon {
+        vertical-align: middle;
+        transition: transform $transition-base;
+      }
+    }
+
+    &:hover,
+    &:focus-visible {
       transform: translateY(-5px);
-      box-shadow: 0 8px 40px $black-25;
+
+      :deep(.terminal-window) {
+        border-color: $cyan;
+      }
+
+      .project-card__cta {
+        color: $cyan;
+
+        .v-icon {
+          transform: translateX(4px);
+        }
+      }
     }
 
-    @media (max-width: 1450px) {
-      width: 480px;
-    }
-
-    @media (max-width: 1279px) {
-      width: 563px;
-    }
-
-    @media (max-width: 685px) {
-      width: 400px;
-      margin: 0;
-    }
-
-    @media (max-width: 500px) {
-      width: 310px;
-    }
-
-    .colorful-tile {
-      margin-right: 24px;
-      @media (max-width: 685px) {
-        display: none;
+    @include down($bp-md) {
+      // Hover isn't available on touch devices — keep the CTA highlighted.
+      &__cta {
+        color: $cyan;
       }
     }
   }

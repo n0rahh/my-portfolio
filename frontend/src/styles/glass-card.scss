@@ -1,16 +1,17 @@
-@use './colors.scss' as *;
+@use './tokens.scss' as *;
 
 .glass-card {
   width: 100%;
   height: 100%;
-  padding: 60px 80px;
+  padding: $space-3xl $space-2xl;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   overflow: hidden;
 
+  // Decorative glow. Absolutely positioned, so it paints above static
+  // children — pointer-events: none keeps it from swallowing their clicks.
   &:before {
     content: '';
     position: absolute;
@@ -23,6 +24,7 @@
     background: radial-gradient(circle, $blue-glow-02, transparent 70%);
     filter: blur(80px);
     opacity: 0.7;
+    pointer-events: none;
   }
 
   &:after {
@@ -36,41 +38,41 @@
     pointer-events: none;
   }
 
-  @media (max-width: 960px) {
+  @include down($bp-md) {
     flex-direction: column-reverse;
-    padding: 42px;
+    padding: $space-xl $space-lg;
     text-align: center;
   }
 
-  @media (max-width: 600px) {
-    padding: 24px;
+  @include down($bp-sm) {
+    padding: $space-lg $space-md;
   }
 }
 
 .main {
-  border-radius: 80px;
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-radius: $radius-2xl;
+  backdrop-filter: $blur-glass;
+  -webkit-backdrop-filter: $blur-glass;
   background-color: $white-05;
   border: 1px solid $white-15;
-  box-shadow: 0 8px 32px $black-25;
+  box-shadow: $shadow-card;
 
-  @media (max-width: 960px) {
-    border-radius: 48px;
+  @include down($bp-md) {
+    border-radius: $radius-xl;
   }
 }
 
 .content {
-  backdrop-filter: blur(3.9px);
-  -webkit-backdrop-filter: blur(3.9px);
+  backdrop-filter: $blur-glass-soft;
+  -webkit-backdrop-filter: $blur-glass-soft;
   background-color: $deep-blue-37;
-  box-shadow: 0 10px 40px $black-25;
+  box-shadow: $shadow-card-strong;
   border: 2px solid $cyan;
-  border-radius: 48px;
-  padding: 20px 40px;
+  border-radius: $radius-xl;
+  padding: $space-lg $space-xl;
 
-  @media (max-width: 600px) {
-    border-radius: 28px;
-    padding: 16px;
+  @include down($bp-sm) {
+    border-radius: $radius-lg;
+    padding: $space-md;
   }
 }

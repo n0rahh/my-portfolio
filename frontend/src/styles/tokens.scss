@@ -1,0 +1,108 @@
+// Design tokens — single source of truth for colors, spacing, radii and breakpoints.
+// Use these everywhere instead of hard-coded values.
+
+// ---------------------------------------------------------------------------
+// Palette
+// ---------------------------------------------------------------------------
+$primary: rgb(10, 12, 36);
+$secondary: rgb(27, 30, 83);
+$tertiary: rgb(143, 148, 252);
+
+$black: rgb(0, 0, 0);
+$black-25: rgba(0, 0, 0, 0.25);
+
+$white: rgb(255, 255, 255);
+$white-0: rgba(255, 255, 255, 0);
+$white-02: rgba(255, 255, 255, 0.02);
+$white-05: rgba(255, 255, 255, 0.05);
+$white-15: rgba(255, 255, 255, 0.15);
+$white-3: rgba(255, 255, 255, 0.3);
+$white-5: rgba(255, 255, 255, 0.5);
+$white-7: rgba(255, 255, 255, 0.7);
+
+$text-primary: $white;
+$text-inactive: rgba(255, 255, 255, 0.565);
+
+$deep-blue: rgb(32, 34, 49);
+$deep-blue-37: rgba(8, 9, 79, 0.37);
+$deep-ocean-blue: rgb(30, 76, 117);
+
+$success: rgb(68, 192, 138);
+$error: rgb(255, 82, 82);
+
+$cyan: rgb(72, 238, 214);
+$cyan-5: rgba(72, 238, 214, 0.5);
+$cyan-dark: rgb(3, 178, 152);
+$cyan-neon-3: rgba(120, 180, 255, 0.3);
+$aqua-neon: rgb(61, 243, 216);
+
+$blue-glow-02: rgba(100, 150, 255, 0.2);
+
+// Background gradient stops (used by the app shell)
+$bg-base-1: #0a0f1e;
+$bg-base-2: #111827;
+$bg-base-3: #0b1220;
+$bg-glow-cyan: rgba(0, 240, 255, 0.15);
+$bg-glow-magenta: rgba(255, 0, 255, 0.12);
+$bg-glow-yellow: rgba(255, 234, 0, 0.1);
+
+// Particle colors (canvas background)
+$particle-colors: (#00f0ff, #ff00ff, #ffea00);
+
+// ---------------------------------------------------------------------------
+// Spacing
+// ---------------------------------------------------------------------------
+$space-xs: 8px;
+$space-sm: 12px;
+$space-md: 16px;
+$space-lg: 24px;
+$space-xl: 32px;
+$space-2xl: 48px;
+$space-3xl: 64px;
+
+// One gutter to rule them all: every section, the toolbar and the footer
+// align to this horizontal padding so the page edge is always stable.
+$page-gutter: clamp(16px, 4vw, 48px);
+$page-max-width: 1200px;
+$toolbar-offset: 96px;
+
+// ---------------------------------------------------------------------------
+// Radii
+// ---------------------------------------------------------------------------
+$radius-sm: 8px;
+$radius-md: 16px;
+$radius-lg: 28px;
+$radius-xl: 48px;
+$radius-2xl: 80px;
+$radius-pill: 999px;
+
+// ---------------------------------------------------------------------------
+// Effects
+// ---------------------------------------------------------------------------
+$shadow-card: 0 8px 32px $black-25;
+$shadow-card-strong: 0 10px 40px $black-25;
+$blur-glass: blur(12px) saturate(180%);
+$blur-glass-soft: blur(4px);
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.6s ease;
+
+// ---------------------------------------------------------------------------
+// Breakpoints (aligned with Vuetify defaults)
+// ---------------------------------------------------------------------------
+$bp-sm: 600px;
+$bp-md: 960px;
+$bp-lg: 1280px;
+$bp-xl: 1920px;
+
+@mixin down($breakpoint) {
+  @media (max-width: ($breakpoint - 0.02)) {
+    @content;
+  }
+}
+
+@mixin up($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}

@@ -1,72 +1,51 @@
 <template>
-  <v-container
-    fluid
-    class="px-0"
-  >
-    <v-row class="mb-2">
-      <v-col cols="12">
-        <div class="tabs-scroll">
-          <v-tabs
-            v-model="tab"
-            hide-slider
-          >
-            <v-tab
-              v-for="type in skillTypes"
-              :key="type"
-              :value="type"
-              class="mb-4 p3 tab-chip"
-              :class="{ active: tab === type }"
-            >
-              {{ type }}
-            </v-tab>
-          </v-tabs>
-        </div>
-      </v-col>
-    </v-row>
-    <v-row
-      v-for="(skill, index) in sortedSkills"
-      :key="index"
-      class="mb-2"
+  <div class="main-skills w-100">
+    <div
+      class="category-chips"
+      role="tablist"
+      aria-label="Skill categories"
     >
-      <v-col
-        cols="6"
-        md="2"
-        lg="4"
-        class="py-0 d-flex align-center"
-        :class="{
-          'mb-1': $vuetify.display.smAndDown,
-        }"
+      <button
+        v-for="type in skillTypes"
+        :key="type"
+        type="button"
+        role="tab"
+        class="category-chip p3"
+        :class="{ active: activeType === type }"
+        :aria-selected="activeType === type"
+        @click="activeType = type"
       >
-        <span class="p1">{{ skill.name }}</span>
-      </v-col>
-      <v-col
-        cols="12"
-        md="7"
-        class="py-0 d-flex align-center"
+        {{ type }}
+      </button>
+    </div>
+
+    <transition-group
+      name="skill-list"
+      tag="ul"
+      class="skill-list mt-6"
+    >
+      <li
+        v-for="skill in visibleSkills"
+        :key="`${activeType}-${skill.name}`"
+        class="skill-row"
       >
-        <div class="progress-wrapper">
+        <div class="d-flex justify-space-between align-center mb-1">
+          <span class="p2">{{ skill.name }}</span>
+          <span class="p3 skill-row__value">{{ skill.percentage }}</span>
+        </div>
+        <div class="skill-row__track">
           <div
-            class="progress-wrapper_bar w-600 d-flex justify-end pr-2"
-            :class="{
-              fill: animate,
-            }"
-            :style="progressBarWidth(skill.percentage)"
+            class="skill-row__bar"
+            :style="`--progress: ${skill.percentage}`"
           />
         </div>
-      </v-col>
-      <v-col
-        cols="12"
-        md="1"
-        class="py-0"
-      >
-        <span class="percentage-text">{{ skill.percentage }}</span>
-      </v-col>
-    </v-row>
-  </v-container>
+      </li>
+    </transition-group>
+  </div>
 </template>
 
 <script setup>
-  import { ref, watch } from 'vue';
+  import { computed, ref, watch } from 'vue';
 
   const props = defineProps({
     skills: {
@@ -79,128 +58,122 @@
     },
   });
 
-  const animate = ref(false);
-  const tab = ref('backend');
-  const sortedSkills = ref([]);
-
-  const sort = (type) => {
-    const typedSkills = props.skills.filter((skill) => {
-      return skill.type === type;
-    });
-    sortedSkills.value = typedSkills.sort((a, b) => {
-      return parseFloat(b.percentage) - parseFloat(a.percentage);
-    });
-  };
-
-  const progressBarWidth = (index) => {
-    return `--progress: ${index}`;
-  };
-
-  watch(tab, () => {
-    sort(tab.value);
-  });
+  const activeType = ref('');
 
   watch(
-    () => props.skills,
-    () => {
-      sort(tab.value);
-      setTimeout(() => {
-        animate.value = true;
-      }, 100);
+    () => props.skillTypes,
+    (types) => {
+      if (!activeType.value && types.length) activeType.value = types[0];
     },
     { immediate: true }
+  );
+
+  const visibleSkills = computed(() =>
+    props.skills
+      .filter((skill) => skill.type === activeType.value)
+      .sort((a, b) => parseFloat(b.percentage) - parseFloat(a.percentage))
   );
 </script>
 
 <style lang="scss" scoped>
-  @use '@/styles/colors.scss' as *;
+  @use '@/styles/tokens.scss' as *;
 
-  .progress-wrapper {
-    width: 100%;
-    height: 12px;
-    background-color: $deep-ocean-blue;
-    &_bar {
-      height: 100%;
-      width: 0%;
-      background-color: $aqua-neon;
+  .category-chips {
+    display: flex;
+    gap: $space-sm;
+    overflow-x: auto;
+    max-width: 100%;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 
-  .percentage-text {
-    color: $aqua-neon;
+  .category-chip {
+    flex-shrink: 0;
+    padding: $space-xs $space-md;
+    border: 1px solid $aqua-neon;
+    border-radius: $radius-pill;
+    background: transparent;
+    color: $white;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition:
+      background-color $transition-fast,
+      font-weight $transition-fast;
+
+    &.active {
+      background: $cyan-dark;
+      font-weight: 600;
+    }
+
+    &:hover:not(.active) {
+      background: $white-05;
+    }
   }
 
-  .fill {
-    animation: fill-progress 1s forwards;
+  .skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+    // Soften height jumps when switching between categories with different
+    // skill counts.
+    min-height: 220px;
+  }
+
+  .skill-row {
+    margin-bottom: $space-md;
+    width: 100%;
+
+    &__value {
+      color: $aqua-neon;
+    }
+
+    &__track {
+      width: 100%;
+      height: 10px;
+      border-radius: $radius-pill;
+      background-color: $deep-ocean-blue;
+      overflow: hidden;
+    }
+
+    // Width is static; the fill is animated with a composited transform so it
+    // never triggers layout.
+    &__bar {
+      height: 100%;
+      width: var(--progress);
+      border-radius: $radius-pill;
+      background: linear-gradient(90deg, $cyan-dark, $aqua-neon);
+      transform-origin: left;
+      animation: fill-progress 1s ease-out;
+    }
   }
 
   @keyframes fill-progress {
-    0% {
-      width: 0%;
-    }
-    100% {
-      width: var(--progress);
-    }
-  }
-
-  .tabs-scroll {
-    @media (max-width: 450px) {
-      max-width: 300px;
-      overflow-x: auto;
-      white-space: nowrap;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      &::-webkit-scrollbar {
-        display: none;
-      }
+    from {
+      transform: scaleX(0);
     }
 
-    @media (max-width: 400px) {
-      max-width: 220px;
-      overflow-x: auto;
-      white-space: nowrap;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      &::-webkit-scrollbar {
-        display: none;
-      }
+    to {
+      transform: scaleX(1);
     }
   }
 
-  .v-tab {
-    @media (max-width: 600px) {
-      display: inline-block !important;
+  @media (prefers-reduced-motion: reduce) {
+    .skill-row__bar {
+      animation: none;
     }
   }
 
-  .tab-chip {
-    border-radius: 32px !important;
-    padding: 0 16px;
-    border: 1px solid $aqua-neon;
-    margin-right: 12px;
-    line-height: 12px;
-    height: 40px;
-
-    @media (max-width: 1500px) {
-      height: 44px !important;
-      line-height: 14px;
-      font-size: 14px;
-      padding: 0 8px;
-      min-width: 76px !important;
-    }
-
-    @media (max-width: 600px) {
-      height: 32px !important;
-      line-height: 10px;
-      font-size: 10px;
-      padding: 0 8px;
-      min-width: 64px !important;
-    }
+  .skill-list-enter-active {
+    transition: opacity 0.3s ease;
   }
 
-  .active {
-    background: $cyan-dark;
-    font-weight: 600;
-    border: 1px solid $aqua-neon;
+  .skill-list-enter-from {
+    opacity: 0;
   }
 </style>

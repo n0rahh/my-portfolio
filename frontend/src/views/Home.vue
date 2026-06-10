@@ -1,63 +1,56 @@
 <template>
-  <v-container fluid>
-    <banner />
-    <about />
-    <projects :projects="projectsList" />
-    <skills
+  <div>
+    <Banner />
+    <About />
+    <Projects :projects="projects" />
+    <Skills
       :skills="skills"
       :skill-types="skillTypes"
       :works="works"
     />
-    <contact />
-  </v-container>
+    <Contact />
+  </div>
 </template>
 
 <script setup>
-  import { http } from '@/plugins/http';
   import { onMounted, ref } from 'vue';
 
+  import { getExperiences, getProjects, getSkills } from '@/api/portfolio';
   import Banner from '@/components/home/Banner.vue';
   import About from '@/components/home/About.vue';
   import Projects from '@/components/home/Projects.vue';
   import Skills from '@/components/home/Skills.vue';
   import Contact from '@/components/home/Contact.vue';
 
-  const projectsList = ref([]);
+  const projects = ref([]);
   const skills = ref([]);
   const skillTypes = ref([]);
   const works = ref([]);
 
-  const fetchProjects = async () => {
-    try {
-      const { data } = await http.get('/projects/all');
-      projectsList.value = data.projects;
-    } catch (error) {
-      console.error('Error fetching projects:', error);
-    }
-  };
-
-  const fetchSkills = async () => {
-    try {
-      const { data } = await http.get('/skills/all');
-      skills.value = data.skills;
-      skillTypes.value = data.skillCategories;
-    } catch (error) {
-      console.error('Error fetching skills:', error);
-    }
-  };
-
-  const fetchExperiences = async () => {
-    try {
-      const { data } = await http.get('/experiences/all');
-      works.value = data.experiences.map((work) => {
-        return { ...work, showAchievements: false };
-      });
-    } catch (error) {
-      console.error('Error fetching experiences:', error);
-    }
-  };
-
   onMounted(async () => {
-    await Promise.all([fetchSkills(), fetchProjects(), fetchExperiences()]);
+    const [skillsResult, projectsResult, experiencesResult] = await Promise.allSettled([
+      getSkills(),
+      getProjects(),
+      getExperiences(),
+    ]);
+
+    if (skillsResult.status === 'fulfilled') {
+      skills.value = skillsResult.value.skills;
+      skillTypes.value = skillsResult.value.skillCategories;
+    } else {
+      console.error('Error fetching skills:', skillsResult.reason);
+    }
+
+    if (projectsResult.status === 'fulfilled') {
+      projects.value = projectsResult.value.projects;
+    } else {
+      console.error('Error fetching projects:', projectsResult.reason);
+    }
+
+    if (experiencesResult.status === 'fulfilled') {
+      works.value = experiencesResult.value.experiences;
+    } else {
+      console.error('Error fetching experiences:', experiencesResult.reason);
+    }
   });
 </script>

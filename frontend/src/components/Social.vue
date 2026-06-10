@@ -5,8 +5,8 @@
       role="list"
     >
       <v-list-item
-        v-for="(item, i) in socials"
-        :key="i"
+        v-for="item in socials"
+        :key="item.text"
         class="social-wrapper__item"
         role="listitem"
       >
@@ -14,6 +14,7 @@
           variant="plain"
           :href="item.link"
           target="_blank"
+          rel="noopener"
           class="link"
           :aria-label="`Visit ${item.text}`"
         >
@@ -28,24 +29,24 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { mdiGithub, mdiLinkedin } from '@mdi/js';
 
-  const socials = ref([
+  const socials = [
     {
       text: 'Github',
-      icon: 'mdi-github',
+      icon: mdiGithub,
       link: 'https://github.com/n0rahh',
     },
     {
       text: 'LinkedIn',
-      icon: 'mdi-linkedin',
+      icon: mdiLinkedin,
       link: 'https://www.linkedin.com/in/vlad-herasymovych/',
     },
-  ]);
+  ];
 </script>
 
 <style lang="scss" scoped>
-  @use '@/styles/colors.scss' as *;
+  @use '@/styles/tokens.scss' as *;
 
   .social {
     position: fixed;
@@ -53,8 +54,10 @@
     left: 0;
     transform: translateY(-50%);
     z-index: 100;
+
     .social-wrapper {
       background: transparent;
+
       &__item {
         .icon {
           margin-left: 10px;
@@ -65,10 +68,11 @@
           height: 48px;
           font-size: 36px;
         }
+
         .link {
           height: 56px;
           width: 56px;
-          margin-bottom: 8px;
+          margin-bottom: $space-xs;
           padding: 0;
         }
       }

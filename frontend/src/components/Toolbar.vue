@@ -4,25 +4,26 @@
     class="toolbar"
   >
     <v-container
-      v-if="!isProjectPage && !isPolicyPage"
+      v-if="isHomePage"
       class="toolbar-container"
     >
-      <a
-        href="/"
+      <router-link
+        to="/"
         class="logo"
         aria-label="Go to homepage"
+        @click="scrollToTop"
       >
         <div class="logo_rectangle" />
-      </a>
+      </router-link>
 
-      <div class="d-flex align-center">
+      <nav class="d-flex align-center">
         <div
           v-if="$vuetify.display.smAndUp"
           class="d-flex align-center"
         >
           <v-btn
-            v-for="(item, i) in navigationList"
-            :key="i"
+            v-for="item in navigationList"
+            :key="item.id"
             variant="text"
             color="white"
             class="p2"
@@ -35,86 +36,92 @@
           variant="text"
           color="white"
           class="p2"
-          @click="openCV"
+          :href="cvUrl"
+          target="_blank"
         >
           CV
         </v-btn>
-      </div>
+
+        <v-menu v-if="$vuetify.display.xs">
+          <template #activator="{ props: menuProps }">
+            <v-btn
+              icon
+              variant="text"
+              color="white"
+              aria-label="Open navigation menu"
+              v-bind="menuProps"
+            >
+              <v-icon :icon="mdiMenu" />
+            </v-btn>
+          </template>
+          <v-list class="mobile-menu">
+            <v-list-item
+              v-for="item in navigationList"
+              :key="item.id"
+              @click="scrollToSection(item.id)"
+            >
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </nav>
     </v-container>
+
     <v-container
       v-else
       class="toolbar-container"
     >
-      <div class="d-flex justify-space-between align-center">
-        <v-btn
-          variant="text"
-          color="#48eed6"
-          class="back-button"
-          @click="goBack"
-        >
-          <v-icon class="mr-2">mdi-arrow-left</v-icon>
-          Back to Home Page
-        </v-btn>
-      </div>
+      <v-btn
+        variant="text"
+        color="primary"
+        class="back-button"
+        @click="goBack"
+      >
+        <v-icon
+          :icon="mdiArrowLeft"
+          class="mr-2"
+        />
+        Back to Home Page
+      </v-btn>
     </v-container>
   </v-app-bar>
 </template>
 
 <script setup>
   import { computed } from 'vue';
-  import { useRouter } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
+  import { mdiArrowLeft, mdiMenu } from '@mdi/js';
 
+  const route = useRoute();
   const router = useRouter();
 
   const navigationList = [
-    {
-      title: 'Main',
-      name: 'Home',
-      id: 'banner',
-    },
-    {
-      title: 'About',
-      name: 'About',
-      id: 'about',
-    },
-    {
-      title: 'Projects',
-      name: 'Projects',
-      id: 'projects',
-    },
-    {
-      title: 'Skills',
-      name: 'Skills',
-      id: 'skills',
-    },
-    {
-      title: 'Contact',
-      name: 'Contact',
-      id: 'contact',
-    },
+    { title: 'Main', id: 'banner' },
+    { title: 'About', id: 'about' },
+    { title: 'Projects', id: 'projects' },
+    { title: 'Skills', id: 'skills' },
+    { title: 'Contact', id: 'contact' },
   ];
 
-  const isProjectPage = computed(() => window.location.pathname.includes('project'));
-  const isPolicyPage = computed(() => window.location.pathname.includes('policy'));
+  const cvUrl = encodeURI('/Vlad Herasymovych CV.pdf');
+
+  const isHomePage = computed(() => route.name === 'Home');
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const openCV = () => {
-    window.open('Vlad Herasymovych CV.pdf', '_blank');
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const goBack = () => {
-    router.back();
+    router.push({ name: 'Home' });
   };
 </script>
 
 <style lang="scss">
-  @use '@/styles/colors.scss' as *;
+  @use '@/styles/tokens.scss' as *;
 
   .toolbar {
     background: transparent !important;
@@ -124,9 +131,13 @@
     left: 0;
     right: 0;
     z-index: 1000;
+    // Vuetify clips toolbar content (overflow: hidden), which cuts the
+    // container's soft shadow into a hard rectangle — let it overflow.
+    overflow: visible !important;
 
     .v-toolbar__content {
       height: fit-content !important;
+      overflow: visible;
     }
 
     .toolbar-container {
@@ -137,7 +148,7 @@
       border: 1px solid $white-15;
       box-shadow: 0 8px 24px 0 $black-25;
       margin: 0 auto;
-      padding: 16px 32px !important;
+      padding: $space-md $space-xl !important;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -146,6 +157,7 @@
         position: relative;
         cursor: pointer;
         width: 43px;
+
         &_rectangle {
           position: absolute;
           height: 26px;
@@ -154,6 +166,7 @@
           background-color: $white;
           transform: translateY(-50%);
           border-radius: 3px;
+
           &:before {
             content: '>';
             display: block;
@@ -165,6 +178,7 @@
             font-weight: 700;
             font-size: 27px;
           }
+
           &:after {
             content: '_';
             display: block;
@@ -179,15 +193,19 @@
         }
       }
 
-      @media (max-width: 600px) {
-        padding: 8px 24px !important;
+      @include down($bp-sm) {
+        padding: $space-xs $space-lg !important;
         border-radius: 0 0 24px 24px;
       }
     }
 
-    @media (max-width: 600px) {
-      padding: 0 12px !important;
+    @include down($bp-sm) {
+      padding: 0 $space-sm !important;
     }
+  }
+
+  .mobile-menu {
+    background: $bg-base-2 !important;
   }
 
   @keyframes fade {

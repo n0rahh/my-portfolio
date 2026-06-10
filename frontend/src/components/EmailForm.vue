@@ -5,7 +5,7 @@
   >
     <v-form
       ref="formRef"
-      @submit.prevent="sendContactForm"
+      @submit.prevent="submit"
     >
       <v-row>
         <v-col
@@ -13,15 +13,11 @@
           sm="6"
         >
           <v-text-field
-            ref="nameRef"
-            v-model="name"
+            v-model="form.name"
             label="Name"
-            aria-label="Name"
             :rules="[rules.name]"
-            :error-messages="errorMessages.name"
             placeholder="John Doe"
             variant="outlined"
-            @input="validateName"
           />
         </v-col>
         <v-col
@@ -29,16 +25,12 @@
           sm="6"
         >
           <v-text-field
-            ref="emailRef"
-            v-model="email"
+            v-model="form.email"
             label="Email"
-            aria-label="Email"
             :rules="[rules.email]"
-            :error-messages="errorMessages.email"
             placeholder="johndoe@gmail.com"
             variant="outlined"
             @keydown.space.prevent
-            @input="validateEmail"
           />
         </v-col>
       </v-row>
@@ -48,28 +40,20 @@
           class="d-flex flex-column"
         >
           <v-textarea
-            ref="contentRef"
-            v-model="content"
+            v-model="form.message"
             class="mt-2"
             label="Message"
-            aria-label="Message"
-            :rules="[rules.content]"
-            :error-messages="errorMessages.content"
+            :rules="[rules.message]"
             placeholder="Enter your message"
             variant="outlined"
-            @input="validateContent"
           />
 
           <v-file-input
             v-model="file"
-            ref="fileInputRef"
             label="File"
-            aria-label="File"
             variant="underlined"
             :show-size="1024"
-            type="file"
             accept="application/pdf"
-            @change="handleFileChange"
           />
         </v-col>
       </v-row>
@@ -82,37 +66,23 @@
           <v-checkbox
             v-model="terms"
             hide-details
-            :class="{
-              'text-error': !isValid && isBtnClicked,
-            }"
+            :class="{ 'text-error': showTermsError }"
             aria-label="Terms and Conditions"
           />
           <v-label
             class="ml-2"
             :class="{
-              'text-error': !isValid && isBtnClicked,
+              'text-error': showTermsError,
               'd-flex flex-column align-start': $vuetify.display.xs,
             }"
-            aria-label="Privacy Policy Agreement"
           >
-            <span>I have read and agree to the </span>
-            <a
-              :class="{
-                'ml-2': $vuetify.display.smAndUp,
-              }"
-              href="/policy"
-            >
-              Privacy Policy
-            </a>
+            <span>I have read and agree to the&nbsp;</span>
+            <router-link to="/policy">Privacy Policy</router-link>
           </v-label>
         </v-col>
       </v-row>
 
-      <v-row
-        :class="{
-          'mt-8': $vuetify.display.smAndDown,
-        }"
-      >
+      <v-row :class="{ 'mt-8': $vuetify.display.smAndDown }">
         <v-col
           cols="12"
           class="py-0 d-flex justify-end align-center"
@@ -123,153 +93,102 @@
             type="submit"
             :block="$vuetify.display.smAndDown"
           >
-            <span>Send</span>
+            Send
           </v-btn>
         </v-col>
       </v-row>
     </v-form>
 
     <v-snackbar
-      v-model="notify"
-      :color="isSuccess ? 'green' : 'red'"
+      v-model="snackbar.visible"
+      :color="snackbar.success ? 'success' : 'error'"
     >
-      {{ notifyMessage }}
+      {{ snackbar.message }}
     </v-snackbar>
   </v-container>
 </template>
 
 <script setup>
-  import { ref, nextTick } from 'vue';
-  import { http } from '@/plugins/http';
+  import { computed, reactive, ref, watch } from 'vue';
 
-  const name = ref('');
-  const email = ref('');
-  const content = ref('');
-  const notify = ref(false);
-  const isSuccess = ref(false);
+  import { sendContactForm } from '@/api/portfolio';
+
+  const EMAIL_PATTERN = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const formRef = ref(null);
+  const form = reactive({ name: '', email: '', message: '' });
   const file = ref(null);
   const fileBase64 = ref(null);
   const terms = ref(false);
-  const isValid = ref(false);
-  const isBtnClicked = ref(false);
-  const notifyMessage = ref(null);
+  const submitted = ref(false);
   const isSending = ref(false);
-
-  const errorMessages = ref({
-    name: [],
-    email: [],
-    content: [],
-  });
-
-  const formRef = ref(null);
-  const nameRef = ref(null);
-  const emailRef = ref(null);
-  const contentRef = ref(null);
-  const fileInputRef = ref(null);
+  const snackbar = reactive({ visible: false, success: false, message: '' });
 
   const rules = {
     name: (v) => !!v?.trim() || 'Name is required',
-    email: (v) =>
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v) || 'Valid email address required',
-    content: (v) => !!v?.trim() || 'Message is required',
+    email: (v) => EMAIL_PATTERN.test(v) || 'Valid email address required',
+    message: (v) => !!v?.trim() || 'Message is required',
   };
 
-  const validateName = () => {
-    const res = rules.name(name.value);
-    errorMessages.value.name = res === true ? [] : [res];
-  };
-  const validateEmail = () => {
-    const res = rules.email(email.value);
-    errorMessages.value.email = res === true ? [] : [res];
-  };
-  const validateContent = () => {
-    const res = rules.content(content.value);
-    errorMessages.value.content = res === true ? [] : [res];
-  };
+  const showTermsError = computed(() => submitted.value && !terms.value);
 
-  const validateForm = async () => {
-    validateName();
-    validateEmail();
-    validateContent();
-
-    isValid.value =
-      !errorMessages.value.name.length &&
-      !errorMessages.value.email.length &&
-      !errorMessages.value.content.length &&
-      terms.value;
-  };
-
-  const handleFileChange = () => {
-    const selectedFile = fileInputRef.value.files[0];
-    file.value = selectedFile;
-    readFileContent(selectedFile);
-  };
-
-  const readFileContent = (f) => {
+  watch(file, (value) => {
+    const selected = Array.isArray(value) ? value[0] : value;
+    if (!selected) {
+      fileBase64.value = null;
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => {
       fileBase64.value = reader.result.split(',')[1];
     };
-    reader.readAsDataURL(f);
+    reader.readAsDataURL(selected);
+  });
+
+  const notify = (message, success) => {
+    snackbar.message = message;
+    snackbar.success = success;
+    snackbar.visible = true;
   };
 
-  const resetErrorMessages = () => {
-    errorMessages.value.name = [];
-    errorMessages.value.email = [];
-    errorMessages.value.content = [];
-    isValid.value = false;
-    isBtnClicked.value = true;
-    showNotify('Something went wrong. Please try again later.', false);
+  const resetForm = () => {
+    form.name = '';
+    form.email = '';
+    form.message = '';
+    file.value = null;
+    fileBase64.value = null;
+    terms.value = false;
+    submitted.value = false;
+    formRef.value.resetValidation();
   };
 
-  const showNotify = (message, type) => {
-    isSuccess.value = type;
-    notify.value = true;
-    notifyMessage.value = message;
-  };
-
-  const sendContactForm = async () => {
+  const submit = async () => {
     if (isSending.value) return;
-    isBtnClicked.value = true;
-    await validateForm();
+    submitted.value = true;
 
-    if (isValid.value) {
-      isSending.value = true;
-      const payload = {
-        name: name.value,
-        email: email.value,
-        message: content.value,
+    const { valid } = await formRef.value.validate();
+    if (!valid || !terms.value) return;
+
+    isSending.value = true;
+    try {
+      await sendContactForm({
+        name: form.name,
+        email: form.email,
+        message: form.message,
         fileBase64: fileBase64.value,
-      };
-
-      try {
-        const response = await http.post('/contact', payload);
-        if (response.status !== 200) {
-          throw new Error('Failed to send email');
-        }
-        showNotify('Your message has been sent successfully!', true);
-
-        name.value = '';
-        email.value = '';
-        content.value = '';
-        file.value = null;
-        fileBase64.value = null;
-        terms.value = false;
-        isBtnClicked.value = false;
-
-        await nextTick();
-        formRef.value.resetValidation();
-      } catch (error) {
-        resetErrorMessages();
-      } finally {
-        isSending.value = false;
-      }
+      });
+      notify('Your message has been sent successfully!', true);
+      resetForm();
+    } catch {
+      notify('Something went wrong. Please try again later.', false);
+    } finally {
+      isSending.value = false;
     }
   };
 </script>
 
 <style lang="scss" scoped>
-  @use '@/styles/colors.scss' as *;
+  @use '@/styles/tokens.scss' as *;
 
   .send-button {
     height: 60px;
@@ -277,7 +196,7 @@
     color: $white;
     border: 1px solid $aqua-neon;
     font-size: 20px;
-    border-radius: 8px;
+    border-radius: $radius-sm;
     transition: all 0.5s;
     background-color: transparent;
   }

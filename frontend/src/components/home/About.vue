@@ -1,61 +1,52 @@
 <template>
   <SectionContainer id="about">
     <GlassCard
-      :title="aboutSectionTitle"
+      v-reveal
+      title="A few words about me"
       type="main"
-      customClass="d-flex align-stretch"
+      custom-class="about-card"
     >
-      <v-row>
+      <v-row
+        class="w-100"
+        align="center"
+      >
         <v-col
           cols="12"
-          lg="8"
+          lg="7"
         >
-          <GlassCard
-            type="content"
-            :class="{
-              'px-8': $vuetify.display.mdAndUp,
-            }"
-            customClass="d-flex flex-column"
-          >
-            <p
-              :class="{
-                p1: $vuetify.display.smAndUp,
-                p3: $vuetify.display.xs,
-              }"
-            >
-              Hi, I’m Vlad 👋
-              <br />
-              <br />
-              I’m a Fullstack Web Developer working mainly with Vue.js, React, and Node.js/Nest.js.
-              I enjoy solving problems and building products that actually help people.
-              <br />
-              <br />
-              I’ve worked on an educational platform at Tutore, where I built onboarding flows,
-              booking systems, and automated processes for teachers and staff. I also created a
-              website for an apartment rental company, and developed an AI-powered quest bot for
-              kids.
-              <br />
-              <br />
-              I like exploring new tools (lately Python), and I believe in continuous learning. I
-              speak English, Polish, Ukrainian, which makes teamwork and communication much easier.
-            </p>
-          </GlassCard>
+          <p class="p1 l-6">
+            Hi, I’m Vlad 👋 — a fullstack web developer working mainly with Vue.js, React and
+            Node.js/Nest.js. I enjoy solving real problems and building products that actually help
+            people.
+          </p>
+          <p class="p1 l-6 mt-4">
+            At Tutore I built onboarding flows, booking systems and internal automation for an
+            educational platform. On the side I’ve shipped an apartment-rental website and an
+            AI-powered quest bot for kids.
+          </p>
+          <p class="p1 l-6 mt-4">
+            Always exploring something new — lately Python. I speak English, Polish and Ukrainian,
+            which makes teamwork easy in international teams.
+          </p>
         </v-col>
         <v-col
-          lg="4"
+          cols="12"
+          lg="5"
           class="d-flex justify-center"
         >
-          <GlassCard
-            v-if="$vuetify.display.lgAndUp"
-            type="content"
-            class="px-8"
+          <TerminalWindow
+            title="vlad@portfolio:~"
+            class="about-terminal"
           >
-            <v-img
-              :src="skills"
-              alt="Skills"
-              max-width="300"
-            />
-          </GlassCard>
+            <p class="terminal-command"><span class="prompt">&gt;</span> whoami</p>
+            <p class="terminal-output">fullstack web developer</p>
+            <p class="terminal-command"><span class="prompt">&gt;</span> stack --main</p>
+            <p class="terminal-output">vue · react · node/nest</p>
+            <p class="terminal-command"><span class="prompt">&gt;</span> languages</p>
+            <p class="terminal-output">english · polish · ukrainian</p>
+            <p class="terminal-command"><span class="prompt">&gt;</span> status</p>
+            <p class="terminal-output">always learning<span class="terminal-cursor">_</span></p>
+          </TerminalWindow>
         </v-col>
       </v-row>
     </GlassCard>
@@ -63,16 +54,23 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue';
-  import { useDisplay } from 'vuetify';
-
   import SectionContainer from '@/components/UI/SectionContainer.vue';
   import GlassCard from '@/components/UI/GlassCard.vue';
-  import skills from '@/assets/imgs/skills.png';
-
-  const display = useDisplay();
-
-  const aboutSectionTitle = computed(() => {
-    return display.smAndUp.value ? 'A few words about me' : 'About me';
-  });
+  import TerminalWindow from '@/components/UI/TerminalWindow.vue';
 </script>
+
+<style lang="scss" scoped>
+  @use '@/styles/tokens.scss' as *;
+
+  // The glass card centers text on small screens; prose reads better
+  // left-aligned.
+  :deep(.about-card) {
+    @include down($bp-md) {
+      text-align: left;
+    }
+  }
+
+  .about-terminal {
+    max-width: 420px;
+  }
+</style>

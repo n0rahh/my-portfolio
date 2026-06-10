@@ -7,15 +7,26 @@
     :aria-label="`Navigate ${direction}`"
     @click="emit('click')"
   >
-    <v-icon>mdi-chevron-{{ direction }}</v-icon>
+    <v-icon :icon="icon" />
   </v-btn>
 </template>
 
 <script setup>
+  import { computed } from 'vue';
+  import { mdiChevronDown, mdiChevronLeft, mdiChevronRight, mdiChevronUp } from '@mdi/js';
+
+  const ICONS = {
+    left: mdiChevronLeft,
+    right: mdiChevronRight,
+    up: mdiChevronUp,
+    down: mdiChevronDown,
+  };
+
   const props = defineProps({
     direction: {
       type: String,
       required: true,
+      validator: (value) => ['left', 'right', 'up', 'down'].includes(value),
     },
     disabled: {
       type: Boolean,
@@ -24,10 +35,12 @@
   });
 
   const emit = defineEmits(['click']);
+
+  const icon = computed(() => ICONS[props.direction]);
 </script>
 
 <style lang="scss" scoped>
-  @use '@/styles/colors.scss' as *;
+  @use '@/styles/tokens.scss' as *;
 
   .nav-arrow {
     background: $white-05;
@@ -46,6 +59,7 @@
 
     &:hover {
       background: $white-15;
+
       .v-icon {
         color: $white;
       }

@@ -1,52 +1,32 @@
 <template>
-  <v-container
-    class="container pt-16 mt-8"
-    :class="{
-      'px-6': $vuetify.display.mdAndDown && !$vuetify.display.xs,
-      'px-4': $vuetify.display.xs,
-    }"
-  >
-    <v-row>
-      <v-col cols="12">
-        <GlassCard title="Privacy policy">
-          <div class="d-flex flex-column">
-            <span class="p2 mt-8">
-              This privacy policy outlines the types of personal information that is received and
-              collected by this website and how it is used.
-            </span>
-            <div class="p2 mt-8">
-              <p
-                v-for="(pkt, index) in policyPkts"
-                :key="index"
-              >
-                <span>{{ pkt.title }}</span>
-                <br />
-                <br />
-                <span class="formatted-text">{{ pkt.description }}</span>
-              </p>
-            </div>
+  <div class="policy-page">
+    <SectionContainer>
+      <GlassCard title="Privacy policy">
+        <div class="d-flex flex-column">
+          <span class="p2 mt-8">
+            This privacy policy outlines the types of personal information that is received and
+            collected by this website and how it is used.
+          </span>
+          <div class="p2 mt-8">
+            <p
+              v-for="pkt in policyPkts"
+              :key="pkt.title"
+            >
+              <span>{{ pkt.title }}</span>
+              <br />
+              <br />
+              <span class="formatted-text">{{ pkt.description }}</span>
+            </p>
           </div>
-        </GlassCard>
-      </v-col>
-    </v-row>
-  </v-container>
+        </div>
+      </GlassCard>
+    </SectionContainer>
+  </div>
 </template>
 
 <script setup>
-  import { useHead } from '@vueuse/head';
-
+  import SectionContainer from '@/components/UI/SectionContainer.vue';
   import GlassCard from '@/components/UI/GlassCard.vue';
-
-  useHead({
-    title: 'Privacy Policy | Vlad Herasymovych',
-    meta: [
-      {
-        name: 'description',
-        content:
-          "Privacy policy of Vlad Herasymovych's portfolio – information about user data and privacy.",
-      },
-    ],
-  });
 
   const policyPkts = [
     {
@@ -88,6 +68,12 @@
 </script>
 
 <style lang="scss" scoped>
+  @use '@/styles/tokens.scss' as *;
+
+  .policy-page {
+    padding-top: $toolbar-offset;
+  }
+
   .formatted-text {
     white-space: pre-wrap;
   }

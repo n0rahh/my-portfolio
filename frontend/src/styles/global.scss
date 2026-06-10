@@ -1,17 +1,74 @@
 @use './fonts.scss' as *;
 @use './typography.scss' as *;
-@use './colors.scss' as *;
+@use './tokens.scss' as *;
 @use './glass-card.scss' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 
 #app,
 .v-dialog {
   font-family: 'Roboto Mono', monospace;
 }
 
-.container {
-  max-width: 1440px;
-  @media screen and (max-width: 640px) {
-    padding-left: 0;
-    padding-right: 0;
+// Terminal-style text helpers, used inside TerminalWindow slots and as
+// section accents (the slot content is scoped to the parent component, so
+// these live globally).
+.prompt {
+  color: $cyan;
+  font-weight: 600;
+}
+
+.terminal-command {
+  margin: $space-sm 0 0;
+
+  &:first-child {
+    margin-top: 0;
   }
+}
+
+.terminal-output {
+  margin: 2px 0 0;
+  padding-left: $space-md;
+  color: $white-7;
+}
+
+.terminal-cursor {
+  color: $cyan;
+  animation: terminal-blink 0.8s step-end infinite;
+}
+
+@keyframes terminal-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-cursor {
+    animation: none;
+  }
+}
+
+// Scroll-reveal animation. Elements with `v-reveal` start hidden and slide in
+// when they enter the viewport. Disabled for users preferring reduced motion
+// (the directive never adds the class in that case).
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease var(--reveal-delay, 0s),
+    transform 0.7s ease var(--reveal-delay, 0s);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: none;
 }
