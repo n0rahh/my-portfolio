@@ -1,0 +1,17 @@
+@use './fonts.scss' as *;
+@use './typography.scss' as *;
+@use './colors.scss' as *;
+@use './glass-card.scss' as *;
+
+#app,
+.v-dialog {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.container {
+  max-width: 1440px;
+  @media screen and (max-width: 640px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

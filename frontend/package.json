@@ -1,0 +1,39 @@
+{
+  "name": "my-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint --ext .js,.vue src",
+    "lint:fix": "eslint --fix --ext .js,.vue src"
+  },
+  "dependencies": {
+    "@mdi/font": "5.9.55",
+    "@tsparticles/vue3": "^3.0.1",
+    "@vueuse/head": "^2.0.0",
+    "axios": "^1.4.0",
+    "firebase": "^9.22.2",
+    "firebase-admin": "^11.9.0",
+    "roboto-fontface": "*",
+    "sass": "^1.58.0",
+    "tsparticles": "^3.9.1",
+    "vite-plugin-vuetify": "^2.1.2",
+    "vue": "^3.2.13",
+    "vue-router": "^4.1.6",
+    "vuetify": "^3.0.0",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "eslint": "^9.35.0",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-vue": "^9.33.0",
+    "prettier": "^3.6.2",
+    "vite": "^7.1.4",
+    "vue-eslint-parser": "^10.2.0"
+  }
+}
