@@ -103,15 +103,54 @@ npx firebase-tools deploy --only hosting
 
 Set `VITE_API_URL` (e.g. in `.env.production`) to the public backend URL **before** building.
 
-### Backend → any Docker host
+### Backend → Cloud Run (via Artifact Registry)
+
+The service (`api-my-portfolio`) is already configured on Cloud Run — env vars,
+`--allow-unauthenticated` and `--min-instances` carry over between revisions, so a
+redeploy is just build → push → deploy.
+
+First-time setup on a new machine:
+
+```bash
+brew install google-cloud-sdk
+gcloud auth login
+gcloud config set project my-portfolio-6167f
+gcloud auth configure-docker europe-central2-docker.pkg.dev
+```
+
+Redeploy:
 
 ```bash
 cd backend
-docker build -t portfolio-api .
-docker run -p 8000:8000 --env-file .env -e PORT=8000 portfolio-api
+
+# 1. Build the image (Cloud Run runs linux/amd64 — the --platform flag matters
+#    when building on an Apple Silicon Mac)
+docker build --platform linux/amd64 -t backend_backend .
+
+# 2. Tag and push to Artifact Registry (only changed layers are uploaded)
+docker tag backend_backend europe-central2-docker.pkg.dev/my-portfolio-6167f/api-my-portfolio/backend:latest
+docker push europe-central2-docker.pkg.dev/my-portfolio-6167f/api-my-portfolio/backend:latest
+
+# 3. Deploy the new revision (zero-downtime traffic switch)
+gcloud run deploy api-my-portfolio \
+    --image europe-central2-docker.pkg.dev/my-portfolio-6167f/api-my-portfolio/backend:latest \
+    --region europe-central2
 ```
 
-Works as-is on Fly.io, Render, Railway, Cloud Run, etc. — they all inject `PORT` and the image's `CMD` honors it. Remember to add the deployed frontend origin to `CORS_ALLOW_ORIGINS`.
+These identifiers (project ID, region, repository) are not secrets — access is
+controlled by IAM. Actual secrets (`MONGO_URI`, `TELEGRAM_*`) live only in
+`backend/.env` locally and in the Cloud Run service configuration.
+
+Cloud Run injects `PORT` automatically and the image's `CMD` honors it. Make sure
+`CORS_ALLOW_ORIGINS` (in the service's env vars) includes the deployed frontend
+origin. The optional `CACHE_TTL_SECONDS` defaults to `300` — only set it if you
+want a different server-side cache lifetime.
+
+To test the same image locally before pushing:
+
+```bash
+docker run -p 8000:8000 --env-file .env -e PORT=8000 backend_backend
+```
 
 ## Performance notes
 
