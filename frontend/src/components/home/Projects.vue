@@ -146,6 +146,9 @@
 
   .project-card {
     display: flex;
+    // Grid items default to min-width: auto and won't shrink below their
+    // content — without this the cards overflow the glass card on mobile.
+    min-width: 0;
     cursor: pointer;
     transition: transform $transition-base;
 

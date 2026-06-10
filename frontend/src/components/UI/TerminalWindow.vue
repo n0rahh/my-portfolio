@@ -51,6 +51,10 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      // Allow the title to shrink below its text width (flex items refuse to
+      // otherwise), so long names ellipsize instead of widening the window.
+      flex: 1 1 0;
+      min-width: 0;
     }
 
     &__body {
